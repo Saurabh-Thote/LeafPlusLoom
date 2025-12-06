@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Read the Leaf+ Loom blog for eco-friendly living tips, sustainable lifestyle guides, and stories about wooden and bamboo products.">
+    <meta name="keywords" content="sustainability blog, eco-friendly living, zero waste tips, bamboo products guide">
+    
+    <title>Blog - Leaf+ Loom | Sustainable Living & Eco Tips</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="canonical" href="https://leafplusloom.com/blog.html">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="images/logo.png" alt="Leaf+ Loom Logo">
+                            <span>Leaf+ Loom</span>
+                        </a>
+                    </div>
+                    
+                    <ul class="nav-links" id="navLinks">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="blog.html" class="active">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                    
+                    <div class="nav-actions">
+                        <button class="cart-icon" onclick="openCart()">
+                            🛒 <span id="cart-count">0</span>
+                        </button>
+                        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Blog</h1>
+            <p>Insights on sustainable living and eco-friendly lifestyle</p>
+        </div>
+    </section>
+
+    <!-- Blog Filter -->
+    <section class="blog-filter">
+        <div class="container">
+            <div class="filter-tabs">
+                <button class="filter-tab active" onclick="filterBlog('all')">All Posts</button>
+                <button class="filter-tab" onclick="filterBlog('sustainability')">Sustainability</button>
+                <button class="filter-tab" onclick="filterBlog('tips')">Eco Tips</button>
+                <button class="filter-tab" onclick="filterBlog('products')">Product Care</button>
+                <button class="filter-tab" onclick="filterBlog('lifestyle')">Lifestyle</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Post -->
+    <section class="featured-post">
+        <div class="container">
+            <article class="post-featured" itemscope itemtype="https://schema.org/BlogPosting">
+                <div class="post-image">
+                    <img src="images/blog/featured-post.jpg" alt="Zero Waste Living Guide" itemprop="image">
+                    <span class="post-badge">Featured</span>
+                </div>
+                <div class="post-content">
+                    <div class="post-meta">
+                        <span class="post-category">Sustainability</span>
+                        <span class="post-date" itemprop="datePublished" content="2025-12-01">December 1, 2025</span>
+                        <span class="post-read-time">8 min read</span>
+                    </div>
+                    <h2 itemprop="headline">10 Simple Steps to Start Your Zero Waste Journey</h2>
+                    <p itemprop="description">Transitioning to a zero-waste lifestyle doesn't have to be overwhelming. Discover practical steps you can take today to reduce your environmental footprint and embrace sustainable living.</p>
+                    <a href="blog-post.html?id=zero-waste-journey" class="btn btn-primary">Read More</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Blog Grid -->
+    <section class="blog-grid-section">
+        <div class="container">
+            <div class="blog-grid">
+                <!-- Blog Post 1 -->
+                <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+                    <div class="blog-image">
+                        <img src="images/blog/bamboo-benefits.jpg" alt="Benefits of Bamboo Products" itemprop="image">
+                    </div>
+                    <div class="blog-content">
+                        <div class="post-meta">
+                            <span class="post-category">Product Care</span>
+                            <time itemprop="datePublished" content="2025-11-28">Nov 28, 2025</time>
+                        </div>
+                        <h3 itemprop="headline"><a href="blog-post.html?id=bamboo-benefits">Why Bamboo is the Future of Sustainable Products</a></h3>
+                        <p itemprop="description">Learn about the amazing properties of bamboo and why it's becoming the material of choice for eco-conscious consumers.</p>
+                        <a href="blog-post.html?id=bamboo-benefits" class="read-more">Read More →</a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 2 -->
+                <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+                    <div class="blog-image">
+                        <img src="images/blog/wooden-brush-care.jpg" alt="Caring for Wooden Brushes" itemprop="image">
+                    </div>
+                    <div class="blog-content">
+                        <div class="post-meta">
+                            <span class="post-category">Tips</span>
+                            <time itemprop="datePublished" content="2025-11-25">Nov 25, 2025</time>
+                        </div>
+                        <h3 itemprop="headline"><a href="blog-post.html?id=brush-care">How to Care for Your Wooden Brush: A Complete Guide</a></h3>
+                        <p itemprop="description">Proper care can extend the life of your wooden brush for years. Here's everything you need to know.</p>
+                        <a href="blog-post.html?id=brush-care" class="read-more">Read More →</a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 3 -->
+                <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+                    <div class="blog-image">
+                        <img src="images/blog/plastic-alternatives.jpg" alt="Plastic Free Alternatives" itemprop="image">
+                    </div>
+                    <div class="blog-content">
+                        <div class="post-meta">
+                            <span class="post-category">Lifestyle</span>
+                            <time itemprop="datePublished" content="2025-11-20">Nov 20, 2025</time>
+                        </div>
+                        <h3 itemprop="headline"><a href="blog-post.html?id=plastic-alternatives">15 Easy Plastic-Free Swaps for Your Daily Routine</a></h3>
+                        <p itemprop="description">Simple switches that make a big difference. Transform your daily routine with these eco-friendly alternatives.</p>
+                        <a href="blog-post.html?id=plastic-alternatives" class="read-more">Read More →</a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 4 -->
+                <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+                    <div class="blog-image">
+                        <img src="images/blog/sustainable-gifting.jpg" alt="Sustainable Gift Ideas" itemprop="image">
+                    </div>
+                    <div class="blog-content">
+                        <div class="post-meta">
+                            <span class="post-category">Lifestyle</span>
+                            <time itemprop="datePublished" content="2025-11-15">Nov 15, 2025</time>
+                        </div>
+                        <h3 itemprop="headline"><a href="blog-post.html?id=sustainable-gifting">Eco-Friendly Gift Ideas That Show You Care</a></h3>
+                        <p itemprop="description">Give thoughtful, sustainable gifts that your loved ones will cherish while helping the planet.</p>
+                        <a href="blog-post.html?id=sustainable-gifting" class="read-more">Read More →</a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 5 -->
+                <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+                    <div class="blog-image">
+                        <img src="images/blog/wooden-vs-plastic.jpg" alt="Wood vs Plastic Comparison" itemprop="image">
+                    </div>
+                    <div class="blog-content">
+                        <div class="post-meta">
+                            <span class="post-category">Sustainability</span>
+                            <time itemprop="datePublished" content="2025-11-10">Nov 10, 2025</time>
+                        </div>
+                        <h3 itemprop="headline"><a href="blog-post.html?id=wood-vs-plastic">Wooden vs Plastic Products: The Environmental Impact</a></h3>
+                        <p itemprop="description">A deep dive into why wooden products are better for the environment than plastic alternatives.</p>
+                        <a href="blog-post.html?id=wood-vs-plastic" class="read-more">Read More →</a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 6 -->
+                <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+                    <div class="blog-image">
+                        <img src="images/blog/eco-kitchen.jpg" alt="Eco-Friendly Kitchen Tips" itemprop="image">
+                    </div>
+                    <div class="blog-content">
+                        <div class="post-meta">
+                            <span class="post-category">Tips</span>
+                            <time itemprop="datePublished" content="2025-11-05">Nov 5, 2025</time>
+                        </div>
+                        <h3 itemprop="headline"><a href="blog-post.html?id=eco-kitchen">Creating an Eco-Friendly Kitchen: Essential Tools</a></h3>
+                        <p itemprop="description">Transform your kitchen into a sustainable space with these must-have wooden and bamboo tools.</p>
+                        <a href="blog-post.html?id=eco-kitchen" class="read-more">Read More →</a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn">Next →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <h2>Never Miss a Post</h2>
+            <p>Subscribe to our newsletter for the latest eco-friendly tips and product updates</p>
+            <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Leaf+ Loom</h4>
+                    <p>Crafting sustainable wooden and bamboo products for a greener tomorrow.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect With Us</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="Pinterest">📌</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Leaf+ Loom. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

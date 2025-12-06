@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Leaf+ Loom offers premium eco-friendly wooden and bamboo products including brushes, combs, and stationery. Shop sustainable, handcrafted items for a greener lifestyle.">
+    <meta name="keywords" content="wooden products, bamboo products, eco-friendly, sustainable, wooden brush, bamboo comb, wooden pen">
+    <meta name="author" content="Leaf+ Loom">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Leaf+ Loom - Eco-Friendly Wooden & Bamboo Products">
+    <meta property="og:description" content="Premium handcrafted wooden and bamboo products for sustainable living">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://leafplusloom.com">
+    
+    <title>Leaf+ Loom - Premium Wooden & Bamboo Products | Sustainable Living</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="canonical" href="https://leafplusloom.com">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="images/logo.png" alt="Leaf+ Loom Logo">
+                            <span>Leaf+ Loom</span>
+                        </a>
+                    </div>
+                    
+                    <ul class="nav-links" id="navLinks">
+                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                    
+                    <div class="nav-actions">
+                        <button class="cart-icon" onclick="openCart()">
+                            🛒 <span id="cart-count">0</span>
+                        </button>
+                        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Sustainable Living Starts Here</h1>
+            <p>Discover premium handcrafted wooden and bamboo products for an eco-friendly lifestyle</p>
+            <div class="hero-buttons">
+                <a href="products.html" class="btn btn-primary">Shop Now</a>
+                <a href="about.html" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products">
+        <div class="container">
+            <h2>Our Featured Products</h2>
+            <p class="section-subtitle">Handcrafted with love, designed for sustainability</p>
+            
+            <div class="product-grid">
+                <article class="product-card">
+                    <div class="product-image">
+                        <img src="images/products/round-brush.jpg" alt="Round Handle Wooden Brush">
+                        <span class="badge">New</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Round Handle Brush</h3>
+                        <p class="product-desc">Ergonomic wooden brush with natural bristles</p>
+                        <div class="product-footer">
+                            <span class="price">₹299</span>
+                            <button class="btn-add-cart" onclick="addToCart('Round Handle Brush', 299, 1)">Add to Cart</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-image">
+                        <img src="images/products/kids-brush.jpg" alt="Kids Wooden Brush">
+                        <span class="badge">Popular</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Kids Brush</h3>
+                        <p class="product-desc">Gentle bamboo brush perfect for children</p>
+                        <div class="product-footer">
+                            <span class="price">₹249</span>
+                            <button class="btn-add-cart" onclick="addToCart('Kids Brush', 249, 1)">Add to Cart</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-image">
+                        <img src="images/products/premium-comb.jpg" alt="Premium Wooden Comb">
+                    </div>
+                    <div class="product-info">
+                        <h3>Premium Comb</h3>
+                        <p class="product-desc">Wide-tooth wooden comb for all hair types</p>
+                        <div class="product-footer">
+                            <span class="price">₹399</span>
+                            <button class="btn-add-cart" onclick="addToCart('Premium Comb', 399, 1)">Add to Cart</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-image">
+                        <img src="images/products/wooden-pen.jpg" alt="Wooden Pen">
+                        <span class="badge">Eco</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Wooden Pen</h3>
+                        <p class="product-desc">Elegant bamboo pen with smooth ink flow</p>
+                        <div class="product-footer">
+                            <span class="price">₹199</span>
+                            <button class="btn-add-cart" onclick="addToCart('Wooden Pen', 199, 1)">Add to Cart</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="text-center">
+                <a href="products.html" class="btn btn-primary">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose">
+        <div class="container">
+            <h2>Why Choose Leaf+ Loom?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🌱</div>
+                    <h3>100% Eco-Friendly</h3>
+                    <p>Made from sustainable wood and bamboo materials</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✋</div>
+                    <h3>Handcrafted Quality</h3>
+                    <p>Each product is carefully crafted by skilled artisans</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">♻️</div>
+                    <h3>Zero Plastic</h3>
+                    <p>Completely plastic-free packaging and products</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💚</div>
+                    <h3>Earth Friendly</h3>
+                    <p>Biodegradable products that don't harm the planet</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Leaf+ Loom</h4>
+                    <p>Crafting sustainable wooden and bamboo products for a greener tomorrow.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect With Us</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="Pinterest">📌</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Leaf+ Loom. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
