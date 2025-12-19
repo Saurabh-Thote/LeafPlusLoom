@@ -8,218 +8,373 @@
     
     <title>Our Services - Leaf+ Loom | Custom Products & Bulk Orders</title>
     
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Tailwind CSS v4 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <!-- Custom Theme Configuration -->
+    <style type="text/tailwindcss">
+        @theme {
+            --color-primary-green: #4A7C59;
+            --color-primary-green-dark: #3A6047;
+            --color-secondary-green: #7FB069;
+            --color-bamboo-beige: #D4C5A0;
+            --color-wood-brown: #8B6F47;
+            --color-leaf-accent: #9BC184;
+            --color-earth-tone: #C9B79C;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #4A7C59;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+    </style>
+    
     <link rel="canonical" href="https://leafplusloom.com/services.html">
 </head>
-<body>
+<body class="font-[system-ui] text-gray-800 overflow-x-hidden">
+    
     <!-- Header -->
-    <header class="header">
-        <nav class="navbar">
-            <div class="container">
-                <div class="nav-wrapper">
-                    <div class="logo">
-                        <a href="index.html">
-                            <img src="images/logo.png" alt="Leaf+ Loom Logo">
-                            <span>Leaf+ Loom</span>
-                        </a>
-                    </div>
-                    
-                    <ul class="nav-links" id="navLinks">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="services.html" class="active">Services</a></li>
-                        <li><a href="products.html">Products</a></li>
-                        <li><a href="/blogs/all-blogs.html">Blog</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                    
-                    <div class="nav-actions">
-                        <button class="cart-icon" onclick="openCart()">
-                            🛒 <span id="cart-count">0</span>
-                        </button>
-                        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-                    </div>
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center gap-2">
+                    <a href="index.html" class="flex items-center gap-2">
+                        <img src="images/logo.png" alt="Leaf+ Loom Logo" class="w-10 h-10">
+                        <span class="text-xl font-bold text-primary-green">Leaf+ Loom</span>
+                    </a>
                 </div>
+                
+                <!-- Desktop Navigation -->
+                <ul class="hidden lg:flex gap-8 items-center">
+                    <li><a href="index.html" class="nav-link font-medium hover:text-primary-green transition-colors">Home</a></li>
+                    <li><a href="about.html" class="nav-link font-medium hover:text-primary-green transition-colors">About</a></li>
+                    <li><a href="services.html" class="nav-link active font-medium hover:text-primary-green transition-colors">Services</a></li>
+                    <li><a href="products.html" class="nav-link font-medium hover:text-primary-green transition-colors">Products</a></li>
+                    <li><a href="/blogs/all-blogs.html" class="nav-link font-medium hover:text-primary-green transition-colors">Blog</a></li>
+                    <li><a href="contact.html" class="nav-link font-medium hover:text-primary-green transition-colors">Contact</a></li>
+                </ul>
+                
+                <!-- Cart & Mobile Menu -->
+                <div class="flex items-center gap-4">
+                    <button onclick="openCart()" class="relative bg-gray-100 hover:bg-gray-200 p-2 rounded-lg transition-colors">
+                        <span class="text-xl">🛒</span>
+                        <span id="cart-count" class="absolute -top-1 -right-1 bg-primary-green text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">0</span>
+                    </button>
+                    <button onclick="toggleMenu()" class="lg:hidden text-2xl text-primary-green">☰</button>
+                </div>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div id="mobileMenu" class="hidden lg:hidden mt-4 pb-4">
+                <ul class="flex flex-col gap-3">
+                    <li><a href="index.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Home</a></li>
+                    <li><a href="about.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">About</a></li>
+                    <li><a href="services.html" class="block py-2 font-medium text-primary-green border-l-4 border-primary-green pl-4">Services</a></li>
+                    <li><a href="products.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Products</a></li>
+                    <li><a href="/blogs/all-blogs.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Blog</a></li>
+                    <li><a href="contact.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Contact</a></li>
+                </ul>
             </div>
         </nav>
     </header>
 
     <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <h1>Our Services</h1>
-            <p>Comprehensive solutions for all your eco-friendly product needs</p>
+    <section class="bg-gradient-to-br from-primary-green to-secondary-green text-white py-16 md:py-20 text-center">
+        <div class="container mx-auto px-6">
+            <h1 class="text-3xl md:text-5xl font-bold mb-4">Our Services</h1>
+            <p class="text-lg md:text-xl">Comprehensive solutions for all your eco-friendly product needs</p>
         </div>
     </section>
 
     <!-- Services Overview -->
-    <section class="services-overview">
-        <div class="container">
-            <div class="services-grid">
-                <article class="service-card">
-                    <div class="service-icon">🎨</div>
-                    <h2>Custom Product Design</h2>
-                    <p>Have a unique vision? Our design team works with you to create custom wooden and bamboo products tailored to your specific needs and preferences.</p>
-                    <ul class="service-features">
-                        <li>Personalized consultation</li>
-                        <li>3D design mockups</li>
-                        <li>Material selection guidance</li>
-                        <li>Prototype development</li>
+    <section class="py-16 md:py-20">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Service Card 1 -->
+                <article class="bg-white p-8 rounded-xl shadow-md hover:-translate-y-2 transition-all duration-300">
+                    <div class="text-5xl mb-6">🎨</div>
+                    <h2 class="text-2xl font-bold text-primary-green mb-4">Custom Product Design</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">Have a unique vision? Our design team works with you to create custom wooden and bamboo products tailored to your specific needs and preferences.</p>
+                    <ul class="mb-6 space-y-2">
+                        <li class="flex items-start gap-2 text-gray-700">
+                            <span class="text-secondary-green mt-1">✓</span>
+                            <span>Personalized consultation</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-gray-700">
+                            <span class="text-secondary-green mt-1">✓</span>
+                            <span>3D design mockups</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-gray-700">
+                            <span class="text-secondary-green mt-1">✓</span>
+                            <span>Material selection guidance</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-gray-700">
+                            <span class="text-secondary-green mt-1">✓</span>
+                            <span>Prototype development</span>
+                        </li>
                     </ul>
-                    <a href="contact.html" class="btn btn-secondary">Get Started</a>
+                    <a href="contact.html" class="inline-block bg-transparent border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white font-semibold px-6 py-2 rounded-lg transition-all">Get Started</a>
                 </article>
 
-                <article class="service-card">
-                    <div class="service-icon">🎁</div>
-                    <h2>Corporate Gifting</h2>
-                    <p>Impress your clients and employees with premium eco-friendly corporate gifts. Perfect for events, celebrations, and brand promotion.</p>
-                    <ul class="service-features">
-                        <li>Customized branding options</li>
-                        <li>Bulk order discounts</li>
-                        <li>Premium gift packaging</li>
-                        <li>Timely delivery guaranteed</li>
+                <!-- Service Card 2 -->
+                <article class="bg-white p-8 rounded-xl shadow-md hover:-translate-y-2 transition-all duration-300">
+                    <div class="text-5xl mb-6">🎁</div>
+                    <h2 class="text-2xl font-bold text-primary-green mb-4">Corporate Gifting</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">Impress your clients and employees with premium eco-friendly corporate gifts. Perfect for events, celebrations, and brand promotion.</p>
+                    <ul class="mb-6 space-y-2">
+                        <li class="flex items-start gap-2 text-gray-700">
+                            <span class="text-secondary-green mt-1">✓</span>
+                            <span>Customized branding options</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-gray-700">
+                            <span class="text-secondary-green mt-1">✓</span>
+                            <span>Bulk order discounts</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-gray-700">
+                            <span class="text-secondary-green mt-1">✓</span>
+                            <span>Premium gift packaging</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-gray-700">
+                            <span class="text-secondary-green mt-1">✓</span>
+                            <span>Timely delivery guaranteed</span>
+                        </li>
                     </ul>
-                    <a href="contact.html" class="btn btn-secondary">Request Quote</a>
+                    <a href="contact.html" class="inline-block bg-transparent border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white font-semibold px-6 py-2 rounded-lg transition-all">Request Quote</a>
                 </article>
 
-                <article class="service-card">
-                    <div class="service-icon">📦</div>
-                    <h2>Bulk Orders</h2>
-                    <p>Need products in large quantities? We offer competitive pricing for wholesale and bulk purchases with flexible payment terms.</p>
-                    <ul class="service-features">
-                        <li>Wholesale pricing</li>
-                        <li>Minimum order: 50 units</li>
-                        <li>Flexible delivery schedules</li>
-                        <li>Dedicated account manager</li>
+                <!-- Service Card 3 -->
+                <article class="bg-white p-8 rounded-xl shadow-md hover:-translate-y-2 transition-all duration-300">
+                    <div class="text-5xl mb-6">📦</div>
+                    <h2 class="text-2xl font-bold text-primary-green mb-4">Bulk Orders</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">Need products in large quantities? We offer competitive pricing for wholesale and bulk purchases with flexible payment terms.</p>
+                    <ul class="mb-6 space-y-2">
+                        <li class="flex items-start gap-2 text-gray-700">
+                            <span class="text-secondary-green mt-1">✓</span>
+                            <span>Wholesale pricing</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-gray-700">
+                            <span class="text-secondary-green mt-1">✓</span>
+                            <span>Minimum order: 50 units</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-gray-700">
+                            <span class="text-secondary-green mt-1">✓</span>
+                            <span>Flexible delivery schedules</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-gray-700">
+                            <span class="text-secondary-green mt-1">✓</span>
+                            <span>Dedicated account manager</span>
+                        </li>
                     </ul>
-                    <a href="contact.html" class="btn btn-secondary">Inquire Now</a>
+                    <a href="contact.html" class="inline-block bg-transparent border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white font-semibold px-6 py-2 rounded-lg transition-all">Inquire Now</a>
                 </article>
 
-                <article class="service-card">
-                    <div class="service-icon">♻️</div>
-                    <h2>Eco-Friendly Packaging</h2>
-                    <p>Complete sustainable packaging solutions for businesses looking to reduce their environmental footprint.</p>
-                    <ul class="service-features">
-                        <li>100% biodegradable materials</li>
-                        <li>Custom sizing available</li>
-                        <li>Brand customization</li>
-                        <li>Compostable options</li>
+                <!-- Service Card 4 -->
+                <article class="bg-white p-8 rounded-xl shadow-md hover:-translate-y-2 transition-all duration-300">
+                    <div class="text-5xl mb-6">♻️</div>
+                    <h2 class="text-2xl font-bold text-primary-green mb-4">Eco-Friendly Packaging</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">Complete sustainable packaging solutions for businesses looking to reduce their environmental footprint.</p>
+                    <ul class="mb-6 space-y-2">
+                        <li class="flex items-start gap-2 text-gray-700">
+                            <span class="text-secondary-green mt-1">✓</span>
+                            <span>100% biodegradable materials</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-gray-700">
+                            <span class="text-secondary-green mt-1">✓</span>
+                            <span>Custom sizing available</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-gray-700">
+                            <span class="text-secondary-green mt-1">✓</span>
+                            <span>Brand customization</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-gray-700">
+                            <span class="text-secondary-green mt-1">✓</span>
+                            <span>Compostable options</span>
+                        </li>
                     </ul>
-                    <a href="contact.html" class="btn btn-secondary">Learn More</a>
+                    <a href="contact.html" class="inline-block bg-transparent border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white font-semibold px-6 py-2 rounded-lg transition-all">Learn More</a>
                 </article>
 
-                <article class="service-card">
-                    <div class="service-icon">🏢</div>
-                    <h2>Retail Partnership</h2>
-                    <p>Are you a retailer interested in stocking our products? Join our growing network of eco-conscious retail partners.</p>
-                    <ul class="service-features">
-                        <li>Competitive wholesale rates</li>
-                        <li>Marketing support</li>
-                        <li>Display materials provided</li>
-                        <li>Regular inventory updates</li>
+                <!-- Service Card 5 -->
+                <article class="bg-white p-8 rounded-xl shadow-md hover:-translate-y-2 transition-all duration-300">
+                    <div class="text-5xl mb-6">🏢</div>
+                    <h2 class="text-2xl font-bold text-primary-green mb-4">Retail Partnership</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">Are you a retailer interested in stocking our products? Join our growing network of eco-conscious retail partners.</p>
+                    <ul class="mb-6 space-y-2">
+                        <li class="flex items-start gap-2 text-gray-700">
+                            <span class="text-secondary-green mt-1">✓</span>
+                            <span>Competitive wholesale rates</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-gray-700">
+                            <span class="text-secondary-green mt-1">✓</span>
+                            <span>Marketing support</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-gray-700">
+                            <span class="text-secondary-green mt-1">✓</span>
+                            <span>Display materials provided</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-gray-700">
+                            <span class="text-secondary-green mt-1">✓</span>
+                            <span>Regular inventory updates</span>
+                        </li>
                     </ul>
-                    <a href="contact.html" class="btn btn-secondary">Partner With Us</a>
+                    <a href="contact.html" class="inline-block bg-transparent border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white font-semibold px-6 py-2 rounded-lg transition-all">Partner With Us</a>
                 </article>
 
-                <article class="service-card">
-                    <div class="service-icon">🔧</div>
-                    <h2>Product Care & Support</h2>
-                    <p>We provide comprehensive care instructions and support to ensure your wooden and bamboo products last for years.</p>
-                    <ul class="service-features">
-                        <li>Care guides and tips</li>
-                        <li>Maintenance advice</li>
-                        <li>Warranty support</li>
-                        <li>Product replacement</li>
+                <!-- Service Card 6 -->
+                <article class="bg-white p-8 rounded-xl shadow-md hover:-translate-y-2 transition-all duration-300">
+                    <div class="text-5xl mb-6">🔧</div>
+                    <h2 class="text-2xl font-bold text-primary-green mb-4">Product Care & Support</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">We provide comprehensive care instructions and support to ensure your wooden and bamboo products last for years.</p>
+                    <ul class="mb-6 space-y-2">
+                        <li class="flex items-start gap-2 text-gray-700">
+                            <span class="text-secondary-green mt-1">✓</span>
+                            <span>Care guides and tips</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-gray-700">
+                            <span class="text-secondary-green mt-1">✓</span>
+                            <span>Maintenance advice</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-gray-700">
+                            <span class="text-secondary-green mt-1">✓</span>
+                            <span>Warranty support</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-gray-700">
+                            <span class="text-secondary-green mt-1">✓</span>
+                            <span>Product replacement</span>
+                        </li>
                     </ul>
-                    <a href="contact.html" class="btn btn-secondary">Get Support</a>
+                    <a href="contact.html" class="inline-block bg-transparent border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white font-semibold px-6 py-2 rounded-lg transition-all">Get Support</a>
                 </article>
+
             </div>
         </div>
     </section>
 
     <!-- Process Section -->
-    <section class="our-process">
-        <div class="container">
-            <h2>How We Work</h2>
-            <p class="section-subtitle">Our simple 4-step process for custom orders</p>
-            <div class="process-timeline">
-                <div class="process-step">
-                    <div class="step-number">1</div>
-                    <h3>Consultation</h3>
-                    <p>Share your requirements and vision with our team</p>
+    <section class="bg-gray-50 py-16 md:py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary-green text-center mb-4">How We Work</h2>
+            <p class="text-center text-gray-600 text-lg mb-12">Our simple 4-step process for custom orders</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Step 1 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-primary-green text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Consultation</h3>
+                    <p class="text-gray-600">Share your requirements and vision with our team</p>
                 </div>
-                <div class="process-step">
-                    <div class="step-number">2</div>
-                    <h3>Design</h3>
-                    <p>We create custom designs and provide samples</p>
+
+                <!-- Step 2 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-primary-green text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Design</h3>
+                    <p class="text-gray-600">We create custom designs and provide samples</p>
                 </div>
-                <div class="process-step">
-                    <div class="step-number">3</div>
-                    <h3>Production</h3>
-                    <p>Our artisans handcraft your products with care</p>
+
+                <!-- Step 3 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-primary-green text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Production</h3>
+                    <p class="text-gray-600">Our artisans handcraft your products with care</p>
                 </div>
-                <div class="process-step">
-                    <div class="step-number">4</div>
-                    <h3>Delivery</h3>
-                    <p>Products are packaged and delivered to your doorstep</p>
+
+                <!-- Step 4 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-primary-green text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">4</div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Delivery</h3>
+                    <p class="text-gray-600">Products are packaged and delivered to your doorstep</p>
                 </div>
+
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <h2>Ready to Get Started?</h2>
-            <p>Contact us today to discuss your project or place a custom order</p>
-            <a href="contact.html" class="btn btn-primary">Contact Us Now</a>
+    <section class="bg-gradient-to-br from-primary-green to-secondary-green text-white py-16 md:py-20 text-center">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Get Started?</h2>
+            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Contact us today to discuss your project or place a custom order</p>
+            <a href="contact.html" class="inline-block bg-white text-primary-green font-semibold px-8 py-3 rounded-lg shadow-lg hover:bg-gray-100 hover:-translate-y-1 hover:shadow-xl transition-all">Contact Us Now</a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>Leaf+ Loom</h4>
-                    <p>Crafting sustainable wooden and bamboo products for a greener tomorrow.</p>
+    <footer class="bg-gray-800 text-white py-12 md:py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h4 class="text-secondary-green font-semibold mb-4 text-lg">Leaf+ Loom</h4>
+                    <p class="text-gray-400">Crafting sustainable wooden and bamboo products for a greener tomorrow.</p>
                 </div>
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="products.html">Products</a></li>
-                        <li><a href="/blogs/all-blogs.html">Blog</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                <div>
+                    <h4 class="text-secondary-green font-semibold mb-4 text-lg">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="products.html" class="text-gray-400 hover:text-white transition-colors">Products</a></li>
+                        <li><a href="/blogs/all-blogs.html" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h4>Customer Service</h4>
-                    <ul>
-                        <li><a href="#">Shipping Policy</a></li>
-                        <li><a href="#">Return Policy</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
+                <div>
+                    <h4 class="text-secondary-green font-semibold mb-4 text-lg">Customer Service</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Shipping Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Return Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms & Conditions</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h4>Connect With Us</h4>
-                    <div class="social-links">
-                        <a href="#" aria-label="Facebook">📘</a>
-                        <a href="#" aria-label="Instagram">📷</a>
-                        <a href="#" aria-label="Twitter">🐦</a>
-                        <a href="#" aria-label="Pinterest">📌</a>
+                <div>
+                    <h4 class="text-secondary-green font-semibold mb-4 text-lg">Connect With Us</h4>
+                    <div class="flex gap-4 text-2xl">
+                        <a href="#" aria-label="Facebook" class="hover:text-secondary-green transition-colors">📘</a>
+                        <a href="#" aria-label="Instagram" class="hover:text-secondary-green transition-colors">📷</a>
+                        <a href="#" aria-label="Twitter" class="hover:text-secondary-green transition-colors">🐦</a>
+                        <a href="#" aria-label="Pinterest" class="hover:text-secondary-green transition-colors">📌</a>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div class="border-t border-gray-700 pt-6 text-center text-gray-400">
                 <p>&copy; 2025 Leaf+ Loom. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- JavaScript -->
     <script src="js/cart.js"></script>
-    <script src="js/main.js"></script>
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+        
+        // Cart functionality
+        function openCart() {
+            alert('Cart functionality - integrate with your cart.js');
+        }
+    </script>
 </body>
 </html>

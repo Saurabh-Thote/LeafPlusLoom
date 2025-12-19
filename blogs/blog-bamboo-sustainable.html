@@ -18,9 +18,46 @@
     
     <title>Why Bamboo Sustainable Products Are the Future of Eco-Friendly Living | Leaf+ Loom</title>
     
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-    <link rel="stylesheet" href="../css/blog-modern.css">
+    <!-- Tailwind CSS v4 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <!-- Custom Theme Configuration -->
+    <style type="text/tailwindcss">
+        @theme {
+            --color-primary-green: #4A7C59;
+            --color-primary-green-dark: #3A6047;
+            --color-secondary-green: #7FB069;
+            --color-bamboo-beige: #D4C5A0;
+            --color-wood-brown: #8B6F47;
+            --color-leaf-accent: #9BC184;
+            --color-earth-tone: #C9B79C;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #4A7C59;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+    </style>
+    
     <link rel="canonical" href="https://leafplusloom.com/blogs/bamboo-sustainable-products.html">
     
     <!-- Article Schema Markup -->
@@ -87,375 +124,475 @@
     }
     </script>
 </head>
-<body>
+<body class="font-[system-ui] text-gray-800 overflow-x-hidden bg-white">
+    
     <!-- Header -->
-    <header class="header">
-        <nav class="navbar">
-            <div class="container">
-                <div class="nav-wrapper">
-                    <div class="logo">
-                        <a href="../index.html">
-                            <img src="../images/logo.png" alt="Leaf+ Loom Logo">
-                            <span>Leaf+ Loom</span>
-                        </a>
-                    </div>
-                    
-                    <ul class="nav-links" id="navLinks">
-                        <li><a href="../index.html">Home</a></li>
-                        <li><a href="../about.html">About</a></li>
-                        <li><a href="../services.html">Services</a></li>
-                        <li><a href="../products.html">Products</a></li>
-                        <li><a href="all-blogs.html" class="active">Blog</a></li>
-                        <li><a href="../contact.html">Contact</a></li>
-                    </ul>
-                    
-                    <div class="nav-actions">
-                        <button class="cart-icon" onclick="openCart()">
-                            🛒 <span id="cart-count">0</span>
-                        </button>
-                        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-                    </div>
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <a href="../index.html" class="flex items-center gap-2">
+                        <img src="../images/logo.png" alt="Leaf+ Loom Logo" class="w-10 h-10">
+                        <span class="text-xl font-bold text-primary-green">Leaf+ Loom</span>
+                    </a>
                 </div>
+                
+                <ul class="hidden lg:flex gap-8 items-center">
+                    <li><a href="../index.html" class="nav-link font-medium hover:text-primary-green transition-colors">Home</a></li>
+                    <li><a href="../about.html" class="nav-link font-medium hover:text-primary-green transition-colors">About</a></li>
+                    <li><a href="../services.html" class="nav-link font-medium hover:text-primary-green transition-colors">Services</a></li>
+                    <li><a href="../products.html" class="nav-link font-medium hover:text-primary-green transition-colors">Products</a></li>
+                    <li><a href="all-blogs.html" class="nav-link active font-medium hover:text-primary-green transition-colors">Blog</a></li>
+                    <li><a href="../contact.html" class="nav-link font-medium hover:text-primary-green transition-colors">Contact</a></li>
+                </ul>
+                
+                <div class="flex items-center gap-4">
+                    <button onclick="openCart()" class="relative bg-gray-100 hover:bg-gray-200 p-2 rounded-lg transition-colors">
+                        <span class="text-xl">🛒</span>
+                        <span id="cart-count" class="absolute -top-1 -right-1 bg-primary-green text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">0</span>
+                    </button>
+                    <button onclick="toggleMenu()" class="lg:hidden text-2xl text-primary-green">☰</button>
+                </div>
+            </div>
+            
+            <div id="mobileMenu" class="hidden lg:hidden mt-4 pb-4">
+                <ul class="flex flex-col gap-3">
+                    <li><a href="../index.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Home</a></li>
+                    <li><a href="../about.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">About</a></li>
+                    <li><a href="../services.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Services</a></li>
+                    <li><a href="../products.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Products</a></li>
+                    <li><a href="all-blogs.html" class="block py-2 font-medium text-primary-green border-l-4 border-primary-green pl-4">Blog</a></li>
+                    <li><a href="../contact.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Contact</a></li>
+                </ul>
             </div>
         </nav>
     </header>
 
     <!-- Premium Hero Section -->
-    <section class="premium-hero">
-        <div class="premium-hero-overlay"></div>
-        <div class="premium-hero-content">
-            <span class="premium-badge">Premium Features Loaded</span>
-            <h1 class="premium-title">BAMBOO SUSTAINABLE PRODUCTS<br><span class="premium-subtitle">UNDER ₹500</span></h1>
+    <section class="relative h-[500px] md:h-[600px] bg-gray-900 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-black/70 to-black/50 z-10"></div>
+        <img src="../images/blog/bamboo-hero-premium.jpg" alt="Premium Bamboo Sustainable Products Collection" class="absolute inset-0 w-full h-full object-cover">
+        <div class="relative z-20 container mx-auto px-6 h-full flex items-center justify-center text-center">
+            <div>
+                <span class="inline-block bg-secondary-green text-white text-sm font-bold px-6 py-2 rounded-full mb-6 animate-pulse">Premium Features Loaded</span>
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-4">
+                    BAMBOO SUSTAINABLE<br>PRODUCTS
+                </h1>
+                <p class="text-2xl md:text-3xl font-bold text-bamboo-beige">UNDER ₹500</p>
+            </div>
         </div>
-        <img src="../images/blog/bamboo-hero-premium.jpg" alt="Premium Bamboo Sustainable Products Collection" class="premium-hero-bg">
     </section>
 
     <!-- Breadcrumb -->
-    <nav class="breadcrumb-modern">
-        <div class="blog-container-modern">
-            <ol class="breadcrumb-list-modern">
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="all-blogs.html">Blog</a></li>
-                <li>Bamboo Sustainable Products</li>
+    <nav class="bg-gray-50 py-4">
+        <div class="container mx-auto px-6">
+            <ol class="flex items-center gap-2 text-sm text-gray-600">
+                <li><a href="../index.html" class="hover:text-primary-green">Home</a></li>
+                <span>›</span>
+                <li><a href="all-blogs.html" class="hover:text-primary-green">Blog</a></li>
+                <span>›</span>
+                <li class="text-gray-800 font-medium">Bamboo Sustainable Products</li>
             </ol>
         </div>
     </nav>
 
     <!-- Main Blog Content -->
-    <main class="blog-main-modern">
-        <div class="blog-container-modern">
+    <main class="py-12 md:py-16 bg-white">
+        <div class="container mx-auto px-6 max-w-4xl">
             
-            <!-- Article Title Section -->
-            <article class="blog-article-modern">
-                <header class="modern-article-header">
-                    <h1 class="modern-main-title">Why Bamboo Sustainable Products Are the Future of Eco-Friendly Living</h1>
-                    <p class="modern-intro-text">
-                        Living sustainably has become more important than ever, especially when plastic pollution and harmful materials are affecting our planet. As people search for better solutions, <strong>bamboo sustainable products</strong> are becoming a powerful alternative with incredibly positive benefits for the environment. Bamboo grows fast, uses less water, and leaves almost zero waste behind, which makes it one of the most eco-friendly natural resources available today.
+            <article>
+                <!-- Article Header -->
+                <header class="mb-12">
+                    <h1 class="text-3xl md:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
+                        Why Bamboo Sustainable Products Are the Future of Eco-Friendly Living
+                    </h1>
+                    <p class="text-xl text-gray-700 leading-relaxed">
+                        Living sustainably has become more important than ever, especially when plastic pollution and harmful materials are affecting our planet. As people search for better solutions, <strong class="text-primary-green">bamboo sustainable products</strong> are becoming a powerful alternative with incredibly positive benefits for the environment. Bamboo grows fast, uses less water, and leaves almost zero waste behind, which makes it one of the most eco-friendly natural resources available today.
                     </p>
                 </header>
 
                 <!-- Table of Contents -->
-                <div class="modern-toc">
-                    <h3>Table of Contents</h3>
-                    <ul>
-                        <li><a href="#why-bamboo-matters">Why bamboo matters today</a></li>
-                        <li><a href="#what-makes-sustainable">What makes bamboo sustainable</a></li>
-                        <li><a href="#bamboo-vs-plastic">Bamboo vs plastic</a></li>
-                        <li><a href="#everyday-products">Everyday bamboo products</a></li>
-                        <li><a href="#benefits">Benefits of sustainable bamboo products</a></li>
-                        <li><a href="#future">The future of eco-friendly bamboo</a></li>
-                        <li><a href="#conclusion">Final thoughts</a></li>
+                <div class="bg-gradient-to-r from-primary-green/10 to-leaf-accent/10 border-l-4 border-primary-green p-6 rounded-r-lg mb-12">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Table of Contents</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#why-bamboo-matters" class="text-primary-green hover:underline font-medium">1. Why bamboo matters today</a></li>
+                        <li><a href="#what-makes-sustainable" class="text-primary-green hover:underline font-medium">2. What makes bamboo sustainable</a></li>
+                        <li><a href="#bamboo-vs-plastic" class="text-primary-green hover:underline font-medium">3. Bamboo vs plastic</a></li>
+                        <li><a href="#everyday-products" class="text-primary-green hover:underline font-medium">4. Everyday bamboo products</a></li>
+                        <li><a href="#benefits" class="text-primary-green hover:underline font-medium">5. Benefits of sustainable bamboo products</a></li>
+                        <li><a href="#future" class="text-primary-green hover:underline font-medium">6. The future of eco-friendly bamboo</a></li>
+                        <li><a href="#conclusion" class="text-primary-green hover:underline font-medium">7. Final thoughts</a></li>
                     </ul>
                 </div>
 
-                <!-- Section 1: Why Bamboo Matters -->
-                <section class="blog-section-modern" id="why-bamboo-matters">
-                    <div class="section-number">1.</div>
-                    <h2 class="section-title-modern">Why Bamboo Matters Today</h2>
-                    <p>
-                        Everyday items made from plastic are filling landfills, oceans, and soil. This makes sustainability more than a lifestyle—it has become a responsibility. Many eco-conscious brands now focus on <strong>eco-friendly bamboo</strong> because it replaces plastic in a natural and harmless way.
+                <!-- Section 1 -->
+                <section class="mb-12" id="why-bamboo-matters">
+                    <div class="flex items-start gap-4 mb-6">
+                        <span class="flex-shrink-0 w-12 h-12 bg-primary-green text-white rounded-full flex items-center justify-center text-xl font-bold">1</span>
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-1">Why Bamboo Matters Today</h2>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        Everyday items made from plastic are filling landfills, oceans, and soil. This makes sustainability more than a lifestyle—it has become a responsibility. Many eco-conscious brands now focus on <strong class="text-primary-green">eco-friendly bamboo</strong> because it replaces plastic in a natural and harmless way.
                     </p>
                     
-                    <div class="feature-highlight">
-                        <h3>Bamboo products are:</h3>
-                        <ul class="feature-list">
-                            <li>Strong and resilient</li>
-                            <li>Long-lasting durability</li>
-                            <li>Lightweight and portable</li>
-                            <li>Biodegradable and earth-friendly</li>
+                    <div class="bg-leaf-accent/10 border-l-4 border-secondary-green p-6 rounded-r-lg mb-8">
+                        <h3 class="text-lg font-bold text-gray-900 mb-4">Bamboo products are:</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-2">
+                                <span class="text-secondary-green mt-1">✓</span>
+                                <span class="text-gray-700">Strong and resilient</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-secondary-green mt-1">✓</span>
+                                <span class="text-gray-700">Long-lasting durability</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-secondary-green mt-1">✓</span>
+                                <span class="text-gray-700">Lightweight and portable</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-secondary-green mt-1">✓</span>
+                                <span class="text-gray-700">Biodegradable and earth-friendly</span>
+                            </li>
                         </ul>
-                        <p class="feature-note">That means they last longer in your home and disappear faster in nature.</p>
+                        <p class="text-gray-700 mt-4 italic">That means they last longer in your home and disappear faster in nature.</p>
                     </div>
 
-                    <!-- Product Image 1 -->
-                    <figure class="product-showcase">
-                        <img src="../images/blog/bamboo-toothbrush-showcase.jpg" alt="Bamboo Toothbrush - Natural Eco-Friendly Dental Care with Biodegradable Handle and Soft Bristles for Sustainable Living" class="showcase-image">
+                    <figure class="mb-8 rounded-xl overflow-hidden shadow-lg">
+                        <img src="../images/blog/bamboo-toothbrush-showcase.jpg" alt="Bamboo Toothbrush - Natural Eco-Friendly Dental Care" class="w-full h-auto">
                     </figure>
                 </section>
 
-                <!-- Section 2: What Makes Bamboo Sustainable -->
-                <section class="blog-section-modern" id="what-makes-sustainable">
-                    <div class="section-number">2.</div>
-                    <h2 class="section-title-modern">What Makes Bamboo Sustainable</h2>
-                    <p>
-                        Bamboo is not like common trees. It is a fast-growing grass that naturally regrows without chemicals or artificial treatment. This makes <strong>sustainable bamboo products</strong> better for our ecosystem compared to traditional timber.
+                <!-- Section 2 -->
+                <section class="mb-12" id="what-makes-sustainable">
+                    <div class="flex items-start gap-4 mb-6">
+                        <span class="flex-shrink-0 w-12 h-12 bg-primary-green text-white rounded-full flex items-center justify-center text-xl font-bold">2</span>
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-1">What Makes Bamboo Sustainable</h2>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        Bamboo is not like common trees. It is a fast-growing grass that naturally regrows without chemicals or artificial treatment. This makes <strong class="text-primary-green">sustainable bamboo products</strong> better for our ecosystem compared to traditional timber.
                     </p>
                     
-                    <div class="feature-highlight">
-                        <h3>Here's why bamboo is truly sustainable:</h3>
-                        <ul class="sustainability-list">
-                            <li><strong>Grows extremely fast</strong> – Some species grow up to 3 feet per day</li>
-                            <li><strong>Needs no pesticides</strong> – Naturally pest-resistant properties</li>
-                            <li><strong>Consumes very little water</strong> – Uses 30% less water than cotton</li>
-                            <li><strong>Absorbs high amounts of carbon dioxide</strong> – 35% more than hardwood trees</li>
-                            <li><strong>Releases more oxygen</strong> – Contributing to cleaner, fresher air</li>
+                    <div class="bg-leaf-accent/10 border-l-4 border-secondary-green p-6 rounded-r-lg mb-8">
+                        <h3 class="text-lg font-bold text-gray-900 mb-4">Here's why bamboo is truly sustainable:</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-2">
+                                <span class="text-secondary-green mt-1">✓</span>
+                                <span class="text-gray-700"><strong>Grows extremely fast</strong> – Some species grow up to 3 feet per day</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-secondary-green mt-1">✓</span>
+                                <span class="text-gray-700"><strong>Needs no pesticides</strong> – Naturally pest-resistant properties</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-secondary-green mt-1">✓</span>
+                                <span class="text-gray-700"><strong>Consumes very little water</strong> – Uses 30% less water than cotton</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-secondary-green mt-1">✓</span>
+                                <span class="text-gray-700"><strong>Absorbs high amounts of carbon dioxide</strong> – 35% more than hardwood trees</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-secondary-green mt-1">✓</span>
+                                <span class="text-gray-700"><strong>Releases more oxygen</strong> – Contributing to cleaner, fresher air</span>
+                            </li>
                         </ul>
-                        <p class="feature-note">In fact, bamboo is considered one of the most renewable natural materials on Earth.</p>
+                        <p class="text-gray-700 mt-4 italic">In fact, bamboo is considered one of the most renewable natural materials on Earth.</p>
                     </div>
 
-                    <!-- Product Image 2 -->
-                    <figure class="product-showcase">
-                        <img src="../images/blog/bamboo-cutlery-set.jpg" alt="Bamboo Cutlery Set - Portable Eco-Friendly Travel Utensils with Reusable Fork Spoon Knife for Zero Waste Sustainable Dining" class="showcase-image">
+                    <figure class="mb-8 rounded-xl overflow-hidden shadow-lg">
+                        <img src="../images/blog/bamboo-cutlery-set.jpg" alt="Bamboo Cutlery Set - Portable Eco-Friendly Travel Utensils" class="w-full h-auto">
                     </figure>
                 </section>
 
-                <!-- Section 3: Bamboo vs Plastic -->
-                <section class="blog-section-modern" id="bamboo-vs-plastic">
-                    <div class="section-number">3.</div>
-                    <h2 class="section-title-modern">Bamboo vs Plastic</h2>
-                    <p>
-                        Plastic stays on Earth for hundreds of years. Bamboo, on the other hand, returns to nature safely once discarded. The choice between <strong>bamboo vs plastic</strong> is clear when you consider environmental impact.
+                <!-- Section 3 -->
+                <section class="mb-12" id="bamboo-vs-plastic">
+                    <div class="flex items-start gap-4 mb-6">
+                        <span class="flex-shrink-0 w-12 h-12 bg-primary-green text-white rounded-full flex items-center justify-center text-xl font-bold">3</span>
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-1">Bamboo vs Plastic</h2>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        Plastic stays on Earth for hundreds of years. Bamboo, on the other hand, returns to nature safely once discarded. The choice between <strong class="text-primary-green">bamboo vs plastic</strong> is clear when you consider environmental impact.
                     </p>
 
-                    <div class="vs-comparison">
-                        <div class="vs-column vs-negative">
-                            <h3>Plastic</h3>
-                            <ul>
-                                <li>❌ Takes centuries to decompose</li>
-                                <li>❌ Releases toxic chemicals</li>
-                                <li>❌ Harms marine life and ecosystems</li>
-                                <li>❌ Pollutes soil and water sources</li>
-                                <li>❌ Non-renewable petroleum-based resource</li>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="bg-red-50 border-2 border-red-200 p-6 rounded-xl">
+                            <h3 class="text-xl font-bold text-red-800 mb-4">Plastic</h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-start gap-2 text-gray-700">
+                                    <span class="text-red-600 font-bold">❌</span>
+                                    <span>Takes centuries to decompose</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-gray-700">
+                                    <span class="text-red-600 font-bold">❌</span>
+                                    <span>Releases toxic chemicals</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-gray-700">
+                                    <span class="text-red-600 font-bold">❌</span>
+                                    <span>Harms marine life and ecosystems</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-gray-700">
+                                    <span class="text-red-600 font-bold">❌</span>
+                                    <span>Pollutes soil and water sources</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-gray-700">
+                                    <span class="text-red-600 font-bold">❌</span>
+                                    <span>Non-renewable petroleum-based resource</span>
+                                </li>
                             </ul>
                         </div>
-                        <div class="vs-column vs-positive">
-                            <h3>Bamboo</h3>
-                            <ul>
-                                <li>✔ Biodegradable within months</li>
-                                <li>✔ Eco-friendly and chemical-free</li>
-                                <li>✔ Renewable and sustainable resource</li>
-                                <li>✔ Compostable organic material</li>
-                                <li>✔ Natural and safe for environment</li>
+                        <div class="bg-green-50 border-2 border-green-200 p-6 rounded-xl">
+                            <h3 class="text-xl font-bold text-primary-green mb-4">Bamboo</h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-start gap-2 text-gray-700">
+                                    <span class="text-secondary-green font-bold">✔</span>
+                                    <span>Biodegradable within months</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-gray-700">
+                                    <span class="text-secondary-green font-bold">✔</span>
+                                    <span>Eco-friendly and chemical-free</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-gray-700">
+                                    <span class="text-secondary-green font-bold">✔</span>
+                                    <span>Renewable and sustainable resource</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-gray-700">
+                                    <span class="text-secondary-green font-bold">✔</span>
+                                    <span>Compostable organic material</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-gray-700">
+                                    <span class="text-secondary-green font-bold">✔</span>
+                                    <span>Natural and safe for environment</span>
+                                </li>
                             </ul>
                         </div>
                     </div>
 
-                    <p class="highlight-text">
+                    <p class="text-lg text-primary-green font-semibold mb-8">
                         Choosing bamboo over plastic helps you shift toward a gentle, plastic-free lifestyle.
                     </p>
 
-                    <!-- Product Image 3 -->
-                    <figure class="product-showcase">
-                        <img src="../images/blog/bamboo-straws-collection.jpg" alt="Bamboo Straws - Reusable Eco-Friendly Drinking Straws Set with Cleaning Brush for Plastic-Free Sustainable Beverages" class="showcase-image">
+                    <figure class="mb-8 rounded-xl overflow-hidden shadow-lg">
+                        <img src="../images/blog/bamboo-straws-collection.jpg" alt="Bamboo Straws - Reusable Eco-Friendly Drinking Straws" class="w-full h-auto">
                     </figure>
                 </section>
 
-                <!-- Section 4: Everyday Bamboo Products -->
-                <section class="blog-section-modern" id="everyday-products">
-                    <div class="section-number">4.</div>
-                    <h2 class="section-title-modern">Everyday Bamboo Products</h2>
-                    <p>
+                <!-- Section 4 -->
+                <section class="mb-12" id="everyday-products">
+                    <div class="flex items-start gap-4 mb-6">
+                        <span class="flex-shrink-0 w-12 h-12 bg-primary-green text-white rounded-full flex items-center justify-center text-xl font-bold">4</span>
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-1">Everyday Bamboo Products</h2>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed mb-8">
                         You can now find bamboo alternatives for almost every daily product you use. These items are stylish, durable, and safe for everyday use. Unlike plastic, they do not release harmful chemicals into food or water.
                     </p>
 
-                    <div class="product-grid-modern">
-                        <div class="product-card-modern">
-                            <div class="product-icon-modern">🪥</div>
-                            <h4>Bamboo Toothbrush</h4>
-                            <p>Natural bristles with biodegradable handle</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-white border-2 border-bamboo-beige p-6 rounded-xl text-center hover:shadow-lg transition-shadow">
+                            <div class="text-5xl mb-3">🪥</div>
+                            <h4 class="text-lg font-bold text-gray-900 mb-2">Bamboo Toothbrush</h4>
+                            <p class="text-sm text-gray-600">Natural bristles with biodegradable handle</p>
                         </div>
-                        <div class="product-card-modern">
-                            <div class="product-icon-modern">💆‍♀️</div>
-                            <h4>Bamboo Comb</h4>
-                            <p>Gentle on hair, naturally anti-static</p>
+                        <div class="bg-white border-2 border-bamboo-beige p-6 rounded-xl text-center hover:shadow-lg transition-shadow">
+                            <div class="text-5xl mb-3">💆‍♀️</div>
+                            <h4 class="text-lg font-bold text-gray-900 mb-2">Bamboo Comb</h4>
+                            <p class="text-sm text-gray-600">Gentle on hair, naturally anti-static</p>
                         </div>
-                        <div class="product-card-modern">
-                            <div class="product-icon-modern">🥤</div>
-                            <h4>Bamboo Straws</h4>
-                            <p>Reusable, washable, and durable</p>
+                        <div class="bg-white border-2 border-bamboo-beige p-6 rounded-xl text-center hover:shadow-lg transition-shadow">
+                            <div class="text-5xl mb-3">🥤</div>
+                            <h4 class="text-lg font-bold text-gray-900 mb-2">Bamboo Straws</h4>
+                            <p class="text-sm text-gray-600">Reusable, washable, and durable</p>
                         </div>
-                        <div class="product-card-modern">
-                            <div class="product-icon-modern">🍴</div>
-                            <h4>Bamboo Cutlery</h4>
-                            <p>Travel-friendly portable utensil sets</p>
+                        <div class="bg-white border-2 border-bamboo-beige p-6 rounded-xl text-center hover:shadow-lg transition-shadow">
+                            <div class="text-5xl mb-3">🍴</div>
+                            <h4 class="text-lg font-bold text-gray-900 mb-2">Bamboo Cutlery</h4>
+                            <p class="text-sm text-gray-600">Travel-friendly portable utensil sets</p>
                         </div>
-                        <div class="product-card-modern">
-                            <div class="product-icon-modern">💧</div>
-                            <h4>Bamboo Bottles</h4>
-                            <p>Eco-friendly sustainable water containers</p>
+                        <div class="bg-white border-2 border-bamboo-beige p-6 rounded-xl text-center hover:shadow-lg transition-shadow">
+                            <div class="text-5xl mb-3">💧</div>
+                            <h4 class="text-lg font-bold text-gray-900 mb-2">Bamboo Bottles</h4>
+                            <p class="text-sm text-gray-600">Eco-friendly sustainable water containers</p>
                         </div>
-                        <div class="product-card-modern">
-                            <div class="product-icon-modern">🍳</div>
-                            <h4>Kitchen Tools</h4>
-                            <p>Spatulas, spoons, and cutting boards</p>
+                        <div class="bg-white border-2 border-bamboo-beige p-6 rounded-xl text-center hover:shadow-lg transition-shadow">
+                            <div class="text-5xl mb-3">🍳</div>
+                            <h4 class="text-lg font-bold text-gray-900 mb-2">Kitchen Tools</h4>
+                            <p class="text-sm text-gray-600">Spatulas, spoons, and cutting boards</p>
                         </div>
                     </div>
 
-                    <!-- Product Image 4 -->
-                    <figure class="product-showcase">
-                        <img src="../images/blog/bamboo-kitchen-utensils.jpg" alt="Bamboo Kitchen Utensils - Complete Eco-Friendly Cooking Tool Set with Spatulas Spoons and Cutting Board for Sustainable Home Cooking" class="showcase-image">
+                    <figure class="mb-8 rounded-xl overflow-hidden shadow-lg">
+                        <img src="../images/blog/bamboo-kitchen-utensils.jpg" alt="Bamboo Kitchen Utensils - Complete Eco-Friendly Cooking Tool Set" class="w-full h-auto">
                     </figure>
                 </section>
 
-                <!-- Section 5: Benefits -->
-                <section class="blog-section-modern" id="benefits">
-                    <div class="section-number">5.</div>
-                    <h2 class="section-title-modern">Benefits of Sustainable Bamboo Products</h2>
-                    <p>
-                        One of the biggest advantages of bamboo is that it decomposes naturally. This means fewer items end up in landfills. <strong>Biodegradable bamboo</strong> products offer multiple environmental and health benefits.
+                <!-- Section 5 -->
+                <section class="mb-12" id="benefits">
+                    <div class="flex items-start gap-4 mb-6">
+                        <span class="flex-shrink-0 w-12 h-12 bg-primary-green text-white rounded-full flex items-center justify-center text-xl font-bold">5</span>
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-1">Benefits of Sustainable Bamboo Products</h2>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed mb-8">
+                        One of the biggest advantages of bamboo is that it decomposes naturally. This means fewer items end up in landfills. <strong class="text-primary-green">Biodegradable bamboo</strong> products offer multiple environmental and health benefits.
                     </p>
 
-                    <div class="benefits-grid">
-                        <div class="benefit-card">
-                            <div class="benefit-icon">🌱</div>
-                            <h4>No Toxic Waste</h4>
-                            <p>Safe decomposition without harmful chemicals</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-gradient-to-br from-leaf-accent/20 to-secondary-green/10 p-6 rounded-xl text-center">
+                            <div class="text-5xl mb-3">🌱</div>
+                            <h4 class="text-lg font-bold text-gray-900 mb-2">No Toxic Waste</h4>
+                            <p class="text-sm text-gray-600">Safe decomposition without harmful chemicals</p>
                         </div>
-                        <div class="benefit-card">
-                            <div class="benefit-icon">♻️</div>
-                            <h4>Compostable</h4>
-                            <p>Returns valuable nutrients to the soil</p>
+                        <div class="bg-gradient-to-br from-leaf-accent/20 to-secondary-green/10 p-6 rounded-xl text-center">
+                            <div class="text-5xl mb-3">♻️</div>
+                            <h4 class="text-lg font-bold text-gray-900 mb-2">Compostable</h4>
+                            <p class="text-sm text-gray-600">Returns valuable nutrients to the soil</p>
                         </div>
-                        <div class="benefit-card">
-                            <div class="benefit-icon">🌊</div>
-                            <h4>Cleaner Oceans</h4>
-                            <p>Reduces harmful plastic pollution</p>
+                        <div class="bg-gradient-to-br from-leaf-accent/20 to-secondary-green/10 p-6 rounded-xl text-center">
+                            <div class="text-5xl mb-3">🌊</div>
+                            <h4 class="text-lg font-bold text-gray-900 mb-2">Cleaner Oceans</h4>
+                            <p class="text-sm text-gray-600">Reduces harmful plastic pollution</p>
                         </div>
-                        <div class="benefit-card">
-                            <div class="benefit-icon">🔄</div>
-                            <h4>Reduces Plastic</h4>
-                            <p>Sustainable eco-friendly alternative</p>
+                        <div class="bg-gradient-to-br from-leaf-accent/20 to-secondary-green/10 p-6 rounded-xl text-center">
+                            <div class="text-5xl mb-3">🔄</div>
+                            <h4 class="text-lg font-bold text-gray-900 mb-2">Reduces Plastic</h4>
+                            <p class="text-sm text-gray-600">Sustainable eco-friendly alternative</p>
                         </div>
-                        <div class="benefit-card">
-                            <div class="benefit-icon">🛡️</div>
-                            <h4>Antibacterial</h4>
-                            <p>Natural hygienic properties for safety</p>
+                        <div class="bg-gradient-to-br from-leaf-accent/20 to-secondary-green/10 p-6 rounded-xl text-center">
+                            <div class="text-5xl mb-3">🛡️</div>
+                            <h4 class="text-lg font-bold text-gray-900 mb-2">Antibacterial</h4>
+                            <p class="text-sm text-gray-600">Natural hygienic properties for safety</p>
                         </div>
-                        <div class="benefit-card">
-                            <div class="benefit-icon">🤝</div>
-                            <h4>Supports Communities</h4>
-                            <p>Promotes green-based local industries</p>
+                        <div class="bg-gradient-to-br from-leaf-accent/20 to-secondary-green/10 p-6 rounded-xl text-center">
+                            <div class="text-5xl mb-3">🤝</div>
+                            <h4 class="text-lg font-bold text-gray-900 mb-2">Supports Communities</h4>
+                            <p class="text-sm text-gray-600">Promotes green-based local industries</p>
                         </div>
                     </div>
 
-                    <p class="highlight-text">
+                    <p class="text-lg text-primary-green font-semibold mb-8">
                         Also, bamboo farming supports local communities and promotes green-based industries. When you choose bamboo, you're supporting sustainable livelihoods and economic development.
                     </p>
 
-                    <!-- Product Image 5 -->
-                    <figure class="product-showcase">
-                        <img src="../images/blog/bamboo-water-bottle.jpg" alt="Bamboo Water Bottle - Insulated Eco-Friendly Reusable Drinking Bottle with Leak-Proof Lid for Sustainable Hydration On-The-Go" class="showcase-image">
+                    <figure class="mb-8 rounded-xl overflow-hidden shadow-lg">
+                        <img src="../images/blog/bamboo-water-bottle.jpg" alt="Bamboo Water Bottle - Insulated Eco-Friendly Reusable Drinking Bottle" class="w-full h-auto">
                     </figure>
                 </section>
 
-                <!-- Section 6: The Future -->
-                <section class="blog-section-modern" id="future">
-                    <div class="section-number">6.</div>
-                    <h2 class="section-title-modern">The Future of Eco-Friendly Bamboo</h2>
-                    <p>
-                        <strong>Eco-friendly bamboo</strong> is slowly becoming a global choice for sustainable alternatives. Many international companies, eco-brands, and even governments are encouraging bamboo-based manufacturing because of its environmental benefits.
+                <!-- Section 6 -->
+                <section class="mb-12" id="future">
+                    <div class="flex items-start gap-4 mb-6">
+                        <span class="flex-shrink-0 w-12 h-12 bg-primary-green text-white rounded-full flex items-center justify-center text-xl font-bold">6</span>
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-1">The Future of Eco-Friendly Bamboo</h2>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed mb-8">
+                        <strong class="text-primary-green">Eco-friendly bamboo</strong> is slowly becoming a global choice for sustainable alternatives. Many international companies, eco-brands, and even governments are encouraging bamboo-based manufacturing because of its environmental benefits.
                     </p>
 
-                    <div class="future-areas">
-                        <h3>Future areas where bamboo will grow:</h3>
-                        <div class="future-grid">
-                            <div class="future-item">
-                                <span class="future-icon">📦</span>
-                                <h4>Eco-Friendly Packaging</h4>
-                                <p>Replacing plastic boxes and wrapping materials</p>
+                    <div class="bg-gradient-to-r from-primary-green/10 to-leaf-accent/10 p-8 rounded-xl mb-8">
+                        <h3 class="text-xl font-bold text-gray-900 mb-6">Future areas where bamboo will grow:</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="flex items-start gap-4">
+                                <span class="text-4xl flex-shrink-0">📦</span>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 mb-1">Eco-Friendly Packaging</h4>
+                                    <p class="text-sm text-gray-600">Replacing plastic boxes and wrapping materials</p>
+                                </div>
                             </div>
-                            <div class="future-item">
-                                <span class="future-icon">🏠</span>
-                                <h4>Home Décor Items</h4>
-                                <p>Furniture, lighting, and decorative pieces</p>
+                            <div class="flex items-start gap-4">
+                                <span class="text-4xl flex-shrink-0">🏠</span>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 mb-1">Home Décor Items</h4>
+                                    <p class="text-sm text-gray-600">Furniture, lighting, and decorative pieces</p>
+                                </div>
                             </div>
-                            <div class="future-item">
-                                <span class="future-icon">🛋️</span>
-                                <h4>Sustainable Home Products</h4>
-                                <p>Towels, bedsheets, and textile goods</p>
+                            <div class="flex items-start gap-4">
+                                <span class="text-4xl flex-shrink-0">🛋️</span>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 mb-1">Sustainable Home Products</h4>
+                                    <p class="text-sm text-gray-600">Towels, bedsheets, and textile goods</p>
+                                </div>
                             </div>
-                            <div class="future-item">
-                                <span class="future-icon">🍽️</span>
-                                <h4>Biodegradable Utensils</h4>
-                                <p>Plates, cups, and disposable cutlery</p>
+                            <div class="flex items-start gap-4">
+                                <span class="text-4xl flex-shrink-0">🍽️</span>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 mb-1">Biodegradable Utensils</h4>
+                                    <p class="text-sm text-gray-600">Plates, cups, and disposable cutlery</p>
+                                </div>
                             </div>
-                            <div class="future-item">
-                                <span class="future-icon">🏗️</span>
-                                <h4>Green Construction</h4>
-                                <p>Flooring, walls, and building structures</p>
+                            <div class="flex items-start gap-4">
+                                <span class="text-4xl flex-shrink-0">🏗️</span>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 mb-1">Green Construction</h4>
+                                    <p class="text-sm text-gray-600">Flooring, walls, and building structures</p>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <p class="highlight-text">
+                    <p class="text-lg text-primary-green font-semibold">
                         Soon, bamboo will become a major part of sustainable living and green innovation across industries worldwide.
                     </p>
                 </section>
 
-                <!-- Wrapping Up Section -->
-                <section class="wrapping-up" id="conclusion">
-                    <h2>Wrapping Up</h2>
-                    <p>
-                        Bamboo is not just another natural material—it's a game-changer for sustainability. Choosing <strong>bamboo sustainable products</strong> helps you reduce waste, avoid plastic, and support a cleaner, greener environment. Every time we pick bamboo over plastic, we take a step toward healthier living and a better future for our planet.
+                <!-- Conclusion -->
+                <section class="mb-12 bg-gradient-to-br from-primary-green/10 to-secondary-green/10 p-8 rounded-xl" id="conclusion">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Wrapping Up</h2>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        Bamboo is not just another natural material—it's a game-changer for sustainability. Choosing <strong class="text-primary-green">bamboo sustainable products</strong> helps you reduce waste, avoid plastic, and support a cleaner, greener environment. Every time we pick bamboo over plastic, we take a step toward healthier living and a better future for our planet.
                     </p>
-                    <p>
+                    <p class="text-gray-700 leading-relaxed">
                         Start your journey today by replacing one plastic item with a bamboo alternative. Whether it's a toothbrush, comb, or kitchen utensil, every small change contributes to a massive positive impact on our environment. Together, we can create a sustainable future for generations to come.
                     </p>
                 </section>
 
                 <!-- FAQ Section -->
-                <section class="faq-section-modern">
-                    <h2 class="faq-heading">FAQs</h2>
+                <section class="mb-12">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
 
-                    <div class="faq-item-modern">
-                        <h3>1. Why are bamboo sustainable products better than plastic?</h3>
-                        <p>Bamboo sustainable products are biodegradable, natural, and safe for the environment, while plastic stays for hundreds of years and harms soil, water, and marine life. Bamboo breaks down naturally and leaves no toxic waste behind.</p>
-                    </div>
+                    <div class="space-y-6">
+                        <div class="bg-gray-50 p-6 rounded-xl border-l-4 border-primary-green">
+                            <h3 class="text-lg font-bold text-gray-900 mb-3">1. Why are bamboo sustainable products better than plastic?</h3>
+                            <p class="text-gray-700 leading-relaxed">Bamboo sustainable products are biodegradable, natural, and safe for the environment, while plastic stays for hundreds of years and harms soil, water, and marine life. Bamboo breaks down naturally and leaves no toxic waste behind.</p>
+                        </div>
 
-                    <div class="faq-item-modern">
-                        <h3>2. Are eco-friendly bamboo products durable enough for daily use?</h3>
-                        <p>Yes, eco-friendly bamboo products are surprisingly strong. Bamboo fibers are naturally durable, which makes items like utensils, toothbrushes, and home products suitable for everyday use.</p>
-                    </div>
+                        <div class="bg-gray-50 p-6 rounded-xl border-l-4 border-primary-green">
+                            <h3 class="text-lg font-bold text-gray-900 mb-3">2. Are eco-friendly bamboo products durable enough for daily use?</h3>
+                            <p class="text-gray-700 leading-relaxed">Yes, eco-friendly bamboo products are surprisingly strong. Bamboo fibers are naturally durable, which makes items like utensils, toothbrushes, and home products suitable for everyday use.</p>
+                        </div>
 
-                    <div class="faq-item-modern">
-                        <h3>3. What makes bamboo vs plastic a smarter choice for the future?</h3>
-                        <p>Compared to plastic, bamboo grows faster, uses less water, releases more oxygen, and returns to nature safely. Because of these benefits, bamboo vs plastic is becoming a global sustainability shift.</p>
-                    </div>
+                        <div class="bg-gray-50 p-6 rounded-xl border-l-4 border-primary-green">
+                            <h3 class="text-lg font-bold text-gray-900 mb-3">3. What makes bamboo vs plastic a smarter choice for the future?</h3>
+                            <p class="text-gray-700 leading-relaxed">Compared to plastic, bamboo grows faster, uses less water, releases more oxygen, and returns to nature safely. Because of these benefits, bamboo vs plastic is becoming a global sustainability shift.</p>
+                        </div>
 
-                    <div class="faq-item-modern">
-                        <h3>4. Do sustainable bamboo products help reduce plastic waste?</h3>
-                        <p>Absolutely. Every time we choose sustainable bamboo products instead of plastic, we reduce harmful waste in landfills and oceans. Even small changes create long-term environmental improvement.</p>
-                    </div>
+                        <div class="bg-gray-50 p-6 rounded-xl border-l-4 border-primary-green">
+                            <h3 class="text-lg font-bold text-gray-900 mb-3">4. Do sustainable bamboo products help reduce plastic waste?</h3>
+                            <p class="text-gray-700 leading-relaxed">Absolutely. Every time we choose sustainable bamboo products instead of plastic, we reduce harmful waste in landfills and oceans. Even small changes create long-term environmental improvement.</p>
+                        </div>
 
-                    <div class="faq-item-modern">
-                        <h3>5. Can biodegradable bamboo be composted at home?</h3>
-                        <p>Yes, many biodegradable bamboo items like straws, brushes, and spoons can decompose naturally in compost. However, products with paint or coatings should be checked before composting.</p>
-                    </div>
+                        <div class="bg-gray-50 p-6 rounded-xl border-l-4 border-primary-green">
+                            <h3 class="text-lg font-bold text-gray-900 mb-3">5. Can biodegradable bamboo be composted at home?</h3>
+                            <p class="text-gray-700 leading-relaxed">Yes, many biodegradable bamboo items like straws, brushes, and spoons can decompose naturally in compost. However, products with paint or coatings should be checked before composting.</p>
+                        </div>
 
-                    <div class="faq-item-modern">
-                        <h3>6. Are bamboo products eco-friendly for children and families?</h3>
-                        <p>Yes, bamboo products are naturally antibacterial, chemical-free, and safer for everyday use. Families prefer bamboo products because they support a healthier and more eco-friendly lifestyle.</p>
+                        <div class="bg-gray-50 p-6 rounded-xl border-l-4 border-primary-green">
+                            <h3 class="text-lg font-bold text-gray-900 mb-3">6. Are bamboo products eco-friendly for children and families?</h3>
+                            <p class="text-gray-700 leading-relaxed">Yes, bamboo products are naturally antibacterial, chemical-free, and safer for everyday use. Families prefer bamboo products because they support a healthier and more eco-friendly lifestyle.</p>
+                        </div>
                     </div>
                 </section>
 
-                <!-- Explore More Blogs -->
-                <section class="explore-more">
-                    <h2>Explore More Blogs</h2>
-                    <div class="related-blog-card">
-                        <img src="../images/blog/zero-waste-thumbnail.jpg" alt="Zero Waste Living Guide">
-                        <div class="related-blog-content">
-                            <h3>10 Simple Steps to Start Your Zero Waste Journey</h3>
-                            <a href="blog-zero-waste.html" class="read-more-link">Read More →</a>
+                <!-- Related Blog -->
+                <section class="bg-white border-2 border-bamboo-beige rounded-xl overflow-hidden shadow-lg">
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Explore More Blogs</h2>
+                        <div class="flex flex-col md:flex-row gap-6 items-center">
+                            <div class="w-full md:w-1/3">
+                                <img src="../images/blog/zero-waste-thumbnail.jpg" alt="Zero Waste Living Guide" class="w-full h-48 object-cover rounded-lg">
+                            </div>
+                            <div class="w-full md:w-2/3">
+                                <h3 class="text-xl font-bold text-gray-900 mb-3">10 Simple Steps to Start Your Zero Waste Journey</h3>
+                                <a href="blog-zero-waste.html" class="inline-block text-primary-green font-semibold hover:underline">Read More →</a>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -466,49 +603,57 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>Leaf+ Loom</h4>
-                    <p>Crafting sustainable wooden and bamboo products for a greener tomorrow.</p>
+    <footer class="bg-gray-800 text-white py-12 md:py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h4 class="text-secondary-green font-semibold mb-4 text-lg">Leaf+ Loom</h4>
+                    <p class="text-gray-400">Crafting sustainable wooden and bamboo products for a greener tomorrow.</p>
                 </div>
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="../about.html">About Us</a></li>
-                        <li><a href="../products.html">Products</a></li>
-                        <li><a href="all-blogs.html">Blog</a></li>
-                        <li><a href="../contact.html">Contact</a></li>
+                <div>
+                    <h4 class="text-secondary-green font-semibold mb-4 text-lg">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="../about.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="../products.html" class="text-gray-400 hover:text-white transition-colors">Products</a></li>
+                        <li><a href="all-blogs.html" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="../contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h4>Customer Service</h4>
-                    <ul>
-                        <li><a href="#">Shipping Policy</a></li>
-                        <li><a href="#">Return Policy</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
+                <div>
+                    <h4 class="text-secondary-green font-semibold mb-4 text-lg">Customer Service</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Shipping Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Return Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms & Conditions</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h4>Connect With Us</h4>
-                    <div class="social-links">
-                        <a href="#" aria-label="Facebook">📘</a>
-                        <a href="#" aria-label="Instagram">📷</a>
-                        <a href="#" aria-label="Twitter">🐦</a>
-                        <a href="#" aria-label="Pinterest">📌</a>
+                <div>
+                    <h4 class="text-secondary-green font-semibold mb-4 text-lg">Connect With Us</h4>
+                    <div class="flex gap-4 text-2xl">
+                        <a href="#" aria-label="Facebook" class="hover:text-secondary-green transition-colors">📘</a>
+                        <a href="#" aria-label="Instagram" class="hover:text-secondary-green transition-colors">📷</a>
+                        <a href="#" aria-label="Twitter" class="hover:text-secondary-green transition-colors">🐦</a>
+                        <a href="#" aria-label="Pinterest" class="hover:text-secondary-green transition-colors">📌</a>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div class="border-t border-gray-700 pt-6 text-center text-gray-400">
                 <p>&copy; 2025 Leaf+ Loom. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- JavaScript -->
     <script src="../js/cart.js"></script>
-    <script src="../js/main.js"></script>
-    <script src="../js/blog.js"></script>
+    <script>
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+        
+        function openCart() {
+            alert('Cart functionality');
+        }
+    </script>
 </body>
 </html>

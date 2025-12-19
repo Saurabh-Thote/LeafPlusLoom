@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn practical steps to start your zero waste journey with our comprehensive guide. Reduce environmental impact with simple sustainable living tips.">
+    <meta name="keywords" content="zero waste, sustainable living, eco-friendly tips, reduce waste, green lifestyle">
+    <meta name="author" content="Leaf+ Loom Team">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="10 Simple Steps to Start Your Zero Waste Journey | Leaf+ Loom">
+    <meta property="og:description" content="Transitioning to a zero-waste lifestyle doesn't have to be overwhelming. Discover practical steps you can take today.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://leafplusloom.com/blogs/blog-post.html?id=zero-waste-journey">
+    <meta property="og:image" content="https://leafplusloom.com/images/blog/featured-zero-waste.jpg">
+    <meta property="article:published_time" content="2025-12-01T10:00:00+05:30">
+    <meta property="article:author" content="Leaf+ Loom Team">
+    
+    <title>10 Simple Steps to Start Your Zero Waste Journey | Leaf+ Loom Blog</title>
+    
+    <!-- Tailwind CSS v4 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <!-- Custom Theme Configuration -->
+    <style type="text/tailwindcss">
+        @theme {
+            --color-primary-green: #4A7C59;
+            --color-primary-green-dark: #3A6047;
+            --color-secondary-green: #7FB069;
+            --color-bamboo-beige: #D4C5A0;
+            --color-wood-brown: #8B6F47;
+            --color-leaf-accent: #9BC184;
+            --color-earth-tone: #C9B79C;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #4A7C59;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+    </style>
+    
+    <link rel="canonical" href="https://leafplusloom.com/blogs/blog-post.html?id=zero-waste-journey">
+    
+    <!-- Article Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "10 Simple Steps to Start Your Zero Waste Journey",
+      "description": "Transitioning to a zero-waste lifestyle doesn't have to be overwhelming. Discover practical steps you can take today to reduce your environmental footprint.",
+      "image": "https://leafplusloom.com/images/blog/featured-zero-waste.jpg",
+      "datePublished": "2025-12-01T10:00:00+05:30",
+      "dateModified": "2025-12-01T10:00:00+05:30",
+      "author": {
+        "@type": "Organization",
+        "name": "Leaf+ Loom Team"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Leaf+ Loom",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://leafplusloom.com/images/logo.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://leafplusloom.com/blogs/blog-post.html?id=zero-waste-journey"
+      },
+      "keywords": ["zero waste", "sustainable living", "eco-friendly", "reduce waste"]
+    }
+    </script>
+</head>
+<body class="font-[system-ui] text-gray-800 overflow-x-hidden bg-white">
+    
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <a href="../index.html" class="flex items-center gap-2">
+                        <img src="../images/logo.png" alt="Leaf+ Loom Logo" class="w-10 h-10">
+                        <span class="text-xl font-bold text-primary-green">Leaf+ Loom</span>
+                    </a>
+                </div>
+                
+                <ul class="hidden lg:flex gap-8 items-center">
+                    <li><a href="../index.html" class="nav-link font-medium hover:text-primary-green transition-colors">Home</a></li>
+                    <li><a href="../about.html" class="nav-link font-medium hover:text-primary-green transition-colors">About</a></li>
+                    <li><a href="../services.html" class="nav-link font-medium hover:text-primary-green transition-colors">Services</a></li>
+                    <li><a href="../products.html" class="nav-link font-medium hover:text-primary-green transition-colors">Products</a></li>
+                    <li><a href="all-blogs.html" class="nav-link active font-medium hover:text-primary-green transition-colors">Blog</a></li>
+                    <li><a href="../contact.html" class="nav-link font-medium hover:text-primary-green transition-colors">Contact</a></li>
+                </ul>
+                
+                <div class="flex items-center gap-4">
+                    <button onclick="openCart()" class="relative bg-gray-100 hover:bg-gray-200 p-2 rounded-lg transition-colors">
+                        <span class="text-xl">🛒</span>
+                        <span id="cart-count" class="absolute -top-1 -right-1 bg-primary-green text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">0</span>
+                    </button>
+                    <button onclick="toggleMenu()" class="lg:hidden text-2xl text-primary-green">☰</button>
+                </div>
+            </div>
+            
+            <div id="mobileMenu" class="hidden lg:hidden mt-4 pb-4">
+                <ul class="flex flex-col gap-3">
+                    <li><a href="../index.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Home</a></li>
+                    <li><a href="../about.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">About</a></li>
+                    <li><a href="../services.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Services</a></li>
+                    <li><a href="../products.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Products</a></li>
+                    <li><a href="all-blogs.html" class="block py-2 font-medium text-primary-green border-l-4 border-primary-green pl-4">Blog</a></li>
+                    <li><a href="../contact.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Blog Post Hero Section -->
+    <section class="relative h-96 bg-gray-900 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-black/60 to-black/40 z-10"></div>
+        <img src="/images/zero-waste-3.avif" alt="Zero Waste Living Guide" class="absolute inset-0 w-full h-full object-cover">
+        <div class="relative z-20 container mx-auto px-6 h-full flex items-center">
+            <div class="max-w-4xl">
+                <span class="inline-block bg-secondary-green text-white text-sm font-semibold px-4 py-2 rounded mb-4">CHRISTMAS GETS LOUDER</span>
+                <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">10 Simple Steps to Start Your Zero Waste Journey</h1>
+            </div>
+        </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <nav class="bg-gray-50 py-4">
+        <div class="container mx-auto px-6">
+            <ol class="flex items-center gap-2 text-sm text-gray-600" itemscope itemtype="https://schema.org/BreadcrumbList">
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="../index.html" class="hover:text-primary-green">
+                        <span itemprop="name">Home</span>
+                    </a>
+                    <meta itemprop="position" content="1" />
+                </li>
+                <span>›</span>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="all-blogs.html" class="hover:text-primary-green">
+                        <span itemprop="name">Blog</span>
+                    </a>
+                    <meta itemprop="position" content="2" />
+                </li>
+                <span>›</span>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <span itemprop="name" class="text-gray-800 font-medium">Zero Waste Journey</span>
+                    <meta itemprop="position" content="3" />
+                </li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Blog Post Content -->
+    <main class="py-12 md:py-16">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <article class="bg-white" itemscope itemtype="https://schema.org/BlogPosting">
+                
+                <!-- Article Header -->
+                <header class="mb-8">
+                    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4" itemprop="headline">
+                        10 Simple Steps to Start Your Zero Waste Journey
+                    </h1>
+                    
+                    <div class="flex items-center gap-3 text-sm text-gray-600">
+                        <time itemprop="datePublished" datetime="2025-12-01">December 1, 2025</time>
+                        <span>•</span>
+                        <span>8 min read</span>
+                    </div>
+                </header>
+
+                <!-- Article Body -->
+                <div class="prose prose-lg max-w-none" itemprop="articleBody">
+                    
+                    <!-- Introduction -->
+                    <p class="text-xl text-gray-700 leading-relaxed mb-8 font-medium">
+                        Transitioning to a zero-waste lifestyle doesn't have to be overwhelming. In fact, the journey to sustainable living can be incredibly rewarding when approached with patience and practical strategies. This comprehensive guide will walk you through 10 actionable steps that anyone can implement today.
+                    </p>
+
+                    <!-- Section 1 -->
+                    <section class="mb-10">
+                        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Understanding Zero Waste Living</h2>
+                        <p class="text-gray-700 leading-relaxed">
+                            Before diving into the steps, it's important to understand what zero waste really means. The zero waste philosophy is about sending as little waste as possible to landfills by reducing consumption, reusing items, and recycling materials. It's not about perfection—it's about making better choices wherever possible.
+                        </p>
+                    </section>
+
+                    <!-- Section 2 -->
+                    <section class="mb-10">
+                        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Step 1: Start with a Waste Audit</h2>
+                        <p class="text-gray-700 leading-relaxed mb-6">
+                            The first step in your zero waste journey is understanding what you're currently throwing away. Spend a week tracking your trash. What fills your bin most? Is it food packaging, single-use plastics, or paper products? This awareness will help you identify the biggest areas for improvement.
+                        </p>
+
+                        <div class="bg-leaf-accent/10 border-l-4 border-secondary-green p-6 rounded-r-lg">
+                            <h3 class="text-lg font-bold text-gray-900 mb-3">How to Conduct a Waste Audit</h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-secondary-green mt-1">•</span>
+                                    <span class="text-gray-700">Collect all your trash for one week in a separate bin</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-secondary-green mt-1">•</span>
+                                    <span class="text-gray-700">Sort items by category (plastic, paper, food waste, etc.)</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-secondary-green mt-1">•</span>
+                                    <span class="text-gray-700">Weigh each category to identify your biggest waste sources</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-secondary-green mt-1">•</span>
+                                    <span class="text-gray-700">Take photos to track your progress over time</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Section 3 -->
+                    <section class="mb-10">
+                        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Step 2: Invest in Reusable Essentials</h2>
+                        <p class="text-gray-700 leading-relaxed mb-6">
+                            One of the quickest ways to reduce waste is replacing disposable items with reusable alternatives. Start with these essentials:
+                        </p>
+
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-2">
+                                <span class="text-secondary-green mt-1">✓</span>
+                                <span class="text-gray-700"><strong>Reusable water bottles</strong> - Replace single-use plastic bottles</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-secondary-green mt-1">✓</span>
+                                <span class="text-gray-700"><strong>Shopping bags</strong> - Keep cloth bags in your car or purse</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-secondary-green mt-1">✓</span>
+                                <span class="text-gray-700"><strong>Food containers</strong> - Glass or stainless steel for leftovers</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-secondary-green mt-1">✓</span>
+                                <span class="text-gray-700"><strong>Coffee cups</strong> - Bring your own to cafes</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-secondary-green mt-1">✓</span>
+                                <span class="text-gray-700"><strong>Utensils</strong> - Wooden or bamboo cutlery sets for on-the-go</span>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <!-- Quote Section -->
+                    <blockquote class="my-10 pl-6 border-l-4 border-primary-green bg-gray-50 p-6 rounded-r-lg">
+                        <p class="text-lg italic text-gray-800 mb-2">"We don't need a handful of people doing zero waste perfectly. We need millions of people doing it imperfectly."</p>
+                        <cite class="text-sm text-gray-600 not-italic">— Anne Marie Bonneau</cite>
+                    </blockquote>
+
+                    <!-- Section 4 -->
+                    <section class="mb-10">
+                        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Step 3: Shop with Intention</h2>
+                        <p class="text-gray-700 leading-relaxed">
+                            Mindful shopping is crucial for zero waste living. Before making any purchase, ask yourself: Do I really need this? Can I borrow it? Can I buy it secondhand? This simple practice can dramatically reduce impulse buying and waste.
+                        </p>
+                    </section>
+
+                    <!-- Section 5 -->
+                    <section class="mb-10">
+                        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Step 4: Choose Package-Free Products</h2>
+                        <p class="text-gray-700 leading-relaxed">
+                            Whenever possible, opt for products without packaging or with minimal, recyclable packaging. Many stores now offer bulk sections where you can bring your own containers for grains, nuts, spices, and even cleaning products.
+                        </p>
+                    </section>
+
+                    <!-- Section 6 -->
+                    <section class="mb-10">
+                        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Step 5: Embrace Composting</h2>
+                        <p class="text-gray-700 leading-relaxed">
+                            Food waste accounts for a significant portion of household trash. Composting transforms organic waste into nutrient-rich soil for your garden. Even if you don't have outdoor space, indoor composting systems and community composting programs make this accessible to everyone.
+                        </p>
+                    </section>
+
+                    <!-- Section 7 -->
+                    <section class="mb-10">
+                        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Step 6: Make Your Own Cleaning Products</h2>
+                        <p class="text-gray-700 leading-relaxed mb-6">
+                            Commercial cleaning products often come in plastic bottles and contain harsh chemicals. Simple ingredients like vinegar, baking soda, and essential oils can create effective, eco-friendly cleaners stored in reusable glass bottles.
+                        </p>
+
+                        <div class="bg-leaf-accent/10 border-l-4 border-secondary-green p-6 rounded-r-lg">
+                            <h3 class="text-lg font-bold text-gray-900 mb-3">Simple All-Purpose Cleaner Recipe</h3>
+                            <ol class="space-y-2 list-decimal list-inside">
+                                <li class="text-gray-700">Mix 1 part white vinegar with 1 part water</li>
+                                <li class="text-gray-700">Add 10-15 drops of essential oil (lemon, tea tree, or lavender)</li>
+                                <li class="text-gray-700">Store in a spray bottle</li>
+                                <li class="text-gray-700">Use on most surfaces (avoid marble and granite)</li>
+                            </ol>
+                        </div>
+                    </section>
+
+                    <!-- Section 8 -->
+                    <section class="mb-10">
+                        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Step 7: Switch to Sustainable Personal Care</h2>
+                        <p class="text-gray-700 leading-relaxed">
+                            The bathroom is a major source of waste. Replace disposable razors with safety razors, use bar soap and shampoo instead of bottled versions, and choose bamboo toothbrushes. These small switches add up to significant waste reduction over time.
+                        </p>
+                    </section>
+
+                    <!-- Section 9 -->
+                    <section class="mb-10">
+                        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Step 8: Buy Secondhand First</h2>
+                        <p class="text-gray-700 leading-relaxed">
+                            Before buying anything new, check thrift stores, online marketplaces, and community swap groups. You'll save money, reduce demand for new production, and keep perfectly good items out of landfills.
+                        </p>
+                    </section>
+
+                    <!-- Section 10 -->
+                    <section class="mb-10">
+                        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Step 9: Repair and Maintain</h2>
+                        <p class="text-gray-700 leading-relaxed">
+                            Our throwaway culture encourages replacing rather than repairing. Learn basic repair skills for clothing, electronics, and household items. Many communities have repair cafes where experts volunteer their time to help fix items.
+                        </p>
+                    </section>
+
+                    <!-- Section 11 -->
+                    <section class="mb-10">
+                        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Step 10: Share Your Journey</h2>
+                        <p class="text-gray-700 leading-relaxed">
+                            As you make changes, share your experiences with friends and family. Your actions can inspire others to start their own zero waste journey. Remember, every small step counts, and collective action creates real change.
+                        </p>
+                    </section>
+
+                    <!-- Making It Sustainable -->
+                    <section class="mb-10">
+                        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Making It Sustainable</h2>
+                        <p class="text-gray-700 leading-relaxed">
+                            The key to long-term success with zero waste living is making gradual changes that fit your lifestyle. Don't try to do everything at once. Pick one or two steps to focus on each month, and build from there. Celebrate your progress, learn from setbacks, and remember that every choice to reduce waste makes a difference.
+                        </p>
+                    </section>
+
+                    <!-- Conclusion -->
+                    <section class="mb-10">
+                        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Conclusion</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            Starting your zero waste journey is one of the most impactful things you can do for the environment. These 10 steps provide a solid foundation, but remember that zero waste is a personal journey. What works for one person might not work for another, and that's okay. The goal is progress, not perfection.
+                        </p>
+                        <p class="text-gray-700 leading-relaxed">
+                            Are you ready to take the first step? Begin with just one change today—perhaps bringing a reusable bag on your next shopping trip or starting to compost your food scraps. Every journey begins with a single step, and your commitment to reducing waste contributes to a healthier planet for future generations.
+                        </p>
+                    </section>
+
+                </div>
+
+                <!-- Article Footer -->
+                <footer class="border-t border-gray-200 pt-8 mt-12">
+                    
+                    <!-- Tags -->
+                    <div class="mb-8">
+                        <span class="text-sm font-semibold text-gray-600 mr-3">Tags:</span>
+                        <div class="inline-flex flex-wrap gap-2 mt-2">
+                            <a href="#" class="bg-bamboo-beige hover:bg-bamboo-beige/80 px-3 py-1 rounded text-sm font-medium text-gray-800 transition-colors">Zero Waste</a>
+                            <a href="#" class="bg-bamboo-beige hover:bg-bamboo-beige/80 px-3 py-1 rounded text-sm font-medium text-gray-800 transition-colors">Sustainable Living</a>
+                            <a href="#" class="bg-bamboo-beige hover:bg-bamboo-beige/80 px-3 py-1 rounded text-sm font-medium text-gray-800 transition-colors">Eco-Friendly</a>
+                            <a href="#" class="bg-bamboo-beige hover:bg-bamboo-beige/80 px-3 py-1 rounded text-sm font-medium text-gray-800 transition-colors">Green Lifestyle</a>
+                            <a href="#" class="bg-bamboo-beige hover:bg-bamboo-beige/80 px-3 py-1 rounded text-sm font-medium text-gray-800 transition-colors">Reduce Waste</a>
+                        </div>
+                    </div>
+
+                    <!-- Share Section -->
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-4">Share this article</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <button onclick="shareContent('facebook', window.location.href, document.title)" class="flex items-center gap-2 bg-[#1877f2] hover:bg-[#166fe5] text-white px-4 py-2 rounded-lg transition-colors">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                </svg>
+                                Facebook
+                            </button>
+                            <button onclick="shareContent('twitter', window.location.href, document.title)" class="flex items-center gap-2 bg-[#1da1f2] hover:bg-[#1a91da] text-white px-4 py-2 rounded-lg transition-colors">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                                </svg>
+                                Twitter
+                            </button>
+                            <button onclick="shareContent('whatsapp', window.location.href, document.title)" class="flex items-center gap-2 bg-[#25d366] hover:bg-[#20bd5a] text-white px-4 py-2 rounded-lg transition-colors">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                                </svg>
+                                WhatsApp
+                            </button>
+                            <button onclick="shareContent('pinterest', window.location.href, document.title)" class="flex items-center gap-2 bg-[#e60023] hover:bg-[#d0001f] text-white px-4 py-2 rounded-lg transition-colors">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/>
+                                </svg>
+                                Pinterest
+                            </button>
+                        </div>
+                    </div>
+
+                </footer>
+
+            </article>
+
+            <!-- Related Posts Section -->
+            <aside class="mt-16">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8">Explore More Blogs</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <article class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+                        <a href="blog-post.html?id=plastic-alternatives" class="block">
+                            <div class="h-48 overflow-hidden">
+                                <img src="../images/blog/plastic-alternatives.jpg" alt="Plastic Free Alternatives" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-lg font-bold text-gray-900 mb-2 hover:text-primary-green transition-colors">15 Easy Plastic-Free Swaps for Your Daily Routine</h3>
+                                <time class="text-sm text-gray-600">November 20, 2025</time>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+                        <a href="blog-post.html?id=composting-guide" class="block">
+                            <div class="h-48 overflow-hidden">
+                                <img src="../images/blog/composting-guide.jpg" alt="Composting Guide" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-lg font-bold text-gray-900 mb-2 hover:text-primary-green transition-colors">Beginner's Guide to Composting at Home</h3>
+                                <time class="text-sm text-gray-600">October 30, 2025</time>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+                        <a href="blog-post.html?id=eco-kitchen" class="block">
+                            <div class="h-48 overflow-hidden">
+                                <img src="/images/pexels-alleksana-4406808.jpg" alt="Eco Kitchen" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-lg font-bold text-gray-900 mb-2 hover:text-primary-green transition-colors">Creating an Eco-Friendly Kitchen: Essential Tools</h3>
+                                <time class="text-sm text-gray-600">November 5, 2025</time>
+                            </div>
+                        </a>
+                    </article>
+
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 md:py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h4 class="text-secondary-green font-semibold mb-4 text-lg">Leaf+ Loom</h4>
+                    <p class="text-gray-400">Crafting sustainable wooden and bamboo products for a greener tomorrow.</p>
+                </div>
+                <div>
+                    <h4 class="text-secondary-green font-semibold mb-4 text-lg">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="../about.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="../products.html" class="text-gray-400 hover:text-white transition-colors">Products</a></li>
+                        <li><a href="all-blogs.html" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="../contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-secondary-green font-semibold mb-4 text-lg">Customer Service</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Shipping Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Return Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-secondary-green font-semibold mb-4 text-lg">Connect With Us</h4>
+                    <div class="flex gap-4 text-2xl">
+                        <a href="#" aria-label="Facebook" class="hover:text-secondary-green transition-colors">📘</a>
+                        <a href="#" aria-label="Instagram" class="hover:text-secondary-green transition-colors">📷</a>
+                        <a href="#" aria-label="Twitter" class="hover:text-secondary-green transition-colors">🐦</a>
+                        <a href="#" aria-label="Pinterest" class="hover:text-secondary-green transition-colors">📌</a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-6 text-center text-gray-400">
+                <p>&copy; 2025 Leaf+ Loom. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../js/cart.js"></script>
+    <script>
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+        
+        function openCart() {
+            alert('Cart functionality');
+        }
+        
+        function shareContent(platform, url, title) {
+            const shareUrls = {
+                facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+                twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`,
+                whatsapp: `https://wa.me/?text=${encodeURIComponent(title + ' ' + url)}`,
+                pinterest: `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(url)}&description=${encodeURIComponent(title)}`
+            };
+            window.open(shareUrls[platform], '_blank', 'width=600,height=400');
+        }
+    </script>
+</body>
+</html>

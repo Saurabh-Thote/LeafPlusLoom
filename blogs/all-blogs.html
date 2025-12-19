@@ -15,8 +15,46 @@
     
     <title>Blog - Leaf+ Loom | Sustainable Living & Eco Tips</title>
     
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/responsive.css">
+    <!-- Tailwind CSS v4 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <!-- Custom Theme Configuration -->
+    <style type="text/tailwindcss">
+        @theme {
+            --color-primary-green: #4A7C59;
+            --color-primary-green-dark: #3A6047;
+            --color-secondary-green: #7FB069;
+            --color-bamboo-beige: #D4C5A0;
+            --color-wood-brown: #8B6F47;
+            --color-leaf-accent: #9BC184;
+            --color-earth-tone: #C9B79C;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #4A7C59;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+    </style>
+    
     <link rel="canonical" href="https://leafplusloom.com/blogs/all-blogs.html">
     
     <!-- Blog Schema Markup -->
@@ -38,334 +76,400 @@
     }
     </script>
 </head>
-<body>
+<body class="font-[system-ui] text-gray-800 overflow-x-hidden">
+    
     <!-- Header -->
-    <header class="header">
-        <nav class="navbar">
-            <div class="container">
-                <div class="nav-wrapper">
-                    <div class="logo">
-                        <a href="../index.html">
-                            <img src="../images/logo.png" alt="Leaf+ Loom Logo">
-                            <span>Leaf+ Loom</span>
-                        </a>
-                    </div>
-                    
-                    <ul class="nav-links" id="navLinks">
-                        <li><a href="../index.html">Home</a></li>
-                        <li><a href="../about.html">About</a></li>
-                        <li><a href="../services.html">Services</a></li>
-                        <li><a href="../products.html">Products</a></li>
-                        <li><a href="all-blogs.html" class="active">Blog</a></li>
-                        <li><a href="../contact.html">Contact</a></li>
-                    </ul>
-                    
-                    <div class="nav-actions">
-                        <button class="cart-icon" onclick="openCart()">
-                            🛒 <span id="cart-count">0</span>
-                        </button>
-                        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-                    </div>
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center gap-2">
+                    <a href="../index.html" class="flex items-center gap-2">
+                        <img src="../images/logo.png" alt="Leaf+ Loom Logo" class="w-10 h-10">
+                        <span class="text-xl font-bold text-primary-green">Leaf+ Loom</span>
+                    </a>
                 </div>
+                
+                <!-- Desktop Navigation -->
+                <ul class="hidden lg:flex gap-8 items-center">
+                    <li><a href="../index.html" class="nav-link font-medium hover:text-primary-green transition-colors">Home</a></li>
+                    <li><a href="../about.html" class="nav-link font-medium hover:text-primary-green transition-colors">About</a></li>
+                    <li><a href="../services.html" class="nav-link font-medium hover:text-primary-green transition-colors">Services</a></li>
+                    <li><a href="../products.html" class="nav-link font-medium hover:text-primary-green transition-colors">Products</a></li>
+                    <li><a href="all-blogs.html" class="nav-link active font-medium hover:text-primary-green transition-colors">Blog</a></li>
+                    <li><a href="../contact.html" class="nav-link font-medium hover:text-primary-green transition-colors">Contact</a></li>
+                </ul>
+                
+                <!-- Cart & Mobile Menu -->
+                <div class="flex items-center gap-4">
+                    <button onclick="openCart()" class="relative bg-gray-100 hover:bg-gray-200 p-2 rounded-lg transition-colors">
+                        <span class="text-xl">🛒</span>
+                        <span id="cart-count" class="absolute -top-1 -right-1 bg-primary-green text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">0</span>
+                    </button>
+                    <button onclick="toggleMenu()" class="lg:hidden text-2xl text-primary-green">☰</button>
+                </div>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div id="mobileMenu" class="hidden lg:hidden mt-4 pb-4">
+                <ul class="flex flex-col gap-3">
+                    <li><a href="../index.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Home</a></li>
+                    <li><a href="../about.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">About</a></li>
+                    <li><a href="../services.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Services</a></li>
+                    <li><a href="../products.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Products</a></li>
+                    <li><a href="all-blogs.html" class="block py-2 font-medium text-primary-green border-l-4 border-primary-green pl-4">Blog</a></li>
+                    <li><a href="../contact.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Contact</a></li>
+                </ul>
             </div>
         </nav>
     </header>
 
     <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <h1>Our Blog</h1>
-            <p>Insights on sustainable living and eco-friendly lifestyle</p>
+    <section class="bg-gradient-to-br from-primary-green to-secondary-green text-white py-16 md:py-20 text-center">
+        <div class="container mx-auto px-6">
+            <h1 class="text-3xl md:text-5xl font-bold mb-4">Our Blog</h1>
+            <p class="text-lg md:text-xl">Insights on sustainable living and eco-friendly lifestyle</p>
         </div>
     </section>
 
     <!-- Blog Filter -->
-    <section class="blog-filter">
-        <div class="container">
-            <div class="filter-tabs">
-                <button class="filter-tab active" onclick="filterBlog('all')">All Posts</button>
-                <button class="filter-tab" onclick="filterBlog('sustainability')">Sustainability</button>
-                <button class="filter-tab" onclick="filterBlog('tips')">Eco Tips</button>
-                <button class="filter-tab" onclick="filterBlog('product-care')">Product Care</button>
-                <button class="filter-tab" onclick="filterBlog('lifestyle')">Lifestyle</button>
+    <section class="bg-gray-100 py-4">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap gap-3 justify-center">
+                <button class="filter-tab px-5 py-2 rounded-lg bg-primary-green text-white font-medium transition-all" onclick="filterBlog('all')">All Posts</button>
+                <button class="filter-tab px-5 py-2 rounded-lg bg-white hover:bg-primary-green hover:text-white font-medium transition-all" onclick="filterBlog('sustainability')">Sustainability</button>
+                <button class="filter-tab px-5 py-2 rounded-lg bg-white hover:bg-primary-green hover:text-white font-medium transition-all" onclick="filterBlog('tips')">Eco Tips</button>
+                <button class="filter-tab px-5 py-2 rounded-lg bg-white hover:bg-primary-green hover:text-white font-medium transition-all" onclick="filterBlog('product-care')">Product Care</button>
+                <button class="filter-tab px-5 py-2 rounded-lg bg-white hover:bg-primary-green hover:text-white font-medium transition-all" onclick="filterBlog('lifestyle')">Lifestyle</button>
             </div>
         </div>
     </section>
 
     <!-- Featured Post -->
-    <section class="featured-post">
-        <div class="container">
-            <article class="post-featured" itemscope itemtype="https://schema.org/BlogPosting">
-                <div class="post-image">
-                    <img src="/images/zero-waste-3.avif" alt="Zero Waste Living Guide" itemprop="image">
-                    <span class="post-badge">Featured</span>
+    <section class="py-12 md:py-16">
+        <div class="container mx-auto px-6">
+            <article class="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white rounded-xl overflow-hidden shadow-lg" itemscope itemtype="https://schema.org/BlogPosting">
+                <div class="relative h-64 lg:h-auto">
+                    <img src="/images/zero-waste-3.avif" alt="Zero Waste Living Guide" itemprop="image" class="w-full h-full object-cover">
+                    <span class="absolute top-4 left-4 bg-primary-green text-white text-sm font-semibold px-4 py-2 rounded">Featured</span>
                 </div>
-                <div class="post-content">
-                    <div class="post-meta">
-                        <span class="post-category">Sustainability</span>
-                        <time class="post-date" itemprop="datePublished" datetime="2025-12-01">December 1, 2025</time>
-                        <span class="post-read-time">8 min read</span>
+                <div class="p-6 lg:p-8 flex flex-col justify-center">
+                    <div class="flex flex-wrap gap-3 mb-4 text-sm">
+                        <span class="bg-bamboo-beige px-3 py-1 rounded font-semibold">Sustainability</span>
+                        <time class="text-gray-600" itemprop="datePublished" datetime="2025-12-01">December 1, 2025</time>
+                        <span class="text-gray-600">8 min read</span>
                     </div>
-                    <h2 itemprop="headline">10 Simple Steps to Start Your Zero Waste Journey</h2>
-                    <p itemprop="description">Transitioning to a zero-waste lifestyle doesn't have to be overwhelming. Discover practical steps you can take today to reduce your environmental footprint and embrace sustainable living. From kitchen swaps to bathroom essentials, learn how small changes create lasting impact.</p>
-                    <a href="blog-post.html?id=zero-waste-journey" class="btn btn-primary" itemprop="url">Read More</a>
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4" itemprop="headline">10 Simple Steps to Start Your Zero Waste Journey</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed" itemprop="description">Transitioning to a zero-waste lifestyle doesn't have to be overwhelming. Discover practical steps you can take today to reduce your environmental footprint and embrace sustainable living. From kitchen swaps to bathroom essentials, learn how small changes create lasting impact.</p>
+                    <a href="blog-post.html?id=zero-waste-journey" class="inline-block bg-primary-green hover:bg-primary-green-dark text-white font-semibold px-6 py-3 rounded-lg transition-colors w-max" itemprop="url">Read More</a>
                 </div>
             </article>
         </div>
     </section>
 
     <!-- Blog Grid -->
-    <section class="blog-grid-section">
-        <div class="container">
-            <div class="blog-grid" id="blogGrid">
+    <section class="py-16 md:py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div id="blogGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                
                 <!-- Blog Post 1 -->
-                <article class="blog-card" data-category="product-care" itemscope itemtype="https://schema.org/BlogPosting">
-                    <div class="blog-image">
-                        <img src="/images/benefits of bamboo products.jpg" alt="Benefits of Bamboo Products" itemprop="image">
+                <article class="blog-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-category="product-care" itemscope itemtype="https://schema.org/BlogPosting">
+                    <div class="h-56 overflow-hidden">
+                        <img src="/images/benefits of bamboo products.jpg" alt="Benefits of Bamboo Products" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="blog-content">
-                        <div class="post-meta">
-                            <span class="post-category">Product Care</span>
-                            <time itemprop="datePublished" datetime="2025-11-28">Nov 28, 2025</time>
+                    <div class="p-6">
+                        <div class="flex gap-3 mb-3 text-sm">
+                            <span class="bg-bamboo-beige px-3 py-1 rounded font-semibold">Product Care</span>
+                            <time class="text-gray-600" itemprop="datePublished" datetime="2025-11-28">Nov 28, 2025</time>
                         </div>
-                        <h3 itemprop="headline">
-                            <a href="/blogs/blog-bamboo-benefits.html" itemprop="url">
+                        <h3 class="text-xl font-semibold mb-3" itemprop="headline">
+                            <a href="/blogs/blog-bamboo-benefits.html" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
                                 Why Bamboo is the Future of Sustainable Products
                             </a>
                         </h3>
-                        <p itemprop="description">Learn about the amazing properties of bamboo and why it's becoming the material of choice for eco-conscious consumers worldwide.</p>
-                        <a href="blog-post.html?id=bamboo-benefits" class="read-more">Read More →</a>
+                        <p class="text-gray-600 mb-4 leading-relaxed" itemprop="description">Learn about the amazing properties of bamboo and why it's becoming the material of choice for eco-conscious consumers worldwide.</p>
+                        <a href="blog-post.html?id=bamboo-benefits" class="text-primary-green font-semibold hover:underline">Read More →</a>
                     </div>
                 </article>
 
                 <!-- Blog Post 2 -->
-                <article class="blog-card" data-category="tips" itemscope itemtype="https://schema.org/BlogPosting">
-                    <div class="blog-image">
-                        <img src="/images/caring for wooden brushes.jpg" alt="Caring for Wooden Brushes" itemprop="image">
+                <article class="blog-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-category="tips" itemscope itemtype="https://schema.org/BlogPosting">
+                    <div class="h-56 overflow-hidden">
+                        <img src="/images/caring for wooden brushes.jpg" alt="Caring for Wooden Brushes" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="blog-content">
-                        <div class="post-meta">
-                            <span class="post-category">Tips</span>
-                            <time itemprop="datePublished" datetime="2025-11-25">Nov 25, 2025</time>
+                    <div class="p-6">
+                        <div class="flex gap-3 mb-3 text-sm">
+                            <span class="bg-bamboo-beige px-3 py-1 rounded font-semibold">Tips</span>
+                            <time class="text-gray-600" itemprop="datePublished" datetime="2025-11-25">Nov 25, 2025</time>
                         </div>
-                        <h3 itemprop="headline">
-                            <a href="/blogs/blog-wooden-brush-care.html" itemprop="url">
+                        <h3 class="text-xl font-semibold mb-3" itemprop="headline">
+                            <a href="/blogs/blog-wooden-brush-care.html" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
                                 How to Care for Your Wooden Brush: A Complete Guide
                             </a>
                         </h3>
-                        <p itemprop="description">Proper care can extend the life of your wooden brush for years. Here's everything you need to know about maintenance and cleaning.</p>
-                        <a href="blog-post.html?id=brush-care" class="read-more">Read More →</a>
+                        <p class="text-gray-600 mb-4 leading-relaxed" itemprop="description">Proper care can extend the life of your wooden brush for years. Here's everything you need to know about maintenance and cleaning.</p>
+                        <a href="blog-post.html?id=brush-care" class="text-primary-green font-semibold hover:underline">Read More →</a>
                     </div>
                 </article>
 
                 <!-- Blog Post 3 -->
-                <article class="blog-card" data-category="lifestyle" itemscope itemtype="https://schema.org/BlogPosting">
-                    <div class="blog-image">
-                        <img src="/images/Plastic free alternative.jpg" alt="Plastic Free Alternatives" itemprop="image">
+                <article class="blog-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-category="lifestyle" itemscope itemtype="https://schema.org/BlogPosting">
+                    <div class="h-56 overflow-hidden">
+                        <img src="/images/Plastic free alternative.jpg" alt="Plastic Free Alternatives" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="blog-content">
-                        <div class="post-meta">
-                            <span class="post-category">Lifestyle</span>
-                            <time itemprop="datePublished" datetime="2025-11-20">Nov 20, 2025</time>
+                    <div class="p-6">
+                        <div class="flex gap-3 mb-3 text-sm">
+                            <span class="bg-bamboo-beige px-3 py-1 rounded font-semibold">Lifestyle</span>
+                            <time class="text-gray-600" itemprop="datePublished" datetime="2025-11-20">Nov 20, 2025</time>
                         </div>
-                        <h3 itemprop="headline">
-                            <a href="/blogs/blog-plastic-free-swaps.html" itemprop="url">
+                        <h3 class="text-xl font-semibold mb-3" itemprop="headline">
+                            <a href="/blogs/blog-plastic-free-swaps.html" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
                                 15 Easy Plastic-Free Swaps for Your Daily Routine
                             </a>
                         </h3>
-                        <p itemprop="description">Simple switches that make a big difference. Transform your daily routine with these eco-friendly alternatives to common plastic items.</p>
-                        <a href="blog-post.html?id=plastic-alternatives" class="read-more">Read More →</a>
+                        <p class="text-gray-600 mb-4 leading-relaxed" itemprop="description">Simple switches that make a big difference. Transform your daily routine with these eco-friendly alternatives to common plastic items.</p>
+                        <a href="blog-post.html?id=plastic-alternatives" class="text-primary-green font-semibold hover:underline">Read More →</a>
                     </div>
                 </article>
 
                 <!-- Blog Post 4 -->
-                <article class="blog-card" data-category="lifestyle" itemscope itemtype="https://schema.org/BlogPosting">
-                    <div class="blog-image">
-                        <img src="/images/eco-friendly-gifts-1.webp" alt="Sustainable Gift Ideas" itemprop="image">
+                <article class="blog-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-category="lifestyle" itemscope itemtype="https://schema.org/BlogPosting">
+                    <div class="h-56 overflow-hidden">
+                        <img src="/images/eco-friendly-gifts-1.webp" alt="Sustainable Gift Ideas" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="blog-content">
-                        <div class="post-meta">
-                            <span class="post-category">Lifestyle</span>
-                            <time itemprop="datePublished" datetime="2025-11-15">Nov 15, 2025</time>
+                    <div class="p-6">
+                        <div class="flex gap-3 mb-3 text-sm">
+                            <span class="bg-bamboo-beige px-3 py-1 rounded font-semibold">Lifestyle</span>
+                            <time class="text-gray-600" itemprop="datePublished" datetime="2025-11-15">Nov 15, 2025</time>
                         </div>
-                        <h3 itemprop="headline">
-                            <a href="blog-post.html?id=sustainable-gifting" itemprop="url">
+                        <h3 class="text-xl font-semibold mb-3" itemprop="headline">
+                            <a href="blog-post.html?id=sustainable-gifting" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
                                 Eco-Friendly Gift Ideas That Show You Care
                             </a>
                         </h3>
-                        <p itemprop="description">Give thoughtful, sustainable gifts that your loved ones will cherish while helping the planet. Perfect for all occasions.</p>
-                        <a href="blog-post.html?id=sustainable-gifting" class="read-more">Read More →</a>
+                        <p class="text-gray-600 mb-4 leading-relaxed" itemprop="description">Give thoughtful, sustainable gifts that your loved ones will cherish while helping the planet. Perfect for all occasions.</p>
+                        <a href="blog-post.html?id=sustainable-gifting" class="text-primary-green font-semibold hover:underline">Read More →</a>
                     </div>
                 </article>
 
                 <!-- Blog Post 5 -->
-                <article class="blog-card" data-category="sustainability" itemscope itemtype="https://schema.org/BlogPosting">
-                    <div class="blog-image">
-                        <img src="/images/wood-vs-plastic.webp" alt="Wood vs Plastic Comparison" itemprop="image">
+                <article class="blog-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-category="sustainability" itemscope itemtype="https://schema.org/BlogPosting">
+                    <div class="h-56 overflow-hidden">
+                        <img src="/images/wood-vs-plastic.webp" alt="Wood vs Plastic Comparison" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="blog-content">
-                        <div class="post-meta">
-                            <span class="post-category">Sustainability</span>
-                            <time itemprop="datePublished" datetime="2025-11-10">Nov 10, 2025</time>
+                    <div class="p-6">
+                        <div class="flex gap-3 mb-3 text-sm">
+                            <span class="bg-bamboo-beige px-3 py-1 rounded font-semibold">Sustainability</span>
+                            <time class="text-gray-600" itemprop="datePublished" datetime="2025-11-10">Nov 10, 2025</time>
                         </div>
-                        <h3 itemprop="headline">
-                            <a href="blog-post.html?id=wood-vs-plastic" itemprop="url">
+                        <h3 class="text-xl font-semibold mb-3" itemprop="headline">
+                            <a href="blog-post.html?id=wood-vs-plastic" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
                                 Wooden vs Plastic Products: The Environmental Impact
                             </a>
                         </h3>
-                        <p itemprop="description">A deep dive into why wooden products are better for the environment than plastic alternatives, backed by research and data.</p>
-                        <a href="blog-post.html?id=wood-vs-plastic" class="read-more">Read More →</a>
+                        <p class="text-gray-600 mb-4 leading-relaxed" itemprop="description">A deep dive into why wooden products are better for the environment than plastic alternatives, backed by research and data.</p>
+                        <a href="blog-post.html?id=wood-vs-plastic" class="text-primary-green font-semibold hover:underline">Read More →</a>
                     </div>
                 </article>
 
                 <!-- Blog Post 6 -->
-                <article class="blog-card" data-category="tips" itemscope itemtype="https://schema.org/BlogPosting">
-                    <div class="blog-image">
-                        <img src="/images/eco-friendly-kitchen-tips-1.jpg" alt="Eco-Friendly Kitchen Tips" itemprop="image">
+                <article class="blog-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-category="tips" itemscope itemtype="https://schema.org/BlogPosting">
+                    <div class="h-56 overflow-hidden">
+                        <img src="/images/eco-friendly-kitchen-tips-1.jpg" alt="Eco-Friendly Kitchen Tips" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="blog-content">
-                        <div class="post-meta">
-                            <span class="post-category">Tips</span>
-                            <time itemprop="datePublished" datetime="2025-11-05">Nov 5, 2025</time>
+                    <div class="p-6">
+                        <div class="flex gap-3 mb-3 text-sm">
+                            <span class="bg-bamboo-beige px-3 py-1 rounded font-semibold">Tips</span>
+                            <time class="text-gray-600" itemprop="datePublished" datetime="2025-11-05">Nov 5, 2025</time>
                         </div>
-                        <h3 itemprop="headline">
-                            <a href="blog-post.html?id=eco-kitchen" itemprop="url">
+                        <h3 class="text-xl font-semibold mb-3" itemprop="headline">
+                            <a href="blog-post.html?id=eco-kitchen" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
                                 Creating an Eco-Friendly Kitchen: Essential Tools
                             </a>
                         </h3>
-                        <p itemprop="description">Transform your kitchen into a sustainable space with these must-have wooden and bamboo tools that replace plastic items.</p>
-                        <a href="blog-post.html?id=eco-kitchen" class="read-more">Read More →</a>
+                        <p class="text-gray-600 mb-4 leading-relaxed" itemprop="description">Transform your kitchen into a sustainable space with these must-have wooden and bamboo tools that replace plastic items.</p>
+                        <a href="blog-post.html?id=eco-kitchen" class="text-primary-green font-semibold hover:underline">Read More →</a>
                     </div>
                 </article>
 
                 <!-- Blog Post 7 -->
-                <article class="blog-card" data-category="sustainability" itemscope itemtype="https://schema.org/BlogPosting">
-                    <div class="blog-image">
-                        <img src="/images/composting at home guide.jpg" alt="Composting at Home Guide" itemprop="image">
+                <article class="blog-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-category="sustainability" itemscope itemtype="https://schema.org/BlogPosting">
+                    <div class="h-56 overflow-hidden">
+                        <img src="/images/composting at home guide.jpg" alt="Composting at Home Guide" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="blog-content">
-                        <div class="post-meta">
-                            <span class="post-category">Sustainability</span>
-                            <time itemprop="datePublished" datetime="2025-10-30">Oct 30, 2025</time>
+                    <div class="p-6">
+                        <div class="flex gap-3 mb-3 text-sm">
+                            <span class="bg-bamboo-beige px-3 py-1 rounded font-semibold">Sustainability</span>
+                            <time class="text-gray-600" itemprop="datePublished" datetime="2025-10-30">Oct 30, 2025</time>
                         </div>
-                        <h3 itemprop="headline">
-                            <a href="blog-post.html?id=composting-guide" itemprop="url">
+                        <h3 class="text-xl font-semibold mb-3" itemprop="headline">
+                            <a href="blog-post.html?id=composting-guide" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
                                 Beginner's Guide to Composting at Home
                             </a>
                         </h3>
-                        <p itemprop="description">Learn how to start composting at home with this simple step-by-step guide. Reduce waste and create nutrient-rich soil for your garden.</p>
-                        <a href="blog-post.html?id=composting-guide" class="read-more">Read More →</a>
+                        <p class="text-gray-600 mb-4 leading-relaxed" itemprop="description">Learn how to start composting at home with this simple step-by-step guide. Reduce waste and create nutrient-rich soil for your garden.</p>
+                        <a href="blog-post.html?id=composting-guide" class="text-primary-green font-semibold hover:underline">Read More →</a>
                     </div>
                 </article>
 
                 <!-- Blog Post 8 -->
-                <article class="blog-card" data-category="product-care" itemscope itemtype="https://schema.org/BlogPosting">
-                    <div class="blog-image">
-                        <img src="/images/bamboo product maintenance.jpg" alt="Bamboo Product Maintenance" itemprop="image">
+                <article class="blog-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-category="product-care" itemscope itemtype="https://schema.org/BlogPosting">
+                    <div class="h-56 overflow-hidden">
+                        <img src="/images/bamboo product maintenance.jpg" alt="Bamboo Product Maintenance" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="blog-content">
-                        <div class="post-meta">
-                            <span class="post-category">Product Care</span>
-                            <time itemprop="datePublished" datetime="2025-10-25">Oct 25, 2025</time>
+                    <div class="p-6">
+                        <div class="flex gap-3 mb-3 text-sm">
+                            <span class="bg-bamboo-beige px-3 py-1 rounded font-semibold">Product Care</span>
+                            <time class="text-gray-600" itemprop="datePublished" datetime="2025-10-25">Oct 25, 2025</time>
                         </div>
-                        <h3 itemprop="headline">
-                            <a href="blog-post.html?id=bamboo-maintenance" itemprop="url">
+                        <h3 class="text-xl font-semibold mb-3" itemprop="headline">
+                            <a href="blog-post.html?id=bamboo-maintenance" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
                                 5 Essential Tips for Maintaining Bamboo Products
                             </a>
                         </h3>
-                        <p itemprop="description">Keep your bamboo items looking new and lasting longer with these simple maintenance tips from our experts.</p>
-                        <a href="blog-post.html?id=bamboo-maintenance" class="read-more">Read More →</a>
+                        <p class="text-gray-600 mb-4 leading-relaxed" itemprop="description">Keep your bamboo items looking new and lasting longer with these simple maintenance tips from our experts.</p>
+                        <a href="blog-post.html?id=bamboo-maintenance" class="text-primary-green font-semibold hover:underline">Read More →</a>
                     </div>
                 </article>
 
                 <!-- Blog Post 9 -->
-                <article class="blog-card" data-category="lifestyle" itemscope itemtype="https://schema.org/BlogPosting">
-                    <div class="blog-image">
-                        <img src="/images/Minimalist lifestyle guide.jpg" alt="Minimalist Lifestyle Guide" itemprop="image">
+                <article class="blog-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-category="lifestyle" itemscope itemtype="https://schema.org/BlogPosting">
+                    <div class="h-56 overflow-hidden">
+                        <img src="/images/Minimalist lifestyle guide.jpg" alt="Minimalist Lifestyle Guide" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="blog-content">
-                        <div class="post-meta">
-                            <span class="post-category">Lifestyle</span>
-                            <time itemprop="datePublished" datetime="2025-10-20">Oct 20, 2025</time>
+                    <div class="p-6">
+                        <div class="flex gap-3 mb-3 text-sm">
+                            <span class="bg-bamboo-beige px-3 py-1 rounded font-semibold">Lifestyle</span>
+                            <time class="text-gray-600" itemprop="datePublished" datetime="2025-10-20">Oct 20, 2025</time>
                         </div>
-                        <h3 itemprop="headline">
-                            <a href="blog-post.html?id=minimalist-living" itemprop="url">
+                        <h3 class="text-xl font-semibold mb-3" itemprop="headline">
+                            <a href="blog-post.html?id=minimalist-living" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
                                 Embracing Minimalism: Less Stuff, More Life
                             </a>
                         </h3>
-                        <p itemprop="description">Discover how minimalist living can reduce stress, save money, and help the environment. Start your decluttering journey today.</p>
-                        <a href="blog-post.html?id=minimalist-living" class="read-more">Read More →</a>
+                        <p class="text-gray-600 mb-4 leading-relaxed" itemprop="description">Discover how minimalist living can reduce stress, save money, and help the environment. Start your decluttering journey today.</p>
+                        <a href="blog-post.html?id=minimalist-living" class="text-primary-green font-semibold hover:underline">Read More →</a>
                     </div>
                 </article>
+
             </div>
 
             <!-- Pagination -->
-            <nav class="pagination" aria-label="Blog pagination">
-                <button class="page-btn" onclick="goToPage(1)" disabled>← Previous</button>
-                <button class="page-btn active" onclick="goToPage(1)">1</button>
-                <button class="page-btn" onclick="goToPage(2)">2</button>
-                <button class="page-btn" onclick="goToPage(3)">3</button>
-                <button class="page-btn" onclick="goToPage(2)">Next →</button>
+            <nav class="flex justify-center gap-2 mt-12" aria-label="Blog pagination">
+                <button class="px-4 py-2 border border-gray-300 rounded-lg bg-white hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" onclick="goToPage(1)" disabled>← Previous</button>
+                <button class="px-4 py-2 border border-primary-green bg-primary-green text-white rounded-lg" onclick="goToPage(1)">1</button>
+                <button class="px-4 py-2 border border-gray-300 rounded-lg bg-white hover:bg-primary-green hover:text-white transition-colors" onclick="goToPage(2)">2</button>
+                <button class="px-4 py-2 border border-gray-300 rounded-lg bg-white hover:bg-primary-green hover:text-white transition-colors" onclick="goToPage(3)">3</button>
+                <button class="px-4 py-2 border border-gray-300 rounded-lg bg-white hover:bg-gray-100 transition-colors" onclick="goToPage(2)">Next →</button>
             </nav>
         </div>
     </section>
 
     <!-- Newsletter Section -->
-    <section class="newsletter-section">
-        <div class="container">
-            <h2>Never Miss a Post</h2>
-            <p>Subscribe to our newsletter for the latest eco-friendly tips and product updates</p>
-            <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
-                <input type="email" placeholder="Enter your email" required aria-label="Email address">
-                <button type="submit" class="btn btn-primary">Subscribe</button>
+    <section class="bg-gradient-to-br from-primary-green to-secondary-green text-white py-16 text-center">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Never Miss a Post</h2>
+            <p class="text-lg mb-8 max-w-2xl mx-auto">Subscribe to our newsletter for the latest eco-friendly tips and product updates</p>
+            <form class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" onsubmit="subscribeNewsletter(event)">
+                <input type="email" placeholder="Enter your email" required aria-label="Email address" class="flex-1 px-6 py-3 rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-white text-gray-800">
+                <button type="submit" class="bg-white text-primary-green font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors">Subscribe</button>
             </form>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>Leaf+ Loom</h4>
-                    <p>Crafting sustainable wooden and bamboo products for a greener tomorrow.</p>
+    <footer class="bg-gray-800 text-white py-12 md:py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h4 class="text-secondary-green font-semibold mb-4 text-lg">Leaf+ Loom</h4>
+                    <p class="text-gray-400">Crafting sustainable wooden and bamboo products for a greener tomorrow.</p>
                 </div>
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="../about.html">About Us</a></li>
-                        <li><a href="../products.html">Products</a></li>
-                        <li><a href="all-blogs.html">Blog</a></li>
-                        <li><a href="../contact.html">Contact</a></li>
+                <div>
+                    <h4 class="text-secondary-green font-semibold mb-4 text-lg">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="../about.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="../products.html" class="text-gray-400 hover:text-white transition-colors">Products</a></li>
+                        <li><a href="all-blogs.html" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="../contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h4>Customer Service</h4>
-                    <ul>
-                        <li><a href="#">Shipping Policy</a></li>
-                        <li><a href="#">Return Policy</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
+                <div>
+                    <h4 class="text-secondary-green font-semibold mb-4 text-lg">Customer Service</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Shipping Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Return Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms & Conditions</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h4>Connect With Us</h4>
-                    <div class="social-links">
-                        <a href="#" aria-label="Facebook">📘</a>
-                        <a href="#" aria-label="Instagram">📷</a>
-                        <a href="#" aria-label="Twitter">🐦</a>
-                        <a href="#" aria-label="Pinterest">📌</a>
+                <div>
+                    <h4 class="text-secondary-green font-semibold mb-4 text-lg">Connect With Us</h4>
+                    <div class="flex gap-4 text-2xl">
+                        <a href="#" aria-label="Facebook" class="hover:text-secondary-green transition-colors">📘</a>
+                        <a href="#" aria-label="Instagram" class="hover:text-secondary-green transition-colors">📷</a>
+                        <a href="#" aria-label="Twitter" class="hover:text-secondary-green transition-colors">🐦</a>
+                        <a href="#" aria-label="Pinterest" class="hover:text-secondary-green transition-colors">📌</a>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div class="border-t border-gray-700 pt-6 text-center text-gray-400">
                 <p>&copy; 2025 Leaf+ Loom. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- JavaScript -->
     <script src="../js/cart.js"></script>
-    <script src="../js/main.js"></script>
-    <script src="../js/blog.js"></script>
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+        
+        // Cart functionality
+        function openCart() {
+            alert('Cart functionality - integrate with your cart.js');
+        }
+        
+        // Filter blog posts
+        function filterBlog(category) {
+            const cards = document.querySelectorAll('.blog-card');
+            const tabs = document.querySelectorAll('.filter-tab');
+            
+            // Update active tab styling
+            tabs.forEach(tab => {
+                tab.classList.remove('bg-primary-green', 'text-white');
+                tab.classList.add('bg-white');
+            });
+            event.target.classList.add('bg-primary-green', 'text-white');
+            event.target.classList.remove('bg-white');
+            
+            // Filter cards
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+        
+        // Pagination
+        function goToPage(page) {
+            console.log('Going to page:', page);
+            // Add your pagination logic here
+        }
+        
+        // Newsletter subscription
+        function subscribeNewsletter(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input[type="email"]').value;
+            console.log('Subscribed:', email);
+            alert('Thank you for subscribing!');
+            event.target.reset();
+        }
+    </script>
 </body>
 </html>

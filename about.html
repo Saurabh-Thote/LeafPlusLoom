@@ -8,176 +8,355 @@
     
     <title>About Us - Leaf+ Loom | Our Story & Mission</title>
     
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Tailwind CSS v4 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <!-- Custom Theme Configuration -->
+    <style type="text/tailwindcss">
+        @theme {
+            --color-primary-green: #4A7C59;
+            --color-primary-green-dark: #3A6047;
+            --color-secondary-green: #7FB069;
+            --color-bamboo-beige: #D4C5A0;
+            --color-wood-brown: #8B6F47;
+            --color-leaf-accent: #9BC184;
+            --color-earth-tone: #C9B79C;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #4A7C59;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+    </style>
+    
     <link rel="canonical" href="https://leafplusloom.com/about.html">
 </head>
-<body>
+<body class="font-[system-ui] text-gray-800 overflow-x-hidden bg-white">
+    
     <!-- Header -->
-    <header class="header">
-        <nav class="navbar">
-            <div class="container">
-                <div class="nav-wrapper">
-                    <div class="logo">
-                        <a href="index.html">
-                            <img src="images/logo.png" alt="Leaf+ Loom Logo">
-                            <span>Leaf+ Loom</span>
-                        </a>
-                    </div>
-                    
-                    <ul class="nav-links" id="navLinks">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html" class="active">About</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="products.html">Products</a></li>
-                        <li><a href="/blogs/all-blogs.html">Blog</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                    
-                    <div class="nav-actions">
-                        <button class="cart-icon" onclick="openCart()">
-                            🛒 <span id="cart-count">0</span>
-                        </button>
-                        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-                    </div>
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <a href="index.html" class="flex items-center gap-2">
+                        <img src="images/logo.png" alt="Leaf+ Loom Logo" class="w-10 h-10">
+                        <span class="text-xl font-bold text-primary-green">Leaf+ Loom</span>
+                    </a>
                 </div>
+                
+                <ul class="hidden lg:flex gap-8 items-center">
+                    <li><a href="index.html" class="nav-link font-medium hover:text-primary-green transition-colors">Home</a></li>
+                    <li><a href="about.html" class="nav-link active font-medium hover:text-primary-green transition-colors">About</a></li>
+                    <li><a href="services.html" class="nav-link font-medium hover:text-primary-green transition-colors">Services</a></li>
+                    <li><a href="products.html" class="nav-link font-medium hover:text-primary-green transition-colors">Products</a></li>
+                    <li><a href="/blogs/all-blogs.html" class="nav-link font-medium hover:text-primary-green transition-colors">Blog</a></li>
+                    <li><a href="contact.html" class="nav-link font-medium hover:text-primary-green transition-colors">Contact</a></li>
+                </ul>
+                
+                <div class="flex items-center gap-4">
+                    <button onclick="openCart()" class="relative bg-gray-100 hover:bg-gray-200 p-2 rounded-lg transition-colors">
+                        <span class="text-xl">🛒</span>
+                        <span id="cart-count" class="absolute -top-1 -right-1 bg-primary-green text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">0</span>
+                    </button>
+                    <button onclick="toggleMenu()" class="lg:hidden text-2xl text-primary-green">☰</button>
+                </div>
+            </div>
+            
+            <div id="mobileMenu" class="hidden lg:hidden mt-4 pb-4">
+                <ul class="flex flex-col gap-3">
+                    <li><a href="index.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Home</a></li>
+                    <li><a href="about.html" class="block py-2 font-medium text-primary-green border-l-4 border-primary-green pl-4">About</a></li>
+                    <li><a href="services.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Services</a></li>
+                    <li><a href="products.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Products</a></li>
+                    <li><a href="/blogs/all-blogs.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Blog</a></li>
+                    <li><a href="contact.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Contact</a></li>
+                </ul>
             </div>
         </nav>
     </header>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <h1>About Leaf+ Loom</h1>
-            <p>Crafting a sustainable future, one product at a time</p>
+    <!-- Page Header / Hero -->
+    <section class="relative bg-gradient-to-br from-primary-green to-primary-green-dark text-white py-20 md:py-32 overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 left-0 w-64 h-64 bg-white rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full translate-x-1/2 translate-y-1/2"></div>
+        </div>
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-4">About Leaf+ Loom</h1>
+            <p class="text-xl md:text-2xl text-bamboo-beige max-w-3xl mx-auto">Crafting a sustainable future, one product at a time</p>
         </div>
     </section>
 
-    <!-- Our Story -->
-    <section class="our-story">
-        <div class="container">
-            <div class="content-wrapper">
-                <div class="content-text">
-                    <h2>Our Story</h2>
-                    <p>Leaf+ Loom was born from a simple belief: everyday products should be beautiful, functional, and kind to the planet. Founded in 2020, we started our journey with a mission to replace plastic products with sustainable wooden and bamboo alternatives.</p>
-                    <p>What began as a small workshop has grown into a passionate community of artisans, designers, and eco-warriors committed to creating products that make a difference. Every item we craft tells a story of sustainability, craftsmanship, and care for our environment.</p>
+    <!-- Our Story Section -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1">
+                    <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-6">Our Story</h2>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                        Leaf+ Loom was born from a simple belief: everyday products should be beautiful, functional, and kind to the planet. Founded in 2020, we started our journey with a mission to replace plastic products with sustainable wooden and bamboo alternatives.
+                    </p>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        What began as a small workshop has grown into a passionate community of artisans, designers, and eco-warriors committed to creating products that make a difference. Every item we craft tells a story of sustainability, craftsmanship, and care for our environment.
+                    </p>
                 </div>
-                <div class="content-image">
-                    <img src="images/about-story.jpg" alt="Leaf+ Loom artisans at work">
+                <div class="order-1 lg:order-2">
+                    <div class="rounded-2xl overflow-hidden shadow-2xl">
+                        <img src="images/about-story.jpg" alt="Leaf+ Loom artisans at work" class="w-full h-auto object-cover">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Our Mission & Vision -->
-    <section class="mission-vision">
-        <div class="container">
-            <div class="mission-vision-grid">
-                <div class="mission-card">
-                    <h2>Our Mission</h2>
-                    <p>To provide high-quality, eco-friendly wooden and bamboo products that help individuals and families transition to a more sustainable lifestyle without compromising on quality or aesthetics.</p>
+    <!-- Mission & Vision Section -->
+    <section class="py-16 md:py-24 bg-gradient-to-br from-bamboo-beige/20 to-leaf-accent/10">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Mission Card -->
+                <div class="bg-white rounded-2xl shadow-xl p-8 md:p-10 border-t-4 border-primary-green hover:shadow-2xl transition-shadow duration-300">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 bg-primary-green rounded-full flex items-center justify-center text-white text-2xl">
+                            🎯
+                        </div>
+                        <h2 class="text-3xl font-bold text-gray-900">Our Mission</h2>
+                    </div>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        To provide high-quality, eco-friendly wooden and bamboo products that help individuals and families transition to a more sustainable lifestyle without compromising on quality or aesthetics.
+                    </p>
                 </div>
-                <div class="vision-card">
-                    <h2>Our Vision</h2>
-                    <p>A world where sustainable living is the norm, not the exception. We envision a future where every household chooses earth-friendly alternatives, creating a healthier planet for generations to come.</p>
+
+                <!-- Vision Card -->
+                <div class="bg-white rounded-2xl shadow-xl p-8 md:p-10 border-t-4 border-secondary-green hover:shadow-2xl transition-shadow duration-300">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 bg-secondary-green rounded-full flex items-center justify-center text-white text-2xl">
+                            🌍
+                        </div>
+                        <h2 class="text-3xl font-bold text-gray-900">Our Vision</h2>
+                    </div>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        A world where sustainable living is the norm, not the exception. We envision a future where every household chooses earth-friendly alternatives, creating a healthier planet for generations to come.
+                    </p>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Our Values -->
-    <section class="our-values">
-        <div class="container">
-            <h2>Our Core Values</h2>
-            <div class="values-grid">
-                <div class="value-item">
-                    <h3>Sustainability</h3>
-                    <p>We source materials responsibly and ensure our production processes minimize environmental impact.</p>
+    <!-- Core Values Section -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Our Core Values</h2>
+                <div class="w-24 h-1 bg-primary-green mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Value 1 -->
+                <div class="bg-gradient-to-br from-primary-green/5 to-primary-green/10 p-8 rounded-xl text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                    <div class="w-16 h-16 bg-primary-green rounded-full flex items-center justify-center text-white text-3xl mx-auto mb-4">
+                        🌱
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Sustainability</h3>
+                    <p class="text-gray-600 leading-relaxed">We source materials responsibly and ensure our production processes minimize environmental impact.</p>
                 </div>
-                <div class="value-item">
-                    <h3>Quality Craftsmanship</h3>
-                    <p>Each product is handcrafted with attention to detail, ensuring durability and timeless beauty.</p>
+
+                <!-- Value 2 -->
+                <div class="bg-gradient-to-br from-wood-brown/5 to-wood-brown/10 p-8 rounded-xl text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                    <div class="w-16 h-16 bg-wood-brown rounded-full flex items-center justify-center text-white text-3xl mx-auto mb-4">
+                        ✨
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Quality Craftsmanship</h3>
+                    <p class="text-gray-600 leading-relaxed">Each product is handcrafted with attention to detail, ensuring durability and timeless beauty.</p>
                 </div>
-                <div class="value-item">
-                    <h3>Transparency</h3>
-                    <p>We believe in honest communication about our materials, processes, and business practices.</p>
+
+                <!-- Value 3 -->
+                <div class="bg-gradient-to-br from-secondary-green/5 to-secondary-green/10 p-8 rounded-xl text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                    <div class="w-16 h-16 bg-secondary-green rounded-full flex items-center justify-center text-white text-3xl mx-auto mb-4">
+                        🔍
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Transparency</h3>
+                    <p class="text-gray-600 leading-relaxed">We believe in honest communication about our materials, processes, and business practices.</p>
                 </div>
-                <div class="value-item">
-                    <h3>Community</h3>
-                    <p>We support local artisans and fair trade practices, building a stronger sustainable community.</p>
+
+                <!-- Value 4 -->
+                <div class="bg-gradient-to-br from-leaf-accent/5 to-leaf-accent/10 p-8 rounded-xl text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                    <div class="w-16 h-16 bg-leaf-accent rounded-full flex items-center justify-center text-white text-3xl mx-auto mb-4">
+                        🤝
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Community</h3>
+                    <p class="text-gray-600 leading-relaxed">We support local artisans and fair trade practices, building a stronger sustainable community.</p>
                 </div>
+
             </div>
         </div>
     </section>
 
     <!-- Team Section -->
-    <section class="our-team">
-        <div class="container">
-            <h2>Meet Our Team</h2>
-            <p class="section-subtitle">The passionate people behind Leaf+ Loom</p>
-            <div class="team-grid">
-                <div class="team-member">
-                    <img src="images/team/member1.jpg" alt="Team Member">
-                    <h3>Priya Sharma</h3>
-                    <p class="role">Founder & CEO</p>
+    <section class="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-bamboo-beige/10">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Meet Our Team</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">The passionate people behind Leaf+ Loom</p>
+                <div class="w-24 h-1 bg-primary-green mx-auto rounded-full mt-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                
+                <!-- Team Member 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="aspect-square overflow-hidden bg-gray-200">
+                        <img src="images/team/member1.jpg" alt="Priya Sharma - Founder & CEO" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold text-gray-900 mb-1">Priya Sharma</h3>
+                        <p class="text-primary-green font-semibold mb-3">Founder & CEO</p>
+                        <div class="flex justify-center gap-3">
+                            <a href="#" class="text-gray-400 hover:text-primary-green transition-colors" aria-label="LinkedIn">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="team-member">
-                    <img src="images/team/member2.jpg" alt="Team Member">
-                    <h3>Rahul Verma</h3>
-                    <p class="role">Head of Design</p>
+
+                <!-- Team Member 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="aspect-square overflow-hidden bg-gray-200">
+                        <img src="images/team/member2.jpg" alt="Rahul Verma - Head of Design" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold text-gray-900 mb-1">Rahul Verma</h3>
+                        <p class="text-primary-green font-semibold mb-3">Head of Design</p>
+                        <div class="flex justify-center gap-3">
+                            <a href="#" class="text-gray-400 hover:text-primary-green transition-colors" aria-label="LinkedIn">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="team-member">
-                    <img src="images/team/member3.jpg" alt="Team Member">
-                    <h3>Anjali Patel</h3>
-                    <p class="role">Sustainability Officer</p>
+
+                <!-- Team Member 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="aspect-square overflow-hidden bg-gray-200">
+                        <img src="images/team/member3.jpg" alt="Anjali Patel - Sustainability Officer" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold text-gray-900 mb-1">Anjali Patel</h3>
+                        <p class="text-primary-green font-semibold mb-3">Sustainability Officer</p>
+                        <div class="flex justify-center gap-3">
+                            <a href="#" class="text-gray-400 hover:text-primary-green transition-colors" aria-label="LinkedIn">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                        </div>
+                    </div>
                 </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats / Numbers Section (Optional Enhancement) -->
+    <section class="py-16 md:py-20 bg-primary-green text-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-extrabold mb-2">5+</div>
+                    <div class="text-bamboo-beige text-sm md:text-base">Years of Excellence</div>
+                </div>
+
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-extrabold mb-2">10K+</div>
+                    <div class="text-bamboo-beige text-sm md:text-base">Happy Customers</div>
+                </div>
+
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-extrabold mb-2">50+</div>
+                    <div class="text-bamboo-beige text-sm md:text-base">Eco Products</div>
+                </div>
+
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-extrabold mb-2">100%</div>
+                    <div class="text-bamboo-beige text-sm md:text-base">Sustainable</div>
+                </div>
+
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>Leaf+ Loom</h4>
-                    <p>Crafting sustainable wooden and bamboo products for a greener tomorrow.</p>
+    <footer class="bg-gray-800 text-white py-12 md:py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h4 class="text-secondary-green font-semibold mb-4 text-lg">Leaf+ Loom</h4>
+                    <p class="text-gray-400">Crafting sustainable wooden and bamboo products for a greener tomorrow.</p>
                 </div>
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="products.html">Products</a></li>
-                        <li><a href="/blogs/all-blogs.html">Blog</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                <div>
+                    <h4 class="text-secondary-green font-semibold mb-4 text-lg">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="products.html" class="text-gray-400 hover:text-white transition-colors">Products</a></li>
+                        <li><a href="/blogs/all-blogs.html" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h4>Customer Service</h4>
-                    <ul>
-                        <li><a href="#">Shipping Policy</a></li>
-                        <li><a href="#">Return Policy</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
+                <div>
+                    <h4 class="text-secondary-green font-semibold mb-4 text-lg">Customer Service</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Shipping Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Return Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms & Conditions</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h4>Connect With Us</h4>
-                    <div class="social-links">
-                        <a href="#" aria-label="Facebook">📘</a>
-                        <a href="#" aria-label="Instagram">📷</a>
-                        <a href="#" aria-label="Twitter">🐦</a>
-                        <a href="#" aria-label="Pinterest">📌</a>
+                <div>
+                    <h4 class="text-secondary-green font-semibold mb-4 text-lg">Connect With Us</h4>
+                    <div class="flex gap-4 text-2xl">
+                        <a href="#" aria-label="Facebook" class="hover:text-secondary-green transition-colors">📘</a>
+                        <a href="#" aria-label="Instagram" class="hover:text-secondary-green transition-colors">📷</a>
+                        <a href="#" aria-label="Twitter" class="hover:text-secondary-green transition-colors">🐦</a>
+                        <a href="#" aria-label="Pinterest" class="hover:text-secondary-green transition-colors">📌</a>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div class="border-t border-gray-700 pt-6 text-center text-gray-400">
                 <p>&copy; 2025 Leaf+ Loom. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- JavaScript -->
     <script src="js/cart.js"></script>
-    <script src="js/main.js"></script>
+    <script>
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+        
+        function openCart() {
+            alert('Cart functionality');
+        }
+    </script>
 </body>
 </html>
