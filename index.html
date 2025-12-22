@@ -15,200 +15,323 @@
     
     <title>Leaf+ Loom - Premium Wooden & Bamboo Products | Sustainable Living</title>
     
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Tailwind CSS v4 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <!-- Custom Theme Configuration -->
+    <style type="text/tailwindcss">
+        @theme {
+            /* Custom Color Palette */
+            --color-primary-green: #4A7C59;
+            --color-primary-green-dark: #3A6047;
+            --color-secondary-green: #7FB069;
+            --color-bamboo-beige: #D4C5A0;
+            --color-wood-brown: #8B6F47;
+            --color-leaf-accent: #9BC184;
+            --color-earth-tone: #C9B79C;
+            
+            /* Additional Utilities */
+            --font-display: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        /* Custom animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom nav link underline effect */
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #4A7C59;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+    </style>
+    
     <link rel="canonical" href="https://leafplusloom.com">
 </head>
-<body>
+<body class="font-[system-ui] text-gray-800 overflow-x-hidden">
+    
     <!-- Header -->
-    <header class="header">
-        <nav class="navbar">
-            <div class="container">
-                <div class="nav-wrapper">
-                    <div class="logo">
-                        <a href="index.html">
-                            <img src="images/logo.png" alt="Leaf+ Loom Logo">
-                            <span>Leaf+ Loom</span>
-                        </a>
-                    </div>
-                    
-                    <ul class="nav-links" id="navLinks">
-                        <li><a href="index.html" class="active">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="products.html">Products</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                    
-                    <div class="nav-actions">
-                        <button class="cart-icon" onclick="openCart()">
-                            🛒 <span id="cart-count">0</span>
-                        </button>
-                        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-                    </div>
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center gap-2">
+                    <a href="index.html" class="flex items-center gap-2">
+                        <img src="/images/leaf+loom logo 2.jpg" alt="Leaf+ Loom Logo" class="w-10 h-10">
+                        <span class="text-xl font-bold text-primary-green">Leaf+ Loom</span>
+                    </a>
                 </div>
+                
+                <!-- Desktop Navigation -->
+                <ul class="hidden lg:flex gap-8 items-center">
+                    <li><a href="index.html" class="nav-link active font-medium hover:text-primary-green transition-colors">Home</a></li>
+                    <li><a href="about.html" class="nav-link font-medium hover:text-primary-green transition-colors">About</a></li>
+                    <li><a href="services.html" class="nav-link font-medium hover:text-primary-green transition-colors">Services</a></li>
+                    <li><a href="products.html" class="nav-link font-medium hover:text-primary-green transition-colors">Products</a></li>
+                    <li><a href="/blogs/all-blogs.html" class="nav-link font-medium hover:text-primary-green transition-colors">Blog</a></li>
+                    <li><a href="contact.html" class="nav-link font-medium hover:text-primary-green transition-colors">Contact</a></li>
+                </ul>
+                
+                <!-- Cart & Mobile Menu -->
+                <div class="flex items-center gap-4">
+                    <button onclick="openCart()" class="relative bg-gray-100 hover:bg-gray-200 p-2 rounded-lg transition-colors">
+                        <span class="text-xl">🛒</span>
+                        <span id="cart-count" class="absolute -top-1 -right-1 bg-primary-green text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">0</span>
+                    </button>
+                    <button onclick="toggleMenu()" class="lg:hidden text-2xl text-primary-green">☰</button>
+                </div>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div id="mobileMenu" class="hidden lg:hidden mt-4 pb-4">
+                <ul class="flex flex-col gap-3">
+                    <li><a href="index.html" class="block py-2 font-medium text-primary-green border-l-4 border-primary-green pl-4">Home</a></li>
+                    <li><a href="about.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">About</a></li>
+                    <li><a href="services.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Services</a></li>
+                    <li><a href="products.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Products</a></li>
+                    <li><a href="/blogs/all-blogs.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Blog</a></li>
+                    <li><a href="contact.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Contact</a></li>
+                </ul>
             </div>
         </nav>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Sustainable Living Starts Here</h1>
-            <p>Discover premium handcrafted wooden and bamboo products for an eco-friendly lifestyle</p>
-            <div class="hero-buttons">
-                <a href="products.html" class="btn btn-primary">Shop Now</a>
-                <a href="about.html" class="btn btn-secondary">Learn More</a>
+    <section class="relative bg-gradient-to-br from-primary-green/90 to-leaf-accent/90 text-white py-24 md:py-32 text-center min-h-[500px] flex items-center justify-center">
+        <!-- Background Image (add via inline style or replace with your image) -->
+        <div class="absolute inset-0 bg-[url('../images/hero/hero-bg.jpg')] bg-cover bg-center -z-10"></div>
+        
+        <div class="container mx-auto px-6 relative z-10 animate-fadeInUp">
+            <h1 class="text-3xl md:text-5xl font-bold mb-6 drop-shadow-lg">Sustainable Living Starts Here</h1>
+            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Discover premium handcrafted wooden and bamboo products for an eco-friendly lifestyle</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="products.html" class="inline-block bg-primary-green hover:bg-primary-green-dark text-white font-semibold px-7 py-3 rounded-lg shadow-lg hover:-translate-y-1 hover:shadow-xl transition-all">Shop Now</a>
+                <a href="about.html" class="inline-block bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary-green font-semibold px-7 py-3 rounded-lg transition-all">Learn More</a>
             </div>
         </div>
     </section>
 
     <!-- Featured Products -->
-    <section class="featured-products">
-        <div class="container">
-            <h2>Our Featured Products</h2>
-            <p class="section-subtitle">Handcrafted with love, designed for sustainability</p>
+    <section class="py-16 md:py-24">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary-green text-center mb-4">Our Featured Products</h2>
+            <p class="text-center text-gray-600 text-lg mb-12">Handcrafted with love, designed for sustainability</p>
             
-            <div class="product-grid">
-                <article class="product-card">
-                    <div class="product-image">
-                        <img src="images/products/round-brush.jpg" alt="Round Handle Wooden Brush">
-                        <span class="badge">New</span>
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-8">
+                
+                <!-- Product Card 1 -->
+                <article class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
+                    <div class="relative h-72 bg-gray-100 overflow-hidden">
+                        <img src="images/products/round-brush.jpg" alt="Round Handle Wooden Brush" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <span class="absolute top-4 right-4 bg-primary-green text-white text-xs font-semibold px-3 py-1 rounded">New</span>
                     </div>
-                    <div class="product-info">
-                        <h3>Round Handle Brush</h3>
-                        <p class="product-desc">Ergonomic wooden brush with natural bristles</p>
-                        <div class="product-footer">
-                            <span class="price">₹299</span>
-                            <button class="btn-add-cart" onclick="addToCart('Round Handle Brush', 299, 1)">Add to Cart</button>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">Round Handle Brush</h3>
+                        <p class="text-sm text-gray-600 mb-4 leading-relaxed">Ergonomic wooden brush with natural bristles</p>
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="text-2xl font-bold text-primary-green">₹299</span>
+                            <button onclick="addToCart('Round Handle Brush', 299, 1)" class="bg-secondary-green hover:bg-primary-green text-white font-semibold px-5 py-2 rounded-lg text-sm hover:scale-105 transition-transform">Add to Cart</button>
                         </div>
                     </div>
                 </article>
 
-                <article class="product-card">
-                    <div class="product-image">
-                        <img src="images/products/kids-brush.jpg" alt="Kids Wooden Brush">
-                        <span class="badge">Popular</span>
+                <!-- Product Card 2 -->
+                <article class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
+                    <div class="relative h-72 bg-gray-100 overflow-hidden">
+                        <img src="images/products/kids-brush.jpg" alt="Kids Wooden Brush" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <span class="absolute top-4 right-4 bg-primary-green text-white text-xs font-semibold px-3 py-1 rounded">Popular</span>
                     </div>
-                    <div class="product-info">
-                        <h3>Kids Brush</h3>
-                        <p class="product-desc">Gentle bamboo brush perfect for children</p>
-                        <div class="product-footer">
-                            <span class="price">₹249</span>
-                            <button class="btn-add-cart" onclick="addToCart('Kids Brush', 249, 1)">Add to Cart</button>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">Kids Brush</h3>
+                        <p class="text-sm text-gray-600 mb-4 leading-relaxed">Gentle bamboo brush perfect for children</p>
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="text-2xl font-bold text-primary-green">₹249</span>
+                            <button onclick="addToCart('Kids Brush', 249, 1)" class="bg-secondary-green hover:bg-primary-green text-white font-semibold px-5 py-2 rounded-lg text-sm hover:scale-105 transition-transform">Add to Cart</button>
                         </div>
                     </div>
                 </article>
 
-                <article class="product-card">
-                    <div class="product-image">
-                        <img src="images/products/premium-comb.jpg" alt="Premium Wooden Comb">
+                <!-- Product Card 3 -->
+                <article class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
+                    <div class="relative h-72 bg-gray-100 overflow-hidden">
+                        <img src="images/products/premium-comb.jpg" alt="Premium Wooden Comb" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="product-info">
-                        <h3>Premium Comb</h3>
-                        <p class="product-desc">Wide-tooth wooden comb for all hair types</p>
-                        <div class="product-footer">
-                            <span class="price">₹399</span>
-                            <button class="btn-add-cart" onclick="addToCart('Premium Comb', 399, 1)">Add to Cart</button>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">Premium Comb</h3>
+                        <p class="text-sm text-gray-600 mb-4 leading-relaxed">Wide-tooth wooden comb for all hair types</p>
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="text-2xl font-bold text-primary-green">₹399</span>
+                            <button onclick="addToCart('Premium Comb', 399, 1)" class="bg-secondary-green hover:bg-primary-green text-white font-semibold px-5 py-2 rounded-lg text-sm hover:scale-105 transition-transform">Add to Cart</button>
                         </div>
                     </div>
                 </article>
 
-                <article class="product-card">
-                    <div class="product-image">
-                        <img src="images/products/wooden-pen.jpg" alt="Wooden Pen">
-                        <span class="badge">Eco</span>
+                <!-- Product Card 4 -->
+                <article class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
+                    <div class="relative h-72 bg-gray-100 overflow-hidden">
+                        <img src="images/products/wooden-pen.jpg" alt="Wooden Pen" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <span class="absolute top-4 right-4 bg-primary-green text-white text-xs font-semibold px-3 py-1 rounded">Eco</span>
                     </div>
-                    <div class="product-info">
-                        <h3>Wooden Pen</h3>
-                        <p class="product-desc">Elegant bamboo pen with smooth ink flow</p>
-                        <div class="product-footer">
-                            <span class="price">₹199</span>
-                            <button class="btn-add-cart" onclick="addToCart('Wooden Pen', 199, 1)">Add to Cart</button>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">Wooden Pen</h3>
+                        <p class="text-sm text-gray-600 mb-4 leading-relaxed">Elegant bamboo pen with smooth ink flow</p>
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="text-2xl font-bold text-primary-green">₹199</span>
+                            <button onclick="addToCart('Wooden Pen', 199, 1)" class="bg-secondary-green hover:bg-primary-green text-white font-semibold px-5 py-2 rounded-lg text-sm hover:scale-105 transition-transform">Add to Cart</button>
                         </div>
                     </div>
                 </article>
+                
             </div>
             
-            <div class="text-center">
-                <a href="products.html" class="btn btn-primary">View All Products</a>
+            <div class="text-center mt-12">
+                <a href="products.html" class="inline-block bg-primary-green hover:bg-primary-green-dark text-white font-semibold px-7 py-3 rounded-lg shadow-md hover:-translate-y-1 hover:shadow-lg transition-all">View All Products</a>
             </div>
         </div>
     </section>
 
     <!-- Why Choose Us -->
-    <section class="why-choose">
-        <div class="container">
-            <h2>Why Choose Leaf+ Loom?</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🌱</div>
-                    <h3>100% Eco-Friendly</h3>
-                    <p>Made from sustainable wood and bamboo materials</p>
+    <section class="bg-gray-50 py-16 md:py-24">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary-green text-center mb-12">Why Choose Leaf+ Loom?</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Feature 1 -->
+                <div class="bg-white p-8 rounded-xl text-center shadow-sm hover:-translate-y-2 transition-transform duration-300">
+                    <div class="text-5xl mb-4">🌱</div>
+                    <h3 class="text-lg font-semibold text-primary-green mb-3">100% Eco-Friendly</h3>
+                    <p class="text-gray-600">Made from sustainable wood and bamboo materials</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">✋</div>
-                    <h3>Handcrafted Quality</h3>
-                    <p>Each product is carefully crafted by skilled artisans</p>
+                
+                <!-- Feature 2 -->
+                <div class="bg-white p-8 rounded-xl text-center shadow-sm hover:-translate-y-2 transition-transform duration-300">
+                    <div class="text-5xl mb-4">✋</div>
+                    <h3 class="text-lg font-semibold text-primary-green mb-3">Handcrafted Quality</h3>
+                    <p class="text-gray-600">Each product is carefully crafted by skilled artisans</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">♻️</div>
-                    <h3>Zero Plastic</h3>
-                    <p>Completely plastic-free packaging and products</p>
+                
+                <!-- Feature 3 -->
+                <div class="bg-white p-8 rounded-xl text-center shadow-sm hover:-translate-y-2 transition-transform duration-300">
+                    <div class="text-5xl mb-4">♻️</div>
+                    <h3 class="text-lg font-semibold text-primary-green mb-3">Zero Plastic</h3>
+                    <p class="text-gray-600">Completely plastic-free packaging and products</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💚</div>
-                    <h3>Earth Friendly</h3>
-                    <p>Biodegradable products that don't harm the planet</p>
+                
+                <!-- Feature 4 -->
+                <div class="bg-white p-8 rounded-xl text-center shadow-sm hover:-translate-y-2 transition-transform duration-300">
+                    <div class="text-5xl mb-4">💚</div>
+                    <h3 class="text-lg font-semibold text-primary-green mb-3">Earth Friendly</h3>
+                    <p class="text-gray-600">Biodegradable products that don't harm the planet</p>
                 </div>
+                
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>Leaf+ Loom</h4>
-                    <p>Crafting sustainable wooden and bamboo products for a greener tomorrow.</p>
+    <footer class="bg-gray-800 text-white py-12 md:py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                
+                <!-- Footer Column 1 -->
+                <div>
+                    <h4 class="text-secondary-green font-semibold mb-4 text-lg">Leaf+ Loom</h4>
+                    <p class="text-gray-400">Crafting sustainable wooden and bamboo products for a greener tomorrow.</p>
                 </div>
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="products.html">Products</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                
+                <!-- Footer Column 2 -->
+                <div>
+                    <h4 class="text-secondary-green font-semibold mb-4 text-lg">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="products.html" class="text-gray-400 hover:text-white transition-colors">Products</a></li>
+                        <li><a href="/blogs/all-blogs.html" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h4>Customer Service</h4>
-                    <ul>
-                        <li><a href="#">Shipping Policy</a></li>
-                        <li><a href="#">Return Policy</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
+                
+                <!-- Footer Column 3 -->
+                <div>
+                    <h4 class="text-secondary-green font-semibold mb-4 text-lg">Customer Service</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Shipping Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Return Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms & Conditions</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h4>Connect With Us</h4>
-                    <div class="social-links">
-                        <a href="#" aria-label="Facebook">📘</a>
-                        <a href="#" aria-label="Instagram">📷</a>
-                        <a href="#" aria-label="Twitter">🐦</a>
-                        <a href="#" aria-label="Pinterest">📌</a>
+                
+                <!-- Footer Column 4 -->
+                <div>
+                    <h4 class="text-secondary-green font-semibold mb-4 text-lg">Connect With Us</h4>
+                    <div class="flex gap-4 text-2xl">
+                        <a href="#" aria-label="Facebook" class="hover:text-secondary-green transition-colors">📘</a>
+                        <a href="#" aria-label="Instagram" class="hover:text-secondary-green transition-colors">📷</a>
+                        <a href="#" aria-label="Twitter" class="hover:text-secondary-green transition-colors">🐦</a>
+                        <a href="#" aria-label="Pinterest" class="hover:text-secondary-green transition-colors">📌</a>
                     </div>
                 </div>
+                
             </div>
-            <div class="footer-bottom">
+            
+            <div class="border-t border-gray-700 pt-6 text-center text-gray-400">
                 <p>&copy; 2025 Leaf+ Loom. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- JavaScript -->
     <script src="js/cart.js"></script>
-    <script src="js/main.js"></script>
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+        
+        // Cart functionality placeholder
+        function openCart() {
+            alert('Cart functionality - integrate with your cart.js');
+        }
+        
+        // Add to cart placeholder (implement in cart.js)
+        function addToCart(productName, price, quantity) {
+            console.log(`Added to cart: ${productName}, Price: ₹${price}, Qty: ${quantity}`);
+            // Your cart logic here
+        }
+    </script>
 </body>
 </html>
