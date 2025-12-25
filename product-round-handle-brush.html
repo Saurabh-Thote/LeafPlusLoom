@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Buy Round Handle Wooden Brush online. Ergonomic design with natural bristles for smooth, tangle-free hair. Eco-friendly bamboo hairbrush ₹299.">
+    <meta name="keywords" content="round handle brush, wooden hairbrush, bamboo brush, natural bristle brush, eco-friendly brush">
+    
+    <title>Round Handle Wooden Brush - Natural Bristles | Leaf+ Loom</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <style type="text/tailwindcss">
+        @theme {
+            --color-primary-green: #4A7C59;
+            --color-primary-green-dark: #3A6047;
+            --color-secondary-green: #7FB069;
+            --color-bamboo-beige: #D4C5A0;
+            --color-wood-brown: #8B6F47;
+            --color-leaf-accent: #9BC184;
+            --color-earth-tone: #C9B79C;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+    
+    <link rel="canonical" href="https://leafplusloom.com/products/round-handle-brush">
+    
+    <!-- Product Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "Round Handle Wooden Brush",
+      "image": "https://leafplusloom.com/images/round-handle-wooden-brush.jpg",
+      "description": "Ergonomic wooden brush with natural bristles for smooth, healthy hair. Made from sustainable bamboo.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Leaf+ Loom"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://leafplusloom.com/products/round-handle-brush",
+        "priceCurrency": "INR",
+        "price": "299",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "24"
+      }
+    }
+    </script>
+</head>
+<body class="font-[system-ui] text-gray-800">
+    
+    <!-- Header (same as products page) -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <a href="../index.html" class="flex items-center gap-2">
+                        <img src="../images/leaf+loom logo 1.png" alt="Leaf+ Loom Logo" class="h-14">
+                    </a>
+                </div>
+                
+                <ul class="hidden lg:flex gap-8 items-center">
+                    <li><a href="../index.html" class="font-medium hover:text-primary-green transition-colors">Home</a></li>
+                    <li><a href="../about.html" class="font-medium hover:text-primary-green transition-colors">About</a></li>
+                    <li><a href="../services.html" class="font-medium hover:text-primary-green transition-colors">Services</a></li>
+                    <li><a href="../products.html" class="font-medium text-primary-green">Products</a></li>
+                    <li><a href="../blogs/all-blogs.html" class="font-medium hover:text-primary-green transition-colors">Blog</a></li>
+                    <li><a href="../contact.html" class="font-medium hover:text-primary-green transition-colors">Contact</a></li>
+                </ul>
+                
+                <div class="flex items-center gap-4">
+                    <button onclick="openCart()" class="relative bg-gray-100 hover:bg-gray-200 p-2 rounded-lg transition-colors">
+                        <span class="text-xl">🛒</span>
+                        <span id="cart-count" class="absolute -top-1 -right-1 bg-primary-green text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">0</span>
+                    </button>
+                    <button onclick="toggleMenu()" class="lg:hidden text-2xl text-primary-green">☰</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="bg-gray-50 py-4">
+        <div class="container mx-auto px-6">
+            <ol class="flex items-center gap-2 text-sm">
+                <li><a href="../index.html" class="text-gray-600 hover:text-primary-green">Home</a></li>
+                <li class="text-gray-400">/</li>
+                <li><a href="../products.html" class="text-gray-600 hover:text-primary-green">Products</a></li>
+                <li class="text-gray-400">/</li>
+                <li class="text-primary-green font-medium">Round Handle Brush</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Product Details Section -->
+    <section class="py-12 md:py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12">
+                
+                <!-- Product Images -->
+                <div class="space-y-4">
+                    <div class="bg-gray-100 rounded-xl overflow-hidden aspect-square">
+                        <img id="mainImage" src="../images/round-handle-wooden-brush.jpg" alt="Round Handle Wooden Brush" class="w-full h-full object-cover">
+                    </div>
+                    <div class="grid grid-cols-4 gap-3">
+                        <button onclick="changeImage('../images/round-handle-wooden-brush.jpg')" class="border-2 border-primary-green rounded-lg overflow-hidden">
+                            <img src="../images/round-handle-wooden-brush.jpg" alt="View 1" class="w-full h-full object-cover">
+                        </button>
+                        <button onclick="changeImage('../images/products/brush-angle-2.jpg')" class="border-2 border-gray-300 hover:border-primary-green rounded-lg overflow-hidden">
+                            <img src="../images/products/brush-angle-2.jpg" alt="View 2" class="w-full h-full object-cover">
+                        </button>
+                        <button onclick="changeImage('../images/products/brush-bristles.jpg')" class="border-2 border-gray-300 hover:border-primary-green rounded-lg overflow-hidden">
+                            <img src="../images/products/brush-bristles.jpg" alt="Bristles closeup" class="w-full h-full object-cover">
+                        </button>
+                        <button onclick="changeImage('../images/products/brush-handle.jpg')" class="border-2 border-gray-300 hover:border-primary-green rounded-lg overflow-hidden">
+                            <img src="../images/products/brush-handle.jpg" alt="Handle detail" class="w-full h-full object-cover">
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="space-y-6">
+                    <div>
+                        <span class="inline-block bg-primary-green text-white text-xs font-semibold px-3 py-1 rounded mb-3">New Arrival</span>
+                        <h1 class="text-3xl md:text-4xl font-bold mb-3">Round Handle Wooden Brush</h1>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="text-amber-500 text-lg">⭐⭐⭐⭐⭐</div>
+                            <span class="text-gray-600">(24 reviews)</span>
+                        </div>
+                        <p class="text-4xl font-bold text-primary-green mb-4">₹299</p>
+                        <p class="text-gray-700 leading-relaxed">
+                            This ergonomic round handle wooden brush features natural bristles that gently detangle hair while distributing natural oils for a healthy shine. Handcrafted from sustainable bamboo with a comfortable grip design perfect for daily use.
+                        </p>
+                    </div>
+
+                    <!-- Quantity & Add to Cart -->
+                    <div class="border-t border-b border-gray-200 py-6 space-y-4">
+                        <div class="flex items-center gap-4">
+                            <label class="font-semibold">Quantity:</label>
+                            <div class="flex items-center border border-gray-300 rounded-lg">
+                                <button onclick="decrementQty()" class="px-4 py-2 hover:bg-gray-100">−</button>
+                                <input type="number" id="quantity" value="1" min="1" class="w-16 text-center border-x border-gray-300 py-2" readonly>
+                                <button onclick="incrementQty()" class="px-4 py-2 hover:bg-gray-100">+</button>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <button onclick="addToCartProduct()" class="flex-1 bg-primary-green hover:bg-primary-green-dark text-white font-semibold py-3 rounded-lg transition-colors">
+                                Add to Cart
+                            </button>
+                            <button onclick="buyNow()" class="flex-1 bg-secondary-green hover:bg-primary-green text-white font-semibold py-3 rounded-lg transition-colors">
+                                Buy Now
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product Features -->
+                    <div class="space-y-3">
+                        <h3 class="font-semibold text-lg">Key Features:</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-2">
+                                <span class="text-primary-green">✓</span>
+                                <span>100% natural bamboo handle</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-primary-green">✓</span>
+                                <span>Soft natural bristles prevent hair breakage</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-primary-green">✓</span>
+                                <span>Ergonomic round handle for comfortable grip</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-primary-green">✓</span>
+                                <span>Suitable for all hair types</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-primary-green">✓</span>
+                                <span>Eco-friendly and biodegradable</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabs Section -->
+            <div class="mt-16">
+                <div class="border-b border-gray-200 mb-6">
+                    <div class="flex gap-8">
+                        <button onclick="showTab('description')" id="tab-description" class="pb-3 border-b-2 border-primary-green font-semibold text-primary-green">Description</button>
+                        <button onclick="showTab('specifications')" id="tab-specifications" class="pb-3 border-b-2 border-transparent font-semibold text-gray-600 hover:text-primary-green">Specifications</button>
+                        <button onclick="showTab('reviews')" id="tab-reviews" class="pb-3 border-b-2 border-transparent font-semibold text-gray-600 hover:text-primary-green">Reviews (24)</button>
+                    </div>
+                </div>
+
+                <!-- Tab Content -->
+                <div id="content-description" class="tab-content">
+                    <h3 class="text-xl font-semibold mb-4">Product Description</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        The Round Handle Wooden Brush is designed for those who value both style and sustainability. Made from premium bamboo, this brush offers a lightweight yet durable solution for daily hair care. The natural bristles gently massage the scalp, promoting blood circulation and healthy hair growth.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed">
+                        Unlike plastic brushes that create static and damage hair, our wooden brush helps distribute your hair's natural oils from root to tip, resulting in shinier, healthier-looking hair. The round handle design fits comfortably in your hand, making styling effortless.
+                    </p>
+                </div>
+
+                <div id="content-specifications" class="tab-content hidden">
+                    <h3 class="text-xl font-semibold mb-4">Specifications</h3>
+                    <table class="w-full max-w-2xl">
+                        <tbody class="divide-y divide-gray-200">
+                            <tr>
+                                <td class="py-3 font-semibold">Material</td>
+                                <td class="py-3 text-gray-700">Bamboo wood with natural bristles</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 font-semibold">Dimensions</td>
+                                <td class="py-3 text-gray-700">23 cm (L) × 7 cm (W)</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 font-semibold">Weight</td>
+                                <td class="py-3 text-gray-700">85 grams</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 font-semibold">Color</td>
+                                <td class="py-3 text-gray-700">Natural wood finish</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 font-semibold">Care Instructions</td>
+                                <td class="py-3 text-gray-700">Clean with damp cloth, air dry, avoid soaking</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 font-semibold">Warranty</td>
+                                <td class="py-3 text-gray-700">30-day quality guarantee</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="content-reviews" class="tab-content hidden">
+                    <h3 class="text-xl font-semibold mb-6">Customer Reviews</h3>
+                    <div class="space-y-6">
+                        <!-- Review 1 -->
+                        <div class="border-b border-gray-200 pb-6">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="text-amber-500">⭐⭐⭐⭐⭐</div>
+                                <span class="font-semibold">Priya Sharma</span>
+                                <span class="text-gray-500 text-sm">• 2 days ago</span>
+                            </div>
+                            <p class="text-gray-700">Best wooden brush I've used! My hair feels so much smoother and there's less breakage. Love the eco-friendly aspect too.</p>
+                        </div>
+
+                        <!-- Review 2 -->
+                        <div class="border-b border-gray-200 pb-6">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="text-amber-500">⭐⭐⭐⭐⭐</div>
+                                <span class="font-semibold">Rahul Verma</span>
+                                <span class="text-gray-500 text-sm">• 5 days ago</span>
+                            </div>
+                            <p class="text-gray-700">Great quality! The handle is comfortable and the bristles are gentle. Highly recommend for anyone looking to switch to sustainable products.</p>
+                        </div>
+
+                        <!-- Review 3 -->
+                        <div class="pb-6">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="text-amber-500">⭐⭐⭐⭐☆</div>
+                                <span class="font-semibold">Anjali Reddy</span>
+                                <span class="text-gray-500 text-sm">• 1 week ago</span>
+                            </div>
+                            <p class="text-gray-700">Very nice brush! Works well on my thick hair. Only wish it came in different sizes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Related Products -->
+            <div class="mt-16">
+                <h2 class="text-2xl md:text-3xl font-bold mb-8">You May Also Like</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <!-- Related Product 1 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow">
+                        <div class="h-56 bg-gray-100">
+                            <img src="../images/products/kids-brush.jpg" alt="Kids Brush" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-semibold mb-2">Kids Brush</h4>
+                            <p class="text-primary-green font-bold">₹249</p>
+                            <a href="product-kids-brush.html" class="mt-3 block text-center bg-secondary-green hover:bg-primary-green text-white font-semibold py-2 rounded-lg transition-colors">View Details</a>
+                        </div>
+                    </div>
+
+                    <!-- Related Product 2 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow">
+                        <div class="h-56 bg-gray-100">
+                            <img src="../images/premium-wooden-comb.png" alt="Premium Comb" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-semibold mb-2">Premium Comb</h4>
+                            <p class="text-primary-green font-bold">₹399</p>
+                            <a href="product-premium-comb.html" class="mt-3 block text-center bg-secondary-green hover:bg-primary-green text-white font-semibold py-2 rounded-lg transition-colors">View Details</a>
+                        </div>
+                    </div>
+
+                    <!-- Add 2 more related products similarly -->
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (same as products page) -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <img src="../images/leaf+loom logo 2.jpg" alt="Leaf+ Loom Logo" class="h-14 mb-4">
+                    <p class="text-gray-400">Crafting sustainable products for a greener tomorrow.</p>
+                </div>
+                <div>
+                    <h4 class="text-secondary-green font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="../about.html" class="text-gray-400 hover:text-white">About</a></li>
+                        <li><a href="../products.html" class="text-gray-400 hover:text-white">Products</a></li>
+                        <li><a href="../blogs/all-blogs.html" class="text-gray-400 hover:text-white">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2025 Leaf+ Loom. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/cart.js"></script>
+    <script>
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+
+        function changeImage(src) {
+            document.getElementById('mainImage').src = src;
+        }
+
+        let qty = 1;
+        function incrementQty() {
+            qty++;
+            document.getElementById('quantity').value = qty;
+        }
+
+        function decrementQty() {
+            if (qty > 1) {
+                qty--;
+                document.getElementById('quantity').value = qty;
+            }
+        }
+
+        function addToCartProduct() {
+            const quantity = document.getElementById('quantity').value;
+            addToCart('Round Handle Brush', 299, parseInt(quantity));
+            alert(`Added ${quantity} item(s) to cart!`);
+        }
+
+        function buyNow() {
+            addToCartProduct();
+            window.location.href = 'checkout.html';
+        }
+
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.add('hidden'));
+            document.querySelectorAll('[id^="tab-"]').forEach(btn => {
+                btn.classList.remove('border-primary-green', 'text-primary-green');
+                btn.classList.add('border-transparent', 'text-gray-600');
+            });
+
+            // Show selected tab
+            document.getElementById('content-' + tabName).classList.remove('hidden');
+            document.getElementById('tab-' + tabName).classList.add('border-primary-green', 'text-primary-green');
+            document.getElementById('tab-' + tabName).classList.remove('border-transparent', 'text-gray-600');
+        }
+
+        function openCart() {
+            alert('Cart functionality');
+        }
+
+        function addToCart(name, price, qty) {
+            console.log(`Added: ${name}, Price: ${price}, Qty: ${qty}`);
+        }
+    </script>
+</body>
+</html>
