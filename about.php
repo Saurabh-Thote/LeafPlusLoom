@@ -63,12 +63,12 @@
                 </div>
                 
                 <ul class="hidden lg:flex gap-8 items-center">
-                    <li><a href="index.html" class="nav-link font-medium hover:text-primary-green transition-colors">Home</a></li>
-                    <li><a href="about.html" class="nav-link active font-medium hover:text-primary-green transition-colors">About</a></li>
-                    <li><a href="services.html" class="nav-link font-medium hover:text-primary-green transition-colors">Services</a></li>
-                    <li><a href="products.html" class="nav-link font-medium hover:text-primary-green transition-colors">Products</a></li>
-                    <li><a href="/blogs/all-blogs.html" class="nav-link font-medium hover:text-primary-green transition-colors">Blog</a></li>
-                    <li><a href="contact.html" class="nav-link font-medium hover:text-primary-green transition-colors">Contact</a></li>
+                    <li><a href="index.php" class="nav-link font-medium hover:text-primary-green transition-colors">Home</a></li>
+                    <li><a href="about.php" class="nav-link active font-medium hover:text-primary-green transition-colors">About</a></li>
+                    <li><a href="services.php" class="nav-link font-medium hover:text-primary-green transition-colors">Services</a></li>
+                    <li><a href="products/index.php" class="nav-link font-medium hover:text-primary-green transition-colors">Products</a></li>
+                    <li><a href="blogs/index.php" class="nav-link font-medium hover:text-primary-green transition-colors">Blog</a></li>
+                    <li><a href="contact.php" class="nav-link font-medium hover:text-primary-green transition-colors">Contact</a></li>
                 </ul>
                 
                 <div class="flex items-center gap-4">
@@ -82,12 +82,12 @@
             
             <div id="mobileMenu" class="hidden lg:hidden mt-4 pb-4">
                 <ul class="flex flex-col gap-3">
-                    <li><a href="index.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Home</a></li>
+                    <li><a href="index.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Home</a></li>
                     <li><a href="about.html" class="block py-2 font-medium text-primary-green border-l-4 border-primary-green pl-4">About</a></li>
-                    <li><a href="services.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Services</a></li>
+                    <li><a href="services.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Services</a></li>
                     <li><a href="products.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Products</a></li>
-                    <li><a href="/blogs/all-blogs.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Blog</a></li>
-                    <li><a href="contact.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Contact</a></li>
+                    <li><a href="/blogs/index.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Blog</a></li>
+                    <li><a href="contact.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Contact</a></li>
                 </ul>
             </div>
         </nav>

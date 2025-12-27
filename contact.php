@@ -1,3 +1,89 @@
+<?php
+/**
+ * Contact Page - Leaf+Loom
+ * Handles contact form submissions and saves to database
+ */
+
+// Include database configuration
+require_once 'config.php';
+
+// Initialize variables
+$success_message = '';
+$error_message = '';
+
+// Process form submission
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    
+    // Sanitize and validate input
+    $full_name = trim($_POST['name'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+    $phone_no = trim($_POST['phone'] ?? '');
+    $subject = trim($_POST['subject'] ?? '');
+    $message = trim($_POST['message'] ?? '');
+    
+    // Validation
+    $errors = [];
+    
+    if (empty($full_name)) {
+        $errors[] = "Name is required";
+    } elseif (strlen($full_name) > 30) {
+        $errors[] = "Name must be less than 30 characters";
+    }
+    
+    if (empty($email)) {
+        $errors[] = "Email is required";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = "Invalid email format";
+    } elseif (strlen($email) > 40) {
+        $errors[] = "Email must be less than 40 characters";
+    }
+    
+    if (empty($subject)) {
+        $errors[] = "Subject is required";
+    }
+    
+    if (empty($message)) {
+        $errors[] = "Message is required";
+    }
+    
+    // Convert phone to integer (remove non-numeric characters)
+    $phone_no = preg_replace('/[^0-9]/', '', $phone_no);
+    
+    // If no errors, save to database
+    if (empty($errors)) {
+        try {
+            $sql = "INSERT INTO contacts (full_name, email, phone_no, subject, message, date) 
+                    VALUES (:full_name, :email, :phone_no, :subject, :message, NOW())";
+            
+            $stmt = $conn->prepare($sql);
+            
+            // Bind parameters
+            $stmt->bindParam(':full_name', $full_name, PDO::PARAM_STR);
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt->bindParam(':phone_no', $phone_no, PDO::PARAM_INT);
+            $stmt->bindParam(':subject', $subject, PDO::PARAM_STR);
+            $stmt->bindParam(':message', $message, PDO::PARAM_STR);
+            
+            // Execute the statement
+            if ($stmt->execute()) {
+                $success_message = "Thank you for contacting us! We will get back to you soon.";
+                
+                // Clear form fields after successful submission
+                $full_name = $email = $phone_no = $subject = $message = '';
+            } else {
+                $error_message = "Something went wrong. Please try again.";
+            }
+            
+        } catch (PDOException $e) {
+            error_log("Contact Form Error: " . $e->getMessage());
+            $error_message = "Failed to send message. Please try again later.";
+        }
+    } else {
+        $error_message = implode('<br>', $errors);
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,7 +134,7 @@
         }
     </style>
     
-    <link rel="canonical" href="https://leafplusloom.com/contact.html">
+    <link rel="canonical" href="https://leafplusloom.com/contact.php">
 </head>
 <body class="font-[system-ui] text-gray-800 overflow-x-hidden">
     
@@ -58,19 +144,19 @@
             <div class="flex justify-between items-center">
                 <!-- Logo -->
                 <div class="flex items-center gap-2">
-                    <a href="index.html" class="flex items-center gap-2">
+                    <a href="index.php" class="flex items-center gap-2">
                         <img src="/images/leaf+loom logo 1.png" alt="Leaf+ Loom Logo" class="h-14">
                     </a>
                 </div>
                 
                 <!-- Desktop Navigation -->
                 <ul class="hidden lg:flex gap-8 items-center">
-                    <li><a href="index.html" class="nav-link font-medium hover:text-primary-green transition-colors">Home</a></li>
-                    <li><a href="about.html" class="nav-link font-medium hover:text-primary-green transition-colors">About</a></li>
-                    <li><a href="services.html" class="nav-link font-medium hover:text-primary-green transition-colors">Services</a></li>
-                    <li><a href="products.html" class="nav-link font-medium hover:text-primary-green transition-colors">Products</a></li>
-                    <li><a href="/blogs/all-blogs.html" class="nav-link font-medium hover:text-primary-green transition-colors">Blog</a></li>
-                    <li><a href="contact.html" class="nav-link active font-medium hover:text-primary-green transition-colors">Contact</a></li>
+                    <li><a href="index.php" class="nav-link font-medium hover:text-primary-green transition-colors">Home</a></li>
+                    <li><a href="about.php" class="nav-link font-medium hover:text-primary-green transition-colors">About</a></li>
+                    <li><a href="services.php" class="nav-link font-medium hover:text-primary-green transition-colors">Services</a></li>
+                    <li><a href="products/index.php" class="nav-link font-medium hover:text-primary-green transition-colors">Products</a></li>
+                    <li><a href="blogs/index.php" class="nav-link font-medium hover:text-primary-green transition-colors">Blog</a></li>
+                    <li><a href="contact.php" class="nav-link active font-medium hover:text-primary-green transition-colors">Contact</a></li>
                 </ul>
                 
                 <!-- Cart & Mobile Menu -->
@@ -86,16 +172,17 @@
             <!-- Mobile Navigation -->
             <div id="mobileMenu" class="hidden lg:hidden mt-4 pb-4">
                 <ul class="flex flex-col gap-3">
-                    <li><a href="index.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Home</a></li>
-                    <li><a href="about.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">About</a></li>
-                    <li><a href="services.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Services</a></li>
-                    <li><a href="products.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Products</a></li>
-                    <li><a href="/blogs/all-blogs.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Blog</a></li>
-                    <li><a href="contact.html" class="block py-2 font-medium text-primary-green border-l-4 border-primary-green pl-4">Contact</a></li>
+                    <li><a href="index.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Home</a></li>
+                    <li><a href="about.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">About</a></li>
+                    <li><a href="services.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Services</a></li>
+                    <li><a href="products/index.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Products</a></li>
+                    <li><a href="blogs/index.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Blog</a></li>
+                    <li><a href="contact.php" class="block py-2 font-medium text-primary-green border-l-4 border-primary-green pl-4">Contact</a></li>
                 </ul>
             </div>
         </nav>
     </header>
+
 
     <!-- Page Header -->
     <section class="bg-gradient-to-br from-primary-green to-secondary-green text-white py-16 md:py-20 text-center">
@@ -104,6 +191,7 @@
             <p class="text-lg md:text-xl">We'd love to hear from you. Get in touch with our team</p>
         </div>
     </section>
+
 
     <!-- Contact Section -->
     <section class="py-16 md:py-20">
@@ -125,6 +213,7 @@
                             </div>
                         </div>
 
+
                         <!-- Phone -->
                         <div class="flex gap-4 items-start">
                             <div class="text-4xl text-primary-green flex-shrink-0">📞</div>
@@ -134,6 +223,7 @@
                             </div>
                         </div>
 
+
                         <!-- Email -->
                         <div class="flex gap-4 items-start">
                             <div class="text-4xl text-primary-green flex-shrink-0">✉️</div>
@@ -142,6 +232,7 @@
                                 <p class="text-gray-600 leading-relaxed">info@leafplusloom.com<br>support@leafplusloom.com</p>
                             </div>
                         </div>
+
 
                         <!-- Social Media -->
                         <div class="flex gap-4 items-start">
@@ -158,10 +249,28 @@
                     </div>
                 </div>
 
+
                 <!-- Contact Form (3 columns on large screens) -->
                 <div class="lg:col-span-3 bg-gray-50 p-8 rounded-xl">
                     <h2 class="text-3xl font-bold text-primary-green mb-6">Send us a Message</h2>
-                    <form id="contactForm" onsubmit="submitContactForm(event)" class="space-y-5">
+                    
+                    <!-- Success Message -->
+                    <?php if (!empty($success_message)): ?>
+                        <div class="mb-6 p-4 bg-green-100 border-l-4 border-green-500 text-green-800 rounded-lg">
+                            <p class="font-semibold">✅ Success!</p>
+                            <p><?php echo htmlspecialchars($success_message); ?></p>
+                        </div>
+                    <?php endif; ?>
+                    
+                    <!-- Error Message -->
+                    <?php if (!empty($error_message)): ?>
+                        <div class="mb-6 p-4 bg-red-100 border-l-4 border-red-500 text-red-800 rounded-lg">
+                            <p class="font-semibold">❌ Error!</p>
+                            <p><?php echo $error_message; ?></p>
+                        </div>
+                    <?php endif; ?>
+                    
+                    <form method="POST" action="contact.php" class="space-y-5">
                         
                         <!-- Full Name -->
                         <div>
@@ -171,9 +280,12 @@
                                 id="name" 
                                 name="name" 
                                 required 
+                                maxlength="30"
+                                value="<?php echo htmlspecialchars($full_name ?? ''); ?>"
                                 placeholder="Enter your name"
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:border-primary-green transition-colors">
                         </div>
+
 
                         <!-- Email -->
                         <div>
@@ -183,9 +295,12 @@
                                 id="email" 
                                 name="email" 
                                 required 
+                                maxlength="40"
+                                value="<?php echo htmlspecialchars($email ?? ''); ?>"
                                 placeholder="Enter your email"
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:border-primary-green transition-colors">
                         </div>
+
 
                         <!-- Phone -->
                         <div>
@@ -194,9 +309,11 @@
                                 type="tel" 
                                 id="phone" 
                                 name="phone" 
+                                value="<?php echo htmlspecialchars($phone_no ?? ''); ?>"
                                 placeholder="Enter your phone number"
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:border-primary-green transition-colors">
                         </div>
+
 
                         <!-- Subject -->
                         <div>
@@ -207,14 +324,15 @@
                                 required
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:border-primary-green transition-colors">
                                 <option value="">Select a subject</option>
-                                <option value="product-inquiry">Product Inquiry</option>
-                                <option value="custom-order">Custom Order</option>
-                                <option value="bulk-order">Bulk/Wholesale Order</option>
-                                <option value="support">Customer Support</option>
-                                <option value="partnership">Partnership Opportunity</option>
-                                <option value="other">Other</option>
+                                <option value="product-inquiry" <?php echo (isset($subject) && $subject === 'product-inquiry') ? 'selected' : ''; ?>>Product Inquiry</option>
+                                <option value="custom-order" <?php echo (isset($subject) && $subject === 'custom-order') ? 'selected' : ''; ?>>Custom Order</option>
+                                <option value="bulk-order" <?php echo (isset($subject) && $subject === 'bulk-order') ? 'selected' : ''; ?>>Bulk/Wholesale Order</option>
+                                <option value="support" <?php echo (isset($subject) && $subject === 'support') ? 'selected' : ''; ?>>Customer Support</option>
+                                <option value="partnership" <?php echo (isset($subject) && $subject === 'partnership') ? 'selected' : ''; ?>>Partnership Opportunity</option>
+                                <option value="other" <?php echo (isset($subject) && $subject === 'other') ? 'selected' : ''; ?>>Other</option>
                             </select>
                         </div>
+
 
                         <!-- Message -->
                         <div>
@@ -225,8 +343,9 @@
                                 rows="6" 
                                 required 
                                 placeholder="Write your message here..."
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:border-primary-green transition-colors resize-none"></textarea>
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:border-primary-green transition-colors resize-none"><?php echo htmlspecialchars($message ?? ''); ?></textarea>
                         </div>
+
 
                         <!-- Checkbox -->
                         <div class="flex items-start gap-3">
@@ -236,6 +355,7 @@
                             </label>
                         </div>
 
+
                         <!-- Submit Button -->
                         <button 
                             type="submit" 
@@ -243,14 +363,13 @@
                             Send Message
                         </button>
                     </form>
-
-                    <!-- Form Message -->
-                    <div id="formMessage" class="mt-4 hidden"></div>
                 </div>
+
 
             </div>
         </div>
     </section>
+
 
     <!-- Map Section -->
     <section class="py-16 bg-gray-50">
@@ -271,6 +390,7 @@
         </div>
     </section>
 
+
     <!-- FAQ Section -->
     <section class="py-16 md:py-20">
         <div class="container mx-auto px-6">
@@ -282,40 +402,45 @@
                     <p class="text-gray-600">We typically ship orders within 1-2 business days. Delivery takes 5-7 business days within India.</p>
                 </div>
 
+
                 <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-primary-green">
                     <h3 class="text-lg font-semibold text-primary-green mb-3">Do you offer international shipping?</h3>
                     <p class="text-gray-600">Yes, we ship to select countries. Please contact us for international shipping rates and timelines.</p>
                 </div>
+
 
                 <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-primary-green">
                     <h3 class="text-lg font-semibold text-primary-green mb-3">What is your return policy?</h3>
                     <p class="text-gray-600">We offer a 30-day return policy for unused products in original packaging. Contact our support team to initiate a return.</p>
                 </div>
 
+
                 <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-primary-green">
                     <h3 class="text-lg font-semibold text-primary-green mb-3">Can I customize products?</h3>
                     <p class="text-gray-600">Absolutely! We offer customization for bulk orders. Contact us to discuss your requirements.</p>
                 </div>
 
+
             </div>
         </div>
     </section>
+
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-12 md:py-16">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
                 <div>
-                    <img src="/images/leaf+loom logo 2.jpg" alt="Leaf+ Loom Logo" class="h-14">
+                    <img src="/images/leaf+loom logo 2.jpg" alt="Leaf+ Loom Logo" class="h-14 mb-4">
                     <p class="text-gray-400">Crafting sustainable wooden and bamboo products for a greener tomorrow.</p>
                 </div>
                 <div>
                     <h4 class="text-secondary-green font-semibold mb-4 text-lg">Quick Links</h4>
                     <ul class="space-y-2">
-                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="products.html" class="text-gray-400 hover:text-white transition-colors">Products</a></li>
-                        <li><a href="/blogs/all-blogs.html" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
-                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="about.php" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="products/index.php" class="text-gray-400 hover:text-white transition-colors">Products</a></li>
+                        <li><a href="blogs/index.php" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="contact.php" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
                     </ul>
                 </div>
                 <div>
@@ -343,6 +468,7 @@
         </div>
     </footer>
 
+
     <!-- JavaScript -->
     <script src="js/cart.js"></script>
     <script>
@@ -357,36 +483,19 @@
             alert('Cart functionality - integrate with your cart.js');
         }
         
-        // Contact form submission
-        function submitContactForm(event) {
-            event.preventDefault();
-            
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                subject: document.getElementById('subject').value,
-                message: document.getElementById('message').value
-            };
-            
-            console.log('Form submitted:', formData);
-            
-            // Show success message
-            const messageDiv = document.getElementById('formMessage');
-            messageDiv.className = 'mt-4 p-4 bg-green-100 text-green-800 rounded-lg';
-            messageDiv.textContent = 'Thank you for contacting us! We will get back to you soon.';
-            messageDiv.classList.remove('hidden');
-            
-            // Reset form
-            document.getElementById('contactForm').reset();
-            
-            // Hide message after 5 seconds
-            setTimeout(() => {
-                messageDiv.classList.add('hidden');
+        // Auto-hide success/error messages after 5 seconds
+        window.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                const messages = document.querySelectorAll('.bg-green-100, .bg-red-100');
+                messages.forEach(function(msg) {
+                    msg.style.transition = 'opacity 0.5s';
+                    msg.style.opacity = '0';
+                    setTimeout(function() {
+                        msg.remove();
+                    }, 500);
+                });
             }, 5000);
-            
-            // Add your actual form submission logic here (e.g., API call)
-        }
+        });
     </script>
 </body>
 </html>
