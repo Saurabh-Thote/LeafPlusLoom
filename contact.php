@@ -493,7 +493,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     setTimeout(function() {
                         msg.remove();
                     }, 500);
-                });
+                });  
             }, 5000);
         });
     </script>

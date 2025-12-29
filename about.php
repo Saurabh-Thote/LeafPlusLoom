@@ -79,7 +79,7 @@
                     <button onclick="toggleMenu()" class="lg:hidden text-2xl text-primary-green">☰</button>
                 </div>
             </div>
-            
+             
             <div id="mobileMenu" class="hidden lg:hidden mt-4 pb-4">
                 <ul class="flex flex-col gap-3">
                     <li><a href="index.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Home</a></li>
