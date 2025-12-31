@@ -138,50 +138,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body class="font-[system-ui] text-gray-800 overflow-x-hidden">
     
-    <!-- Header -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <!-- Logo -->
-                <div class="flex items-center gap-2">
-                    <a href="index.php" class="flex items-center gap-2">
-                        <img src="/images/leaf+loom logo 1.png" alt="Leaf+ Loom Logo" class="h-14">
-                    </a>
-                </div>
-                
-                <!-- Desktop Navigation -->
-                <ul class="hidden lg:flex gap-8 items-center">
-                    <li><a href="index.php" class="nav-link font-medium hover:text-primary-green transition-colors">Home</a></li>
-                    <li><a href="about.php" class="nav-link font-medium hover:text-primary-green transition-colors">About</a></li>
-                    <li><a href="services.php" class="nav-link font-medium hover:text-primary-green transition-colors">Services</a></li>
-                    <li><a href="products/index.php" class="nav-link font-medium hover:text-primary-green transition-colors">Products</a></li>
-                    <li><a href="blogs/index.php" class="nav-link font-medium hover:text-primary-green transition-colors">Blog</a></li>
-                    <li><a href="contact.php" class="nav-link active font-medium hover:text-primary-green transition-colors">Contact</a></li>
-                </ul>
-                
-                <!-- Cart & Mobile Menu -->
-                <div class="flex items-center gap-4">
-                    <button onclick="openCart()" class="relative bg-gray-100 hover:bg-gray-200 p-2 rounded-lg transition-colors">
-                        <span class="text-xl">🛒</span>
-                        <span id="cart-count" class="absolute -top-1 -right-1 bg-primary-green text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">0</span>
-                    </button>
-                    <button onclick="toggleMenu()" class="lg:hidden text-2xl text-primary-green">☰</button>
-                </div>
-            </div>
-            
-            <!-- Mobile Navigation -->
-            <div id="mobileMenu" class="hidden lg:hidden mt-4 pb-4">
-                <ul class="flex flex-col gap-3">
-                    <li><a href="index.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Home</a></li>
-                    <li><a href="about.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">About</a></li>
-                    <li><a href="services.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Services</a></li>
-                    <li><a href="products/index.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Products</a></li>
-                    <li><a href="blogs/index.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Blog</a></li>
-                    <li><a href="contact.php" class="block py-2 font-medium text-primary-green border-l-4 border-primary-green pl-4">Contact</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+    <!-- Include Header -->
+    <?php include 'includes/header.php'; ?>
 
 
     <!-- Page Header -->
@@ -425,49 +383,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </section>
 
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12 md:py-16">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-                <div>
-                    <img src="/images/leaf+loom logo 2.jpg" alt="Leaf+ Loom Logo" class="h-14 mb-4">
-                    <p class="text-gray-400">Crafting sustainable wooden and bamboo products for a greener tomorrow.</p>
-                </div>
-                <div>
-                    <h4 class="text-secondary-green font-semibold mb-4 text-lg">Quick Links</h4>
-                    <ul class="space-y-2">
-                        <li><a href="about.php" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="products/index.php" class="text-gray-400 hover:text-white transition-colors">Products</a></li>
-                        <li><a href="blogs/index.php" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
-                        <li><a href="contact.php" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-secondary-green font-semibold mb-4 text-lg">Customer Service</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Shipping Policy</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Return Policy</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms & Conditions</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-secondary-green font-semibold mb-4 text-lg">Connect With Us</h4>
-                    <div class="flex gap-4 text-2xl">
-                        <a href="#" aria-label="Facebook" class="hover:text-secondary-green transition-colors">📘</a>
-                        <a href="#" aria-label="Instagram" class="hover:text-secondary-green transition-colors">📷</a>
-                        <a href="#" aria-label="Twitter" class="hover:text-secondary-green transition-colors">🐦</a>
-                        <a href="#" aria-label="Pinterest" class="hover:text-secondary-green transition-colors">📌</a>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t border-gray-700 pt-6 text-center text-gray-400">
-                <p>&copy; 2025 Leaf+ Loom. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
+    <!-- Include Footer -->
+    <?php include 'includes/footer.php'; ?>
 
     <!-- JavaScript -->
     <script src="js/cart.js"></script>
