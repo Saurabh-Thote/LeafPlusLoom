@@ -1,3 +1,89 @@
+<?php
+/**
+ * Leaf+Loom Products Page - Dynamic Product Listing
+ * Displays all products from database with filter and sort
+ */
+
+// Include database connection
+require_once '../config.php';
+
+// Get filter and sort parameters
+$category_filter = isset($_GET['category']) ? $_GET['category'] : 'all';
+$sort_by = isset($_GET['sort']) ? $_GET['sort'] : 'featured';
+
+// Build SQL query based on filters
+$sql = "SELECT * FROM products WHERE status = 'active'";
+
+// Apply category filter
+if ($category_filter !== 'all') {
+    $sql .= " AND category LIKE :category";
+}
+
+// Apply sorting
+switch ($sort_by) {
+    case 'price-low':
+        $sql .= " ORDER BY price ASC";
+        break;
+    case 'price-high':
+        $sql .= " ORDER BY price DESC";
+        break;
+    case 'newest':
+        $sql .= " ORDER BY created_at DESC";
+        break;
+    case 'featured':
+    default:
+        $sql .= " ORDER BY is_featured DESC, created_at DESC";
+        break;
+}
+
+try {
+    $stmt = $conn->prepare($sql);
+    
+    // Bind category parameter if filtering
+    if ($category_filter !== 'all') {
+        $stmt->bindValue(':category', '%' . $category_filter . '%', PDO::PARAM_STR);
+    }
+    
+    $stmt->execute();
+    $products = $stmt->fetchAll();
+    
+    // Get unique categories for filter dropdown
+    $categories_sql = "SELECT DISTINCT category FROM products WHERE status = 'active' ORDER BY category";
+    $categories_stmt = $conn->query($categories_sql);
+    $categories = $categories_stmt->fetchAll(PDO::FETCH_COLUMN);
+    
+} catch(PDOException $e) {
+    $error_message = "Error fetching products: " . $e->getMessage();
+    $products = [];
+    $categories = [];
+}
+
+// Helper function to display star ratings
+function displayStars($rating) {
+    $fullStars = floor($rating);
+    $halfStar = ($rating - $fullStars) >= 0.5 ? 1 : 0;
+    $emptyStars = 5 - $fullStars - $halfStar;
+    
+    $stars = str_repeat('⭐', $fullStars);
+    $stars .= $halfStar ? '⭐' : '';
+    $stars .= str_repeat('☆', $emptyStars);
+    
+    return $stars;
+}
+
+// Helper function to format price
+function formatPrice($price, $originalPrice = null) {
+    $html = '<span class="text-2xl font-bold text-primary-green">₹' . number_format($price, 0) . '</span>';
+    
+    if ($originalPrice && $originalPrice > $price) {
+        $discount = round((($originalPrice - $price) / $originalPrice) * 100);
+        $html .= ' <span class="text-gray-500 line-through text-sm">₹' . number_format($originalPrice, 0) . '</span>';
+        $html .= ' <span class="text-red-600 text-sm font-semibold">(' . $discount . '% OFF)</span>';
+    }
+    
+    return $html;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,359 +136,162 @@
         }
     </style>
 
-    <link rel="canonical" href="https://leafplusloom.com/products.html">
-
-    <!-- Product Schema Markup -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org/",
-      "@type": "ItemList",
-      "itemListElement": [
-        {
-          "@type": "Product",
-          "position": 1,
-          "name": "Round Handle Brush",
-          "description": "Ergonomic wooden brush with natural bristles",
-          "offers": {
-            "@type": "Offer",
-            "price": "299",
-            "priceCurrency": "INR",
-            "availability": "https://schema.org/InStock"
-          }
-        }
-      ]
-    }
-    </script>
+    <link rel="canonical" href="https://leafplusloom.com/products/">
 </head>
 
 <body class="font-[system-ui] text-gray-800 overflow-x-hidden">
 
     <!-- Include Header -->
-    <?php include 'includes/header.php'; ?>
+    <?php include '../includes/header.php'; ?>
 
     <!-- Page Header -->
     <section class="bg-gradient-to-br from-primary-green to-secondary-green text-white py-16 md:py-20 text-center">
         <div class="container mx-auto px-6">
             <h1 class="text-3xl md:text-5xl font-bold mb-4">Our Products</h1>
             <p class="text-lg md:text-xl">Discover our handcrafted wooden and bamboo collection</p>
+            <p class="text-sm mt-2 text-green-100">Showing <?php echo count($products); ?> products</p>
         </div>
     </section>
 
     <!-- Filter & Sort Section -->
-    <section class="bg-gray-100 py-4">
+    <section class="bg-gray-100 py-4 sticky top-0 z-40 shadow-sm">
         <div class="container mx-auto px-6">
-            <div class="flex flex-col sm:flex-row gap-4 sm:gap-8 justify-center items-center">
+            <form method="GET" class="flex flex-col sm:flex-row gap-4 sm:gap-8 justify-center items-center">
                 <div class="flex items-center gap-3 w-full sm:w-auto">
                     <label for="category" class="font-semibold text-gray-700">Category:</label>
-                    <select id="category" onchange="filterProducts()"
+                    <select id="category" name="category" onchange="this.form.submit()"
                         class="px-4 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:border-primary-green transition-colors w-full sm:w-auto">
-                        <option value="all">All Products</option>
-                        <option value="brushes">Brushes</option>
-                        <option value="combs">Combs</option>
-                        <option value="stationery">Stationery</option>
-                        <option value="accessories">Accessories</option>
+                        <option value="all" <?php echo $category_filter === 'all' ? 'selected' : ''; ?>>All Products</option>
+                        <?php foreach ($categories as $cat): ?>
+                            <option value="<?php echo htmlspecialchars($cat); ?>" 
+                                <?php echo $category_filter === $cat ? 'selected' : ''; ?>>
+                                <?php echo htmlspecialchars($cat); ?>
+                            </option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
                 <div class="flex items-center gap-3 w-full sm:w-auto">
                     <label for="sort" class="font-semibold text-gray-700">Sort By:</label>
-                    <select id="sort" onchange="sortProducts()"
+                    <select id="sort" name="sort" onchange="this.form.submit()"
                         class="px-4 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:border-primary-green transition-colors w-full sm:w-auto">
-                        <option value="featured">Featured</option>
-                        <option value="price-low">Price: Low to High</option>
-                        <option value="price-high">Price: High to Low</option>
-                        <option value="newest">Newest First</option>
+                        <option value="featured" <?php echo $sort_by === 'featured' ? 'selected' : ''; ?>>Featured</option>
+                        <option value="price-low" <?php echo $sort_by === 'price-low' ? 'selected' : ''; ?>>Price: Low to High</option>
+                        <option value="price-high" <?php echo $sort_by === 'price-high' ? 'selected' : ''; ?>>Price: High to Low</option>
+                        <option value="newest" <?php echo $sort_by === 'newest' ? 'selected' : ''; ?>>Newest First</option>
                     </select>
                 </div>
-            </div>
+            </form>
         </div>
     </section>
 
     <!-- Products Grid -->
     <section class="py-16 md:py-20">
         <div class="container mx-auto px-6">
-            <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
-
-                <!-- Product 1 -->
-                <article
-                    class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group"
-                    itemscope itemtype="https://schema.org/Product">
-                    <div class="relative h-72 bg-gray-100 overflow-hidden">
-                        <img src="/images/round-handle-wooden-brush.jpg" alt="Round Handle Wooden Brush"
-                            itemprop="image"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        <span
-                            class="absolute top-4 right-4 bg-primary-green text-white text-xs font-semibold px-3 py-1 rounded">New</span>
-                        <div
-                            class="absolute inset-0 bg-primary-green/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <a href="product-details.html?id=round-brush"
-                                class="bg-white text-primary-green font-semibold px-6 py-2 rounded-lg hover:bg-gray-100 transition-colors">Quick
-                                View</a>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 itemprop="name" class="text-lg font-semibold mb-2">Round Handle Brush</h3>
-                        <p class="text-sm text-gray-600 mb-3 leading-relaxed" itemprop="description">Ergonomic wooden
-                            brush with natural bristles for smooth hair</p>
-                        <div class="text-sm text-amber-500 mb-3">
-                            ⭐⭐⭐⭐⭐ <span class="text-gray-500">(24 reviews)</span>
-                        </div>
-                        <div class="flex justify-between items-center mt-4" itemprop="offers" itemscope
-                            itemtype="https://schema.org/Offer">
-                            <span class="text-2xl font-bold text-primary-green" itemprop="price"
-                                content="299">₹299</span>
-                            <meta itemprop="priceCurrency" content="INR">
-                            <link itemprop="availability" href="https://schema.org/InStock">
-                            <button onclick="addToCart('Round Handle Brush', 299, 1)"
-                                class="bg-secondary-green hover:bg-primary-green text-white font-semibold px-5 py-2 rounded-lg text-sm hover:scale-105 transition-transform">Add
-                                to Cart</button>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Product 2 -->
-                <article
-                    class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group"
-                    itemscope itemtype="https://schema.org/Product">
-                    <div class="relative h-72 bg-gray-100 overflow-hidden">
-                        <img src="images/products/kids-brush.jpg" alt="Kids Wooden Brush" itemprop="image"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        <span
-                            class="absolute top-4 right-4 bg-primary-green text-white text-xs font-semibold px-3 py-1 rounded">Popular</span>
-                        <div
-                            class="absolute inset-0 bg-primary-green/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <a href="product-details.html?id=kids-brush"
-                                class="bg-white text-primary-green font-semibold px-6 py-2 rounded-lg hover:bg-gray-100 transition-colors">Quick
-                                View</a>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 itemprop="name" class="text-lg font-semibold mb-2">Kids Brush</h3>
-                        <p class="text-sm text-gray-600 mb-3 leading-relaxed" itemprop="description">Gentle bamboo brush
-                            perfect for children's delicate hair</p>
-                        <div class="text-sm text-amber-500 mb-3">
-                            ⭐⭐⭐⭐⭐ <span class="text-gray-500">(18 reviews)</span>
-                        </div>
-                        <div class="flex justify-between items-center mt-4" itemprop="offers" itemscope
-                            itemtype="https://schema.org/Offer">
-                            <span class="text-2xl font-bold text-primary-green" itemprop="price"
-                                content="249">₹249</span>
-                            <meta itemprop="priceCurrency" content="INR">
-                            <link itemprop="availability" href="https://schema.org/InStock">
-                            <button onclick="addToCart('Kids Brush', 249, 1)"
-                                class="bg-secondary-green hover:bg-primary-green text-white font-semibold px-5 py-2 rounded-lg text-sm hover:scale-105 transition-transform">Add
-                                to Cart</button>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Product 3 -->
-                <article
-                    class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group"
-                    itemscope itemtype="https://schema.org/Product">
-                    <div class="relative h-72 bg-gray-100 overflow-hidden">
-                        <img src="/images/premium-wooden-comb.png" alt="Premium Wooden Comb" itemprop="image"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        <div
-                            class="absolute inset-0 bg-primary-green/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <a href="product-details.html?id=premium-comb"
-                                class="bg-white text-primary-green font-semibold px-6 py-2 rounded-lg hover:bg-gray-100 transition-colors">Quick
-                                View</a>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 itemprop="name" class="text-lg font-semibold mb-2">Premium Comb</h3>
-                        <p class="text-sm text-gray-600 mb-3 leading-relaxed" itemprop="description">Wide-tooth wooden
-                            comb for all hair types</p>
-                        <div class="text-sm text-amber-500 mb-3">
-                            ⭐⭐⭐⭐⭐ <span class="text-gray-500">(32 reviews)</span>
-                        </div>
-                        <div class="flex justify-between items-center mt-4" itemprop="offers" itemscope
-                            itemtype="https://schema.org/Offer">
-                            <span class="text-2xl font-bold text-primary-green" itemprop="price"
-                                content="399">₹399</span>
-                            <meta itemprop="priceCurrency" content="INR">
-                            <link itemprop="availability" href="https://schema.org/InStock">
-                            <button onclick="addToCart('Premium Comb', 399, 1)"
-                                class="bg-secondary-green hover:bg-primary-green text-white font-semibold px-5 py-2 rounded-lg text-sm hover:scale-105 transition-transform">Add
-                                to Cart</button>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Product 4 -->
-                <article
-                    class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group"
-                    itemscope itemtype="https://schema.org/Product">
-                    <div class="relative h-72 bg-gray-100 overflow-hidden">
-                        <img src="images/products/wooden-pen.jpg" alt="Wooden Pen" itemprop="image"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        <span
-                            class="absolute top-4 right-4 bg-primary-green text-white text-xs font-semibold px-3 py-1 rounded">Eco</span>
-                        <div
-                            class="absolute inset-0 bg-primary-green/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <a href="product-details.html?id=wooden-pen"
-                                class="bg-white text-primary-green font-semibold px-6 py-2 rounded-lg hover:bg-gray-100 transition-colors">Quick
-                                View</a>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 itemprop="name" class="text-lg font-semibold mb-2">Wooden Pen</h3>
-                        <p class="text-sm text-gray-600 mb-3 leading-relaxed" itemprop="description">Elegant bamboo pen
-                            with smooth ink flow</p>
-                        <div class="text-sm text-amber-500 mb-3">
-                            ⭐⭐⭐⭐☆ <span class="text-gray-500">(15 reviews)</span>
-                        </div>
-                        <div class="flex justify-between items-center mt-4" itemprop="offers" itemscope
-                            itemtype="https://schema.org/Offer">
-                            <span class="text-2xl font-bold text-primary-green" itemprop="price"
-                                content="199">₹199</span>
-                            <meta itemprop="priceCurrency" content="INR">
-                            <link itemprop="availability" href="https://schema.org/InStock">
-                            <button onclick="addToCart('Wooden Pen', 199, 1)"
-                                class="bg-secondary-green hover:bg-primary-green text-white font-semibold px-5 py-2 rounded-lg text-sm hover:scale-105 transition-transform">Add
-                                to Cart</button>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Product 5 -->
-                <article
-                    class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group"
-                    itemscope itemtype="https://schema.org/Product">
-                    <div class="relative h-72 bg-gray-100 overflow-hidden">
-                        <img src="images/products/bamboo-toothbrush.jpg" alt="Bamboo Toothbrush" itemprop="image"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        <div
-                            class="absolute inset-0 bg-primary-green/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <a href="product-details.html?id=bamboo-toothbrush"
-                                class="bg-white text-primary-green font-semibold px-6 py-2 rounded-lg hover:bg-gray-100 transition-colors">Quick
-                                View</a>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 itemprop="name" class="text-lg font-semibold mb-2">Bamboo Toothbrush</h3>
-                        <p class="text-sm text-gray-600 mb-3 leading-relaxed" itemprop="description">100% biodegradable
-                            toothbrush with soft bristles</p>
-                        <div class="text-sm text-amber-500 mb-3">
-                            ⭐⭐⭐⭐⭐ <span class="text-gray-500">(41 reviews)</span>
-                        </div>
-                        <div class="flex justify-between items-center mt-4" itemprop="offers" itemscope
-                            itemtype="https://schema.org/Offer">
-                            <span class="text-2xl font-bold text-primary-green" itemprop="price"
-                                content="149">₹149</span>
-                            <meta itemprop="priceCurrency" content="INR">
-                            <link itemprop="availability" href="https://schema.org/InStock">
-                            <button onclick="addToCart('Bamboo Toothbrush', 149, 1)"
-                                class="bg-secondary-green hover:bg-primary-green text-white font-semibold px-5 py-2 rounded-lg text-sm hover:scale-105 transition-transform">Add
-                                to Cart</button>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Product 6 -->
-                <article
-                    class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group"
-                    itemscope itemtype="https://schema.org/Product">
-                    <div class="relative h-72 bg-gray-100 overflow-hidden">
-                        <img src="images/products/wooden-spoon-set.jpg" alt="Wooden Spoon Set" itemprop="image"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        <div
-                            class="absolute inset-0 bg-primary-green/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <a href="product-details.html?id=wooden-spoon-set"
-                                class="bg-white text-primary-green font-semibold px-6 py-2 rounded-lg hover:bg-gray-100 transition-colors">Quick
-                                View</a>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 itemprop="name" class="text-lg font-semibold mb-2">Wooden Spoon Set</h3>
-                        <p class="text-sm text-gray-600 mb-3 leading-relaxed" itemprop="description">Set of 5
-                            handcrafted wooden cooking spoons</p>
-                        <div class="text-sm text-amber-500 mb-3">
-                            ⭐⭐⭐⭐⭐ <span class="text-gray-500">(27 reviews)</span>
-                        </div>
-                        <div class="flex justify-between items-center mt-4" itemprop="offers" itemscope
-                            itemtype="https://schema.org/Offer">
-                            <span class="text-2xl font-bold text-primary-green" itemprop="price"
-                                content="549">₹549</span>
-                            <meta itemprop="priceCurrency" content="INR">
-                            <link itemprop="availability" href="https://schema.org/InStock">
-                            <button onclick="addToCart('Wooden Spoon Set', 549, 1)"
-                                class="bg-secondary-green hover:bg-primary-green text-white font-semibold px-5 py-2 rounded-lg text-sm hover:scale-105 transition-transform">Add
-                                to Cart</button>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Product 7 -->
-                <article
-                    class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group"
-                    itemscope itemtype="https://schema.org/Product">
-                    <div class="relative h-72 bg-gray-100 overflow-hidden">
-                        <img src="images/products/bamboo-keychain.jpg" alt="Bamboo Keychain" itemprop="image"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        <div
-                            class="absolute inset-0 bg-primary-green/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <a href="product-details.html?id=bamboo-keychain"
-                                class="bg-white text-primary-green font-semibold px-6 py-2 rounded-lg hover:bg-gray-100 transition-colors">Quick
-                                View</a>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 itemprop="name" class="text-lg font-semibold mb-2">Bamboo Keychain</h3>
-                        <p class="text-sm text-gray-600 mb-3 leading-relaxed" itemprop="description">Customizable bamboo
-                            keychain with engraving option</p>
-                        <div class="text-sm text-amber-500 mb-3">
-                            ⭐⭐⭐⭐☆ <span class="text-gray-500">(12 reviews)</span>
-                        </div>
-                        <div class="flex justify-between items-center mt-4" itemprop="offers" itemscope
-                            itemtype="https://schema.org/Offer">
-                            <span class="text-2xl font-bold text-primary-green" itemprop="price" content="99">₹99</span>
-                            <meta itemprop="priceCurrency" content="INR">
-                            <link itemprop="availability" href="https://schema.org/InStock">
-                            <button onclick="addToCart('Bamboo Keychain', 99, 1)"
-                                class="bg-secondary-green hover:bg-primary-green text-white font-semibold px-5 py-2 rounded-lg text-sm hover:scale-105 transition-transform">Add
-                                to Cart</button>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Product 8 -->
-                <article
-                    class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group"
-                    itemscope itemtype="https://schema.org/Product">
-                    <div class="relative h-72 bg-gray-100 overflow-hidden">
-                        <img src="images/products/wooden-phone-stand.jpg" alt="Wooden Phone Stand" itemprop="image"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        <span
-                            class="absolute top-4 right-4 bg-primary-green text-white text-xs font-semibold px-3 py-1 rounded">New</span>
-                        <div
-                            class="absolute inset-0 bg-primary-green/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <a href="product-details.html?id=wooden-phone-stand"
-                                class="bg-white text-primary-green font-semibold px-6 py-2 rounded-lg hover:bg-gray-100 transition-colors">Quick
-                                View</a>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 itemprop="name" class="text-lg font-semibold mb-2">Wooden Phone Stand</h3>
-                        <p class="text-sm text-gray-600 mb-3 leading-relaxed" itemprop="description">Adjustable wooden
-                            stand for smartphones and tablets</p>
-                        <div class="text-sm text-amber-500 mb-3">
-                            ⭐⭐⭐⭐⭐ <span class="text-gray-500">(19 reviews)</span>
-                        </div>
-                        <div class="flex justify-between items-center mt-4" itemprop="offers" itemscope
-                            itemtype="https://schema.org/Offer">
-                            <span class="text-2xl font-bold text-primary-green" itemprop="price"
-                                content="449">₹449</span>
-                            <meta itemprop="priceCurrency" content="INR">
-                            <link itemprop="availability" href="https://schema.org/InStock">
-                            <button onclick="addToCart('Wooden Phone Stand', 449, 1)"
-                                class="bg-secondary-green hover:bg-primary-green text-white font-semibold px-5 py-2 rounded-lg text-sm hover:scale-105 transition-transform">Add
-                                to Cart</button>
-                        </div>
-                    </div>
-                </article>
-
-            </div>
+            
+            <?php if (isset($error_message)): ?>
+                <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-8 rounded">
+                    <p class="text-red-700"><?php echo htmlspecialchars($error_message); ?></p>
+                </div>
+            <?php endif; ?>
+            
+            <?php if (empty($products)): ?>
+                <div class="text-center py-16">
+                    <div class="text-6xl mb-4">📦</div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">No Products Found</h3>
+                    <p class="text-gray-600 mb-6">Try changing your filters or check back later for new products.</p>
+                    <a href="index.php" class="bg-primary-green hover:bg-primary-green-dark text-white font-semibold px-6 py-3 rounded-lg transition-colors">
+                        View All Products
+                    </a>
+                </div>
+            <?php else: ?>
+                
+                <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+                    
+                    <?php foreach ($products as $product): ?>
+                        <article
+                            class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group"
+                            itemscope itemtype="https://schema.org/Product">
+                            
+                            <!-- Product Image -->
+                            <div class="relative h-72 bg-gray-100 overflow-hidden">
+                                <img src="<?php echo htmlspecialchars($product['main_image']); ?>" 
+                                     alt="<?php echo htmlspecialchars($product['title']); ?>"
+                                     itemprop="image"
+                                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                     onerror="this.src='../images/placeholder.jpg'">
+                                
+                                <!-- Badges -->
+                                <?php if ($product['is_new_arrival']): ?>
+                                    <span class="absolute top-4 right-4 bg-primary-green text-white text-xs font-semibold px-3 py-1 rounded">New</span>
+                                <?php elseif ($product['is_featured']): ?>
+                                    <span class="absolute top-4 right-4 bg-amber-500 text-white text-xs font-semibold px-3 py-1 rounded">Featured</span>
+                                <?php elseif ($product['discount_percentage'] > 0): ?>
+                                    <span class="absolute top-4 right-4 bg-red-500 text-white text-xs font-semibold px-3 py-1 rounded">
+                                        <?php echo $product['discount_percentage']; ?>% OFF
+                                    </span>
+                                <?php endif; ?>
+                                
+                                <!-- Stock Badge -->
+                                <?php if ($product['stock_status'] !== 'in-stock'): ?>
+                                    <span class="absolute top-4 left-4 bg-gray-800 text-white text-xs font-semibold px-3 py-1 rounded">
+                                        Out of Stock
+                                    </span>
+                                <?php endif; ?>
+                                
+                                <!-- Quick View Overlay -->
+                                <div class="absolute inset-0 bg-primary-green/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <a href="../product/<?php echo htmlspecialchars($product['slug']); ?>.php"
+                                        class="bg-white text-primary-green font-semibold px-6 py-2 rounded-lg hover:bg-gray-100 transition-colors">
+                                        Quick View
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <!-- Product Info -->
+                            <div class="p-6">
+                                <h3 itemprop="name" class="text-lg font-semibold mb-2 line-clamp-2">
+                                    <?php echo htmlspecialchars($product['title']); ?>
+                                </h3>
+                                
+                                <p class="text-sm text-gray-600 mb-3 leading-relaxed line-clamp-2" itemprop="description">
+                                    <?php echo htmlspecialchars($product['short_description']); ?>
+                                </p>
+                                
+                                <!-- Rating -->
+                                <?php if ($product['total_reviews'] > 0): ?>
+                                    <div class="text-sm text-amber-500 mb-3">
+                                        <?php echo displayStars($product['average_rating']); ?>
+                                        <span class="text-gray-500">(<?php echo $product['total_reviews']; ?> reviews)</span>
+                                    </div>
+                                <?php endif; ?>
+                                
+                                <!-- Price & Add to Cart -->
+                                <div class="flex justify-between items-center mt-4" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                    <div>
+                                        <?php echo formatPrice($product['price'], $product['original_price']); ?>
+                                    </div>
+                                    <meta itemprop="priceCurrency" content="INR">
+                                    <meta itemprop="price" content="<?php echo $product['price']; ?>">
+                                    <link itemprop="availability" href="https://schema.org/<?php echo $product['stock_status'] === 'in-stock' ? 'InStock' : 'OutOfStock'; ?>">
+                                    
+                                    <?php if ($product['stock_status'] === 'in-stock'): ?>
+                                        <button onclick="addToCart('<?php echo htmlspecialchars($product['title'], ENT_QUOTES); ?>', <?php echo $product['price']; ?>, 1)"
+                                            class="bg-secondary-green hover:bg-primary-green text-white font-semibold px-5 py-2 rounded-lg text-sm hover:scale-105 transition-transform">
+                                            Add to Cart
+                                        </button>
+                                    <?php else: ?>
+                                        <button disabled
+                                            class="bg-gray-300 text-gray-600 font-semibold px-5 py-2 rounded-lg text-sm cursor-not-allowed">
+                                            Out of Stock
+                                        </button>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </article>
+                    <?php endforeach; ?>
+                    
+                </div>
+            <?php endif; ?>
         </div>
     </section>
 
@@ -422,10 +311,10 @@
     </section>
 
     <!-- Include Footer -->
-    <?php include 'includes/footer.php'; ?>
+    <?php include '../includes/footer.php'; ?>
 
     <!-- JavaScript -->
-    <script src="js/cart.js"></script>
+    <script src="../js/cart.js"></script>
     <script>
         // Mobile menu toggle
         function toggleMenu() {
@@ -441,21 +330,28 @@
         // Add to cart
         function addToCart(productName, price, quantity) {
             console.log(`Added to cart: ${productName}, Price: ₹${price}, Qty: ${quantity}`);
+            
+            // Show success notification
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-fade-in';
+            notification.innerHTML = `✓ ${productName} added to cart!`;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+            
             // Your cart.js logic here
+            updateCartCount();
         }
 
-        // Filter products
-        function filterProducts() {
-            const category = document.getElementById('category').value;
-            console.log('Filtering by category:', category);
-            // Add your filter logic here
-        }
-
-        // Sort products
-        function sortProducts() {
-            const sortBy = document.getElementById('sort').value;
-            console.log('Sorting by:', sortBy);
-            // Add your sort logic here
+        // Update cart count
+        function updateCartCount() {
+            const cartCount = document.getElementById('cart-count');
+            if (cartCount) {
+                const currentCount = parseInt(cartCount.textContent);
+                cartCount.textContent = currentCount + 1;
+            }
         }
 
         // Newsletter subscription
@@ -466,6 +362,19 @@
             alert('Thank you for subscribing!');
             event.target.reset();
         }
+        
+        // Add fade-in animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fade-in {
+                from { opacity: 0; transform: translateY(-20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            .animate-fade-in {
+                animation: fade-in 0.3s ease-out;
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 
