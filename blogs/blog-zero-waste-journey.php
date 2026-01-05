@@ -97,18 +97,18 @@
         <nav class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
                 <div class="flex items-center gap-2">
-                    <a href="../index.html" class="flex items-center gap-2">
+                    <a href="../index.php" class="flex items-center gap-2">
                         <img src="/images/leaf+loom logo 1.png" alt="Leaf+ Loom Logo" class="h-14">
                     </a>
                 </div>
                 
                 <ul class="hidden lg:flex gap-8 items-center">
-                    <li><a href="../index.html" class="nav-link font-medium hover:text-primary-green transition-colors">Home</a></li>
-                    <li><a href="../about.html" class="nav-link font-medium hover:text-primary-green transition-colors">About</a></li>
-                    <li><a href="../services.html" class="nav-link font-medium hover:text-primary-green transition-colors">Services</a></li>
-                    <li><a href="../products.html" class="nav-link font-medium hover:text-primary-green transition-colors">Products</a></li>
-                    <li><a href="all-blogs.html" class="nav-link active font-medium hover:text-primary-green transition-colors">Blog</a></li>
-                    <li><a href="../contact.html" class="nav-link font-medium hover:text-primary-green transition-colors">Contact</a></li>
+                    <li><a href="../index.php" class="nav-link font-medium hover:text-primary-green transition-colors">Home</a></li>
+                    <li><a href="../about.php" class="nav-link font-medium hover:text-primary-green transition-colors">About</a></li>
+                    <li><a href="../services.php" class="nav-link font-medium hover:text-primary-green transition-colors">Services</a></li>
+                    <li><a href="../products.php" class="nav-link font-medium hover:text-primary-green transition-colors">Products</a></li>
+                    <li><a href="all-blogs.php" class="nav-link active font-medium hover:text-primary-green transition-colors">Blog</a></li>
+                    <li><a href="../contact.php" class="nav-link font-medium hover:text-primary-green transition-colors">Contact</a></li>
                 </ul>
                 
                 <div class="flex items-center gap-4">
@@ -122,12 +122,12 @@
             
             <div id="mobileMenu" class="hidden lg:hidden mt-4 pb-4">
                 <ul class="flex flex-col gap-3">
-                    <li><a href="../index.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Home</a></li>
-                    <li><a href="../about.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">About</a></li>
-                    <li><a href="../services.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Services</a></li>
-                    <li><a href="../products.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Products</a></li>
-                    <li><a href="all-blogs.html" class="block py-2 font-medium text-primary-green border-l-4 border-primary-green pl-4">Blog</a></li>
-                    <li><a href="../contact.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Contact</a></li>
+                    <li><a href="../index.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Home</a></li>
+                    <li><a href="../about.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">About</a></li>
+                    <li><a href="../services.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Services</a></li>
+                    <li><a href="../products.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Products</a></li>
+                    <li><a href="all-blogs.php" class="block py-2 font-medium text-primary-green border-l-4 border-primary-green pl-4">Blog</a></li>
+                    <li><a href="../contact.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Contact</a></li>
                 </ul>
             </div>
         </nav>
@@ -136,7 +136,7 @@
     <!-- Blog Post Hero Section -->
     <section class="relative h-96 bg-gray-900 overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-br from-black/60 to-black/40 z-10"></div>
-        <img src="/images/zero-waste-3.avif" alt="Zero Waste Living Guide" class="absolute inset-0 w-full h-full object-cover">
+        <img src="/images/zero-waste-living-guide.jpg" alt="Zero Waste Living Guide" class="absolute inset-0 w-full h-full object-cover">
         <div class="relative z-20 container mx-auto px-6 h-full flex items-center">
             <div class="max-w-4xl">
                 <span class="inline-block bg-secondary-green text-white text-sm font-semibold px-4 py-2 rounded mb-4">CHRISTMAS GETS LOUDER</span>
@@ -425,7 +425,7 @@
                     <article class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
                         <a href="blog-post.html?id=plastic-alternatives" class="block">
                             <div class="h-48 overflow-hidden">
-                                <img src="../images/blog/plastic-alternatives.jpg" alt="Plastic Free Alternatives" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
+                                <img src="/images/blog/plastic-free-alternative.jpg" alt="Plastic Free Alternatives" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
                             </div>
                             <div class="p-6">
                                 <h3 class="text-lg font-bold text-gray-900 mb-2 hover:text-primary-green transition-colors">15 Easy Plastic-Free Swaps for Your Daily Routine</h3>
@@ -437,7 +437,7 @@
                     <article class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
                         <a href="blog-post.html?id=composting-guide" class="block">
                             <div class="h-48 overflow-hidden">
-                                <img src="../images/blog/composting-guide.jpg" alt="Composting Guide" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
+                                <img src="../images/blog/composting-at-home-guide.jpg" alt="Composting Guide" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
                             </div>
                             <div class="p-6">
                                 <h3 class="text-lg font-bold text-gray-900 mb-2 hover:text-primary-green transition-colors">Beginner's Guide to Composting at Home</h3>

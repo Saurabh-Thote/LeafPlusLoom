@@ -144,14 +144,7 @@ function formatPrice($price, $originalPrice = null) {
     <!-- Include Header -->
     <?php include '../includes/header.php'; ?>
 
-    <!-- Page Header -->
-    <section class="bg-gradient-to-br from-primary-green to-secondary-green text-white py-16 md:py-20 text-center">
-        <div class="container mx-auto px-6">
-            <h1 class="text-3xl md:text-5xl font-bold mb-4">Our Products</h1>
-            <p class="text-lg md:text-xl">Discover our handcrafted wooden and bamboo collection</p>
-            <p class="text-sm mt-2 text-green-100">Showing <?php echo count($products); ?> products</p>
-        </div>
-    </section>
+    
 
     <!-- Filter & Sort Section -->
     <section class="bg-gray-100 py-4 sticky top-0 z-40 shadow-sm">

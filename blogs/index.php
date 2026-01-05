@@ -78,50 +78,8 @@
 </head>
 <body class="font-[system-ui] text-gray-800 overflow-x-hidden">
     
-    <!-- Header -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <!-- Logo -->
-                <div class="flex items-center gap-2">
-                    <a href="../index.html" class="flex items-center gap-2">
-                        <img src="/images/leaf+loom logo 1.png" alt="Leaf+ Loom Logo" class="h-14">
-                    </a>
-                </div>
-                
-                <!-- Desktop Navigation -->
-                <ul class="hidden lg:flex gap-8 items-center">
-                    <li><a href="../index.html" class="nav-link font-medium hover:text-primary-green transition-colors">Home</a></li>
-                    <li><a href="../about.html" class="nav-link font-medium hover:text-primary-green transition-colors">About</a></li>
-                    <li><a href="../services.html" class="nav-link font-medium hover:text-primary-green transition-colors">Services</a></li>
-                    <li><a href="../products.html" class="nav-link font-medium hover:text-primary-green transition-colors">Products</a></li>
-                    <li><a href="all-blogs.html" class="nav-link active font-medium hover:text-primary-green transition-colors">Blog</a></li>
-                    <li><a href="../contact.html" class="nav-link font-medium hover:text-primary-green transition-colors">Contact</a></li>
-                </ul>
-                
-                <!-- Cart & Mobile Menu -->
-                <div class="flex items-center gap-4">
-                    <button onclick="openCart()" class="relative bg-gray-100 hover:bg-gray-200 p-2 rounded-lg transition-colors">
-                        <span class="text-xl">🛒</span>
-                        <span id="cart-count" class="absolute -top-1 -right-1 bg-primary-green text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">0</span>
-                    </button>
-                    <button onclick="toggleMenu()" class="lg:hidden text-2xl text-primary-green">☰</button>
-                </div>
-            </div>
-            
-            <!-- Mobile Navigation -->
-            <div id="mobileMenu" class="hidden lg:hidden mt-4 pb-4">
-                <ul class="flex flex-col gap-3">
-                    <li><a href="../index.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Home</a></li>
-                    <li><a href="../about.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">About</a></li>
-                    <li><a href="../services.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Services</a></li>
-                    <li><a href="../products.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Products</a></li>
-                    <li><a href="all-blogs.html" class="block py-2 font-medium text-primary-green border-l-4 border-primary-green pl-4">Blog</a></li>
-                    <li><a href="../contact.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Contact</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+    <!-- Include Header -->
+    <?php include '../includes/header.php'; ?>
 
     <!-- Page Header -->
     <section class="bg-gradient-to-br from-primary-green to-secondary-green text-white py-16 md:py-20 text-center">
@@ -149,7 +107,7 @@
         <div class="container mx-auto px-6">
             <article class="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white rounded-xl overflow-hidden shadow-lg" itemscope itemtype="https://schema.org/BlogPosting">
                 <div class="relative h-64 lg:h-auto">
-                    <img src="/images/zero-waste-3.avif" alt="Zero Waste Living Guide" itemprop="image" class="w-full h-full object-cover">
+                    <img src="/images/zero-waste-living-guide.jpg" alt="Zero Waste Living Guide" itemprop="image" class="w-full h-full object-cover">
                     <span class="absolute top-4 left-4 bg-primary-green text-white text-sm font-semibold px-4 py-2 rounded">Featured</span>
                 </div>
                 <div class="p-6 lg:p-8 flex flex-col justify-center">
@@ -160,7 +118,7 @@
                     </div>
                     <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4" itemprop="headline">10 Simple Steps to Start Your Zero Waste Journey</h2>
                     <p class="text-gray-600 mb-6 leading-relaxed" itemprop="description">Transitioning to a zero-waste lifestyle doesn't have to be overwhelming. Discover practical steps you can take today to reduce your environmental footprint and embrace sustainable living. From kitchen swaps to bathroom essentials, learn how small changes create lasting impact.</p>
-                    <a href="/blogs/blog-zero-waste-journey.html" class="inline-block bg-primary-green hover:bg-primary-green-dark text-white font-semibold px-6 py-3 rounded-lg transition-colors w-max" itemprop="url">Read More</a>
+                    <a href="/blogs/blog-zero-waste-journey.php" class="inline-block bg-primary-green hover:bg-primary-green-dark text-white font-semibold px-6 py-3 rounded-lg transition-colors w-max" itemprop="url">Read More</a>
                 </div>
             </article>
         </div>
