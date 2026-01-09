@@ -136,7 +136,7 @@ function formatPrice($price, $originalPrice = null) {
         }
     </style>
 
-    <link rel="canonical" href="https://leafplusloom.com/products/">
+    <link rel="canonical" href="https://leafplusloom.infinityfreeapp.com/products/">
 </head>
 
 <body class="font-[system-ui] text-gray-800 overflow-x-hidden">
@@ -192,7 +192,7 @@ function formatPrice($price, $originalPrice = null) {
                     <div class="text-6xl mb-4">📦</div>
                     <h3 class="text-2xl font-bold text-gray-800 mb-2">No Products Found</h3>
                     <p class="text-gray-600 mb-6">Try changing your filters or check back later for new products.</p>
-                    <a href="index.php" class="bg-primary-green hover:bg-primary-green-dark text-white font-semibold px-6 py-3 rounded-lg transition-colors">
+                    <a href="/products/" class="bg-primary-green hover:bg-primary-green-dark text-white font-semibold px-6 py-3 rounded-lg transition-colors">
                         View All Products
                     </a>
                 </div>
@@ -233,7 +233,7 @@ function formatPrice($price, $originalPrice = null) {
                                 
                                 <!-- Quick View Overlay -->
                                 <div class="absolute inset-0 bg-primary-green/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                    <a href="../product/<?php echo htmlspecialchars($product['slug']); ?>.php"
+                                    <a href="/product/<?php echo htmlspecialchars($product['slug']); ?>.php"
                                         class="bg-white text-primary-green font-semibold px-6 py-2 rounded-lg hover:bg-gray-100 transition-colors">
                                         Quick View
                                     </a>

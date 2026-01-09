@@ -87,14 +87,14 @@
     <!-- Hero Section -->
     <section class="relative bg-gradient-to-br from-primary-green/90 to-leaf-accent/90 text-white py-24 md:py-32 text-center min-h-[500px] flex items-center justify-center">
         <!-- Background Image (add via inline style or replace with your image) -->
-        <div class="absolute inset-0 bg-[url('../images/hero/hero-bg.jpg')] bg-cover bg-center -z-10"></div>
+        <div class="absolute inset-0 bg-[url('/images/hero/hero-bg.jpg')] bg-cover bg-center -z-10"></div>
         
         <div class="container mx-auto px-6 relative z-10 animate-fadeInUp">
             <h1 class="text-3xl md:text-5xl font-bold mb-6 drop-shadow-lg">Sustainable Living Starts Here</h1>
             <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Discover premium handcrafted wooden and bamboo products for an eco-friendly lifestyle</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="products.html" class="inline-block bg-primary-green hover:bg-primary-green-dark text-white font-semibold px-7 py-3 rounded-lg shadow-lg hover:-translate-y-1 hover:shadow-xl transition-all">Shop Now</a>
-                <a href="about.html" class="inline-block bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary-green font-semibold px-7 py-3 rounded-lg transition-all">Learn More</a>
+                <a href="/products.php" class="inline-block bg-primary-green hover:bg-primary-green-dark text-white font-semibold px-7 py-3 rounded-lg shadow-lg hover:-translate-y-1 hover:shadow-xl transition-all">Shop Now</a>
+                <a href="/about.php" class="inline-block bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary-green font-semibold px-7 py-3 rounded-lg transition-all">Learn More</a>
             </div>
         </div>
     </section>
@@ -174,7 +174,7 @@
             </div>
             
             <div class="text-center mt-12">
-                <a href="products.html" class="inline-block bg-primary-green hover:bg-primary-green-dark text-white font-semibold px-7 py-3 rounded-lg shadow-md hover:-translate-y-1 hover:shadow-lg transition-all">View All Products</a>
+                <a href="/products.php" class="inline-block bg-primary-green hover:bg-primary-green-dark text-white font-semibold px-7 py-3 rounded-lg shadow-md hover:-translate-y-1 hover:shadow-lg transition-all">View All Products</a>
             </div>
         </div>
     </section>

@@ -48,7 +48,7 @@
         }
     </style>
     
-    <link rel="canonical" href="https://leafplusloom.com/about.html">
+    <link rel="canonical" href="https://leafplusloom.infinityfreeapp.com/about.php">
 </head>
 <body class="font-[system-ui] text-gray-800 overflow-x-hidden bg-white">
     
