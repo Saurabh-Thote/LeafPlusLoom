@@ -11,7 +11,7 @@
     <meta property="og:title" content="Leaf+ Loom - Eco-Friendly Wooden & Bamboo Products">
     <meta property="og:description" content="Premium handcrafted wooden and bamboo products for sustainable living">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://leafplusloom.com">
+    <meta property="og:url" content="https://leafplusloom.infinityfreeapp.com">
     
     <title>Leaf+ Loom - Premium Wooden & Bamboo Products | Sustainable Living</title>
     
@@ -77,7 +77,7 @@
         }
     </style>
     
-    <link rel="canonical" href="https://leafplusloom.com">
+    <link rel="canonical" href="https://leafplusloom.infinityfreeapp.com">
 </head>
 <body class="font-[system-ui] text-gray-800 overflow-x-hidden">
     
@@ -93,8 +93,8 @@
             <h1 class="text-3xl md:text-5xl font-bold mb-6 drop-shadow-lg">Sustainable Living Starts Here</h1>
             <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Discover premium handcrafted wooden and bamboo products for an eco-friendly lifestyle</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="/products.php" class="inline-block bg-primary-green hover:bg-primary-green-dark text-white font-semibold px-7 py-3 rounded-lg shadow-lg hover:-translate-y-1 hover:shadow-xl transition-all">Shop Now</a>
-                <a href="/about.php" class="inline-block bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary-green font-semibold px-7 py-3 rounded-lg transition-all">Learn More</a>
+                <a href="products/" class="inline-block bg-primary-green hover:bg-primary-green-dark text-white font-semibold px-7 py-3 rounded-lg shadow-lg hover:-translate-y-1 hover:shadow-xl transition-all">Shop Now</a>
+                <a href="about.php" class="inline-block bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary-green font-semibold px-7 py-3 rounded-lg transition-all">Learn More</a>
             </div>
         </div>
     </section>
@@ -174,7 +174,7 @@
             </div>
             
             <div class="text-center mt-12">
-                <a href="/products.php" class="inline-block bg-primary-green hover:bg-primary-green-dark text-white font-semibold px-7 py-3 rounded-lg shadow-md hover:-translate-y-1 hover:shadow-lg transition-all">View All Products</a>
+                <a href="products/" class="inline-block bg-primary-green hover:bg-primary-green-dark text-white font-semibold px-7 py-3 rounded-lg shadow-md hover:-translate-y-1 hover:shadow-lg transition-all">View All Products</a>
             </div>
         </div>
     </section>

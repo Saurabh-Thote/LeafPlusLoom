@@ -11,12 +11,17 @@
 $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
 $host = $_SERVER['HTTP_HOST'];
 
-// Define base URL (adjust the path if needed)
-$base_url = $protocol . '://' . $host . '/LeafplusLoom/';
+// Auto-detect environment (localhost vs production)
+if ($host === 'localhost' || strpos($host, '127.0.0.1') !== false) {
+    // Local development
+    $base_url = $protocol . '://' . $host . '/LeafplusLoom/';
+} else {
+    // Production (InfinityFree)
+    $base_url = $protocol . '://' . $host . '/';
+}
 
-// Fallback to manual URL if needed
-// $base_url = 'http://localhost/LeafplusLoom/';
-// For production: $base_url = 'https://leafplusloom.com/';
+// Manual override if needed:
+// $base_url = 'https://leafplusloom.infinityfreeapp.com/';
 
 // ============================================
 // IMAGE PATH HELPER
@@ -81,12 +86,12 @@ $nav_menu = [
         'icon' => '⚙️'
     ],
     [
-        'url' => 'products/index.php',
+        'url' => 'products/',
         'label' => 'Products',
         'icon' => '🛍️'
     ],
     [
-        'url' => 'blogs/index.php',
+        'url' => 'blogs/',
         'label' => 'Blog',
         'icon' => '📝'
     ],
@@ -121,7 +126,7 @@ $active_page = getCurrentPage();
                 <?php 
                     $is_active = isActivePage($menu_item['url']);
                     $active_class = $is_active ? 'active text-primary-green border-b-2 border-primary-green pb-1' : '';
-                    ?>
+                ?>
                 <li>
                     <a href="<?php echo $base_url . $menu_item['url']; ?>"
                         class="nav-link <?php echo $active_class; ?> font-medium hover:text-primary-green transition-colors duration-300"
@@ -162,7 +167,7 @@ $active_page = getCurrentPage();
                 <?php 
                     $is_active = isActivePage($menu_item['url']);
                     $active_class = $is_active ? 'border-l-4 border-primary-green text-primary-green bg-green-50' : 'hover:border-l-4 hover:border-primary-green';
-                    ?>
+                ?>
                 <li>
                     <a href="<?php echo $base_url . $menu_item['url']; ?>"
                         class="block py-3 font-medium pl-4 transition-all duration-300 <?php echo $active_class; ?>"
