@@ -11,8 +11,8 @@
     <meta property="og:title" content="5 Essential Tips for Maintaining Bamboo Products the Right Way | Leaf+ Loom">
     <meta property="og:description" content="Learn practical tips for maintaining bamboo products. Discover how to clean bamboo products properly and extend bamboo product longevity naturally.">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://leafplusloom.com/blogs/maintaining-bamboo-products">
-    <meta property="og:image" content="https://leafplusloom.com/images/blog/maintaining-bamboo-products-hero.jpg">
+    <meta property="og:url" content="https://leafplusloom.infinityfreeapp.com/blogs/maintaining-bamboo-products.php">
+    <meta property="og:image" content="https://leafplusloom.infinityfreeapp.com/images/blog/maintaining-bamboo-products-hero.jpg">
     <meta property="article:published_time" content="2025-11-28T10:00:00+05:30">
     <meta property="article:author" content="Leaf+ Loom Team">
 
@@ -52,7 +52,7 @@
         }
     </style>
 
-    <link rel="canonical" href="https://leafplusloom.com/blogs/maintaining-bamboo-products">
+    <link rel="canonical" href="https://leafplusloom.infinityfreeapp.com/blogs/maintaining-bamboo-products">
 
     <!-- Article Schema Markup -->
     <script type="application/ld+json">
@@ -61,7 +61,7 @@
       "@type": "BlogPosting",
       "headline": "5 Essential Tips for Maintaining Bamboo Products the Right Way",
       "description": "Learn practical tips for maintaining bamboo products. Discover how to clean bamboo products properly and extend bamboo product longevity naturally.",
-      "image": "https://leafplusloom.com/images/blog/maintaining-bamboo-products-hero.jpg",
+      "image": "https://leafplusloom.infinityfreeapp.com/images/blog/maintaining-bamboo-products-hero.jpg",
       "datePublished": "2025-11-28T10:00:00+05:30",
       "dateModified": "2025-12-22T10:00:00+05:30",
       "author": {
@@ -73,12 +73,12 @@
         "name": "Leaf+ Loom",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://leafplusloom.com/images/logo.png"
+          "url": "https://leafplusloom.infinityfreeapp.com/images/logo.png"
         }
       },
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://leafplusloom.com/blogs/maintaining-bamboo-products"
+        "@id": "https://leafplusloom.infinityfreeapp.com/blogs/maintaining-bamboo-products.php"
       },
       "keywords": [
         "maintaining bamboo products",
@@ -147,17 +147,17 @@
             <div class="flex justify-between items-center">
                 <div class="flex items-center gap-2">
                     <a href="../index.html" class="flex items-center gap-2">
-                        <img src="/images/leaf+loom logo 1.png" alt="Leaf+ Loom Logo" class="h-14">
+                        <img src="../images/leaf+loom logo 1.png" alt="Leaf+ Loom Logo" class="h-14">
                     </a>
                 </div>
 
                 <ul class="hidden lg:flex gap-8 items-center">
-                    <li><a href="../index.html" class="nav-link font-medium hover:text-primary-green transition-colors">Home</a></li>
-                    <li><a href="../about.html" class="nav-link font-medium hover:text-primary-green transition-colors">About</a></li>
-                    <li><a href="../services.html" class="nav-link font-medium hover:text-primary-green transition-colors">Services</a></li>
-                    <li><a href="../products.html" class="nav-link font-medium hover:text-primary-green transition-colors">Products</a></li>
-                    <li><a href="all-blogs.html" class="nav-link active font-medium hover:text-primary-green transition-colors">Blog</a></li>
-                    <li><a href="../contact.html" class="nav-link font-medium hover:text-primary-green transition-colors">Contact</a></li>
+                    <li><a href="../index.php" class="nav-link font-medium hover:text-primary-green transition-colors">Home</a></li>
+                    <li><a href="../about.php" class="nav-link font-medium hover:text-primary-green transition-colors">About</a></li>
+                    <li><a href="../services.php" class="nav-link font-medium hover:text-primary-green transition-colors">Services</a></li>
+                    <li><a href="../products.php" class="nav-link font-medium hover:text-primary-green transition-colors">Products</a></li>
+                    <li><a href="index.php" class="nav-link active font-medium hover:text-primary-green transition-colors">Blog</a></li>
+                    <li><a href="../contact.php" class="nav-link font-medium hover:text-primary-green transition-colors">Contact</a></li>
                 </ul>
 
                 <div class="flex items-center gap-4">
@@ -171,12 +171,12 @@
 
             <div id="mobileMenu" class="hidden lg:hidden mt-4 pb-4">
                 <ul class="flex flex-col gap-3">
-                    <li><a href="../index.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Home</a></li>
-                    <li><a href="../about.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">About</a></li>
-                    <li><a href="../services.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Services</a></li>
-                    <li><a href="../products.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Products</a></li>
-                    <li><a href="all-blogs.html" class="block py-2 font-medium text-primary-green border-l-4 border-primary-green pl-4">Blog</a></li>
-                    <li><a href="../contact.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Contact</a></li>
+                    <li><a href="../index.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Home</a></li>
+                    <li><a href="../about.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">About</a></li>
+                    <li><a href="../services.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Services</a></li>
+                    <li><a href="../products.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Products</a></li>
+                    <li><a href="index.php" class="block py-2 font-medium text-primary-green border-l-4 border-primary-green pl-4">Blog</a></li>
+                    <li><a href="../contact.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Contact</a></li>
                 </ul>
             </div>
         </nav>
@@ -205,9 +205,9 @@
     <nav class="bg-gray-50 py-4">
         <div class="container mx-auto px-6">
             <ol class="flex items-center gap-2 text-sm text-gray-600">
-                <li><a href="../index.html" class="hover:text-primary-green">Home</a></li>
+                <li><a href="../index.php" class="hover:text-primary-green">Home</a></li>
                 <span>›</span>
-                <li><a href="all-blogs.html" class="hover:text-primary-green">Blog</a></li>
+                <li><a href="index.php" class="hover:text-primary-green">Blog</a></li>
                 <span>›</span>
                 <li class="text-gray-800 font-medium">Maintaining Bamboo Products</li>
             </ol>
@@ -271,7 +271,7 @@
                     </div>
 
                     <figure class="mb-8 rounded-xl overflow-hidden shadow-lg">
-                        <img src="/images/collection-of-bamboo-products.jpg" alt="collection of bamboo products maintained with gentle cleaning and oil care" class="w-full h-auto">
+                        <img src="../images/collection-of-bamboo-products.jpg" alt="collection of bamboo products maintained with gentle cleaning and oil care" class="w-full h-auto">
                     </figure>
                 </section>
 
@@ -289,7 +289,7 @@
                     </p>
 
                     <figure class="mb-8 rounded-xl overflow-hidden shadow-lg">
-                        <img src="/images/close-up-bamboo-products.jpg" alt="close-up of natural bamboo material showing grain and texture" class="w-full h-auto">
+                        <img src="../images/close-up-bamboo-products.jpg" alt="close-up of natural bamboo material showing grain and texture" class="w-full h-auto">
                     </figure>
                 </section>
 
@@ -339,7 +339,7 @@
                     </p>
 
                     <figure class="mb-8 rounded-xl overflow-hidden shadow-lg">
-                        <img src="/images/cleaning-bamboo-products.jpg" alt="how to clean bamboo products gently with cloth and mild soap" class="w-full h-auto">
+                        <img src="../images/cleaning-bamboo-products.jpg" alt="how to clean bamboo products gently with cloth and mild soap" class="w-full h-auto">
                     </figure>
                 </section>
 
@@ -382,7 +382,7 @@
                     </p>
 
                     <figure class="mb-8 rounded-xl overflow-hidden shadow-lg">
-                        <img src="/images/bamboo-drying-properly.jpg" alt="bamboo kitchen tools air drying on a rack to avoid moisture damage" class="w-full h-auto">
+                        <img src="../images/bamboo-drying-properly.jpg" alt="bamboo kitchen tools air drying on a rack to avoid moisture damage" class="w-full h-auto">
                     </figure>
                 </section>
 
@@ -415,7 +415,7 @@
                     </div>
 
                     <figure class="mb-8 rounded-xl overflow-hidden shadow-lg">
-                        <img src="/images/oiling-bamboo-products.jpg" alt="using natural oil to condition and maintain bamboo products" class="w-full h-auto">
+                        <img src="../images/oiling-bamboo-products.jpg" alt="using natural oil to condition and maintain bamboo products" class="w-full h-auto">
                     </figure>
                 </section>
 
@@ -452,7 +452,7 @@
                     </p>
 
                     <figure class="mb-8 rounded-xl overflow-hidden shadow-lg">
-                        <img src="/images/oiling-bamboo-products.jpg" alt="bamboo kitchen utensils stored in an open holder for airflow" class="w-full h-auto">
+                        <img src="../images/oiling-bamboo-products.jpg" alt="bamboo kitchen utensils stored in an open holder for airflow" class="w-full h-auto">
                     </figure>
                 </section>
 
@@ -488,7 +488,7 @@
                     </div>
 
                     <figure class="mb-8 rounded-xl overflow-hidden shadow-lg">
-                        <img src="/images/inspecting-bamboo-products.png" alt="inspecting bamboo products regularly for cracks and dryness" class="w-full h-auto">
+                        <img src="../images/inspecting-bamboo-products.png" alt="inspecting bamboo products regularly for cracks and dryness" class="w-full h-auto">
                     </figure>
                 </section>
 
@@ -593,14 +593,14 @@
                                 <img src="../images/blog/bamboo-benefits-thumb.jpg" alt="bamboo sustainable products blog thumbnail" class="w-full md:w-32 h-32 object-cover rounded-lg">
                                 <div>
                                     <h3 class="text-lg font-bold text-gray-900 mb-1">Why Bamboo Sustainable Products Are the Future of Eco-Friendly Living</h3>
-                                    <a href="blog-bamboo-sustainable.html" class="text-wood-brown font-semibold hover:underline text-sm">Read More →</a>
+                                    <a href="blog-bamboo-sustainable.php" class="text-wood-brown font-semibold hover:underline text-sm">Read More →</a>
                                 </div>
                             </div>
                             <div class="flex flex-col md:flex-row gap-4 items-center">
                                 <img src="../images/blog/wooden-brush-thumb.jpg" alt="wooden brush care blog thumbnail" class="w-full md:w-32 h-32 object-cover rounded-lg">
                                 <div>
                                     <h3 class="text-lg font-bold text-gray-900 mb-1">Wooden Brush Care – How to Clean and Maintain Your Wooden Brush Naturally</h3>
-                                    <a href="blog-wooden-brush-care.html" class="text-wood-brown font-semibold hover:underline text-sm">Read More →</a>
+                                    <a href="blog-wooden-brush-care.php" class="text-wood-brown font-semibold hover:underline text-sm">Read More →</a>
                                 </div>
                             </div>
                         </div>
@@ -615,16 +615,16 @@
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
                 <div>
-                    <img src="/images/leaf+loom logo 2.jpg" alt="Leaf+ Loom Logo" class="h-14">
+                    <img src="../images/leaf+loom logo 2.jpg" alt="Leaf+ Loom Logo" class="h-14">
                     <p class="text-gray-400">Crafting sustainable wooden and bamboo products for a greener tomorrow.</p>
                 </div>
                 <div>
                     <h4 class="text-secondary-green font-semibold mb-4 text-lg">Quick Links</h4>
                     <ul class="space-y-2">
-                        <li><a href="../about.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="../products.html" class="text-gray-400 hover:text-white transition-colors">Products</a></li>
-                        <li><a href="all-blogs.html" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
-                        <li><a href="../contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="../about.php" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="../products.php" class="text-gray-400 hover:text-white transition-colors">Products</a></li>
+                        <li><a href="index.php" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="../contact.php" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
                     </ul>
                 </div>
                 <div>

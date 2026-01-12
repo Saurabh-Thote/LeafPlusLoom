@@ -345,10 +345,10 @@
                 <div>
                     <h4 class="text-secondary-green font-semibold mb-4 text-lg">Quick Links</h4>
                     <ul class="space-y-2">
-                        <li><a href="../about.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="../products.html" class="text-gray-400 hover:text-white transition-colors">Products</a></li>
-                        <li><a href="all-blogs.html" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
-                        <li><a href="../contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="../about.php" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="../products/" class="text-gray-400 hover:text-white transition-colors">Products</a></li>
+                        <li><a href="index.php" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="../contact.php" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
                     </ul>
                 </div>
                 <div>

@@ -11,14 +11,14 @@
     <meta property="og:title" content="Minimalist Lifestyle Guide: Less Stuff, More Life, Real Freedom | Leaf+ Loom">
     <meta property="og:description" content="Discover how a minimalist lifestyle helps you declutter your life, embrace simple living, and focus on mindful habits that bring more peace and clarity.">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://leafplusloom.com/blogs/minimalist-lifestyle-guide">
-    <meta property="og:image" content="https://leafplusloom.com/images/blog/minimalist-lifestyle-hero.jpg">
+    <meta property="og:url" content="https://leafplusloom.infinityfreeapp.com/blogs/minimalist-lifestyle-guide.php">
+    <meta property="og:image" content="https://leafplusloom.infinityfreeapp.com/images/blog/minimalist-lifestyle-hero.jpg">
     <meta property="article:published_time" content="2025-11-30T10:00:00+05:30">
     <meta property="article:author" content="Leaf+ Loom Team">
 
     <title>Minimalist Lifestyle Guide: Less Stuff, More Life, Real Freedom | Leaf+ Loom</title>
 
-    <link rel="canonical" href="https://leafplusloom.com/blogs/minimalist-lifestyle-guide">
+    <link rel="canonical" href="https://leafplusloom.infinityfreeapp.com/blogs/minimalist-lifestyle-guide.php">
 
     <!-- Tailwind CSS v4 -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -60,7 +60,7 @@
       "@type": "BlogPosting",
       "headline": "Minimalist Lifestyle Guide: Less Stuff, More Life, Real Freedom",
       "description": "Discover how a minimalist lifestyle helps you declutter your life, embrace simple living, and focus on mindful habits that bring more peace and clarity.",
-      "image": "https://leafplusloom.com/images/blog/minimalist-lifestyle-hero.jpg",
+      "image": "https://leafplusloom.infinityfreeappcom/images/blog/minimalist-lifestyle-hero.jpg",
       "datePublished": "2025-11-30T10:00:00+05:30",
       "dateModified": "2025-12-22T10:00:00+05:30",
       "author": {
@@ -72,12 +72,12 @@
         "name": "Leaf+ Loom",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://leafplusloom.com/images/logo.png"
+          "url": "https://leafplusloom.infinityfreeapp.com/images/logo.png"
         }
       },
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://leafplusloom.com/blogs/minimalist-lifestyle-guide"
+        "@id": "https://leafplusloom.infinityfreeapp.com/blogs/minimalist-lifestyle-guide.php"
       },
       "keywords": [
         "minimalist lifestyle",
@@ -137,18 +137,18 @@
         <nav class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
                 <div class="flex items-center gap-2">
-                    <a href="../index.html" class="flex items-center gap-2">
-                        <img src="/images/leaf+loom logo 1.png" alt="Leaf+ Loom Logo" class="h-14">
+                    <a href="../index.php" class="flex items-center gap-2">
+                        <img src="../images/leaf+loom logo 1.png" alt="Leaf+ Loom Logo" class="h-14">
                     </a>
                 </div>
 
                 <ul class="hidden lg:flex gap-8 items-center">
-                    <li><a href="../index.html" class="nav-link font-medium hover:text-primary-green transition-colors">Home</a></li>
-                    <li><a href="../about.html" class="nav-link font-medium hover:text-primary-green transition-colors">About</a></li>
-                    <li><a href="../services.html" class="nav-link font-medium hover:text-primary-green transition-colors">Services</a></li>
-                    <li><a href="../products.html" class="nav-link font-medium hover:text-primary-green transition-colors">Products</a></li>
-                    <li><a href="all-blogs.html" class="nav-link active font-medium hover:text-primary-green transition-colors">Blog</a></li>
-                    <li><a href="../contact.html" class="nav-link font-medium hover:text-primary-green transition-colors">Contact</a></li>
+                    <li><a href="../index.php" class="nav-link font-medium hover:text-primary-green transition-colors">Home</a></li>
+                    <li><a href="../about.php" class="nav-link font-medium hover:text-primary-green transition-colors">About</a></li>
+                    <li><a href="../services.php" class="nav-link font-medium hover:text-primary-green transition-colors">Services</a></li>
+                    <li><a href="../products.php" class="nav-link font-medium hover:text-primary-green transition-colors">Products</a></li>
+                    <li><a href="index.php" class="nav-link active font-medium hover:text-primary-green transition-colors">Blog</a></li>
+                    <li><a href="../contact.php" class="nav-link font-medium hover:text-primary-green transition-colors">Contact</a></li>
                 </ul>
 
                 <div class="flex items-center gap-4">
@@ -162,12 +162,12 @@
 
             <div id="mobileMenu" class="hidden lg:hidden mt-4 pb-4">
                 <ul class="flex flex-col gap-3">
-                    <li><a href="../index.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Home</a></li>
-                    <li><a href="../about.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">About</a></li>
-                    <li><a href="../services.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Services</a></li>
-                    <li><a href="../products.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Products</a></li>
-                    <li><a href="all-blogs.html" class="block py-2 font-medium text-primary-green border-l-4 border-primary-green pl-4">Blog</a></li>
-                    <li><a href="../contact.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Contact</a></li>
+                    <li><a href="../index.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Home</a></li>
+                    <li><a href="../about.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">About</a></li>
+                    <li><a href="../services.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Services</a></li>
+                    <li><a href="../products.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Products</a></li>
+                    <li><a href="index.php" class="block py-2 font-medium text-primary-green border-l-4 border-primary-green pl-4">Blog</a></li>
+                    <li><a href="../contact.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Contact</a></li>
                 </ul>
             </div>
         </nav>
@@ -196,9 +196,9 @@
     <nav class="bg-gray-50 py-4">
         <div class="container mx-auto px-6">
             <ol class="flex items-center gap-2 text-sm text-gray-600">
-                <li><a href="../index.html" class="hover:text-primary-green">Home</a></li>
+                <li><a href="../index.php" class="hover:text-primary-green">Home</a></li>
                 <span>›</span>
-                <li><a href="all-blogs.html" class="hover:text-primary-green">Blog</a></li>
+                <li><a href="index.php" class="hover:text-primary-green">Blog</a></li>
                 <span>›</span>
                 <li class="text-gray-800 font-medium">Minimalist Lifestyle Guide</li>
             </ol>
@@ -298,7 +298,7 @@
                     </p>
 
                     <figure class="mb-8 rounded-xl overflow-hidden shadow-lg">
-                        <img src="/images/decluttering-life-desk.jpg" alt="decluttering life minimalist lifestyle with clean work desk" class="w-full h-auto">
+                        <img src="../images/decluttering-life-desk.jpg" alt="decluttering life minimalist lifestyle with clean work desk" class="w-full h-auto">
                     </figure>
                 </section>
 
@@ -489,7 +489,7 @@
                     </p>
 
                     <figure class="mb-8 rounded-xl overflow-hidden shadow-lg">
-                        <img src="/images/mindful-minimalist-morning.jpg" alt="mindful living minimalist lifestyle with calm morning routine" class="w-full h-auto">
+                        <img src="../images/mindful-minimalist-morning.jpg" alt="mindful living minimalist lifestyle with calm morning routine" class="w-full h-auto">
                     </figure>
                 </section>
 
@@ -535,7 +535,7 @@
                     </div>
 
                     <figure class="mb-8 rounded-xl overflow-hidden shadow-lg">
-                        <img src="/images/minimalist-bedroom.png" alt="minimalist lifestyle at home with clutter-free bedroom" class="w-full h-auto">
+                        <img src="../images/minimalist-bedroom.png" alt="minimalist lifestyle at home with clutter-free bedroom" class="w-full h-auto">
                     </figure>
                 </section>
 
@@ -588,7 +588,7 @@
                     </p>
 
                     <figure class="mb-8 rounded-xl overflow-hidden shadow-lg">
-                        <img src="/images/minimalism-sustainable-living.png" alt="simple living minimalist lifestyle supporting sustainable choices" class="w-full h-auto">
+                        <img src="../images/minimalism-sustainable-living.png" alt="simple living minimalist lifestyle supporting sustainable choices" class="w-full h-auto">
                     </figure>
                 </section>
 
@@ -645,14 +645,14 @@
                                 <img src="../images/blog/eco-kitchen-thumb.jpg" alt="eco-friendly minimalist kitchen setup" class="w-full md:w-32 h-32 object-cover rounded-lg">
                                 <div>
                                     <h3 class="text-lg font-bold text-gray-900 mb-1">Creating an Eco-Friendly Kitchen: Essential Tools for Sustainable Living</h3>
-                                    <a href="blog-eco-friendly-kitchen.html" class="text-wood-brown font-semibold hover:underline text-sm">Read More →</a>
+                                    <a href="blog-eco-friendly-kitchen.php" class="text-wood-brown font-semibold hover:underline text-sm">Read More →</a>
                                 </div>
                             </div>
                             <div class="flex flex-col md:flex-row gap-4 items-center">
                                 <img src="../images/blog/composting-thumb.jpg" alt="home composting simple living habit" class="w-full md:w-32 h-32 object-cover rounded-lg">
                                 <div>
                                     <h3 class="text-lg font-bold text-gray-900 mb-1">Beginner's Guide to Composting at Home for a Sustainable Lifestyle</h3>
-                                    <a href="blog-composting-at-home.html" class="text-wood-brown font-semibold hover:underline text-sm">Read More →</a>
+                                    <a href="blog-composting-at-home.php" class="text-wood-brown font-semibold hover:underline text-sm">Read More →</a>
                                 </div>
                             </div>
                         </div>
@@ -668,16 +668,16 @@
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
                 <div>
-                    <img src="/images/leaf+loom logo 2.jpg" alt="Leaf+ Loom Logo" class="h-14">
+                    <img src="../images/leaf+loom logo 2.jpg" alt="Leaf+ Loom Logo" class="h-14">
                     <p class="text-gray-400">Crafting sustainable wooden and bamboo products for a greener tomorrow.</p>
                 </div>
                 <div>
                     <h4 class="text-secondary-green font-semibold mb-4 text-lg">Quick Links</h4>
                     <ul class="space-y-2">
-                        <li><a href="../about.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="../products.html" class="text-gray-400 hover:text-white transition-colors">Products</a></li>
-                        <li><a href="all-blogs.html" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
-                        <li><a href="../contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="../about.php" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="../products.php" class="text-gray-400 hover:text-white transition-colors">Products</a></li>
+                        <li><a href="index.php" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="../contact.php" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
                     </ul>
                 </div>
                 <div>
