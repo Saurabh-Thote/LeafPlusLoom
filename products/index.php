@@ -136,7 +136,7 @@ function formatPrice($price, $originalPrice = null) {
         }
     </style>
 
-    <link rel="canonical" href="https://leafplusloom.com/products/">
+    <link rel="canonical" href="https://leafplusloom.infinityfreeapp.com/products/">
 </head>
 
 <body class="font-[system-ui] text-gray-800 overflow-x-hidden">
@@ -144,14 +144,7 @@ function formatPrice($price, $originalPrice = null) {
     <!-- Include Header -->
     <?php include '../includes/header.php'; ?>
 
-    <!-- Page Header -->
-    <section class="bg-gradient-to-br from-primary-green to-secondary-green text-white py-16 md:py-20 text-center">
-        <div class="container mx-auto px-6">
-            <h1 class="text-3xl md:text-5xl font-bold mb-4">Our Products</h1>
-            <p class="text-lg md:text-xl">Discover our handcrafted wooden and bamboo collection</p>
-            <p class="text-sm mt-2 text-green-100">Showing <?php echo count($products); ?> products</p>
-        </div>
-    </section>
+    
 
     <!-- Filter & Sort Section -->
     <section class="bg-gray-100 py-4 sticky top-0 z-40 shadow-sm">
@@ -199,7 +192,7 @@ function formatPrice($price, $originalPrice = null) {
                     <div class="text-6xl mb-4">📦</div>
                     <h3 class="text-2xl font-bold text-gray-800 mb-2">No Products Found</h3>
                     <p class="text-gray-600 mb-6">Try changing your filters or check back later for new products.</p>
-                    <a href="index.php" class="bg-primary-green hover:bg-primary-green-dark text-white font-semibold px-6 py-3 rounded-lg transition-colors">
+                    <a href="/products/" class="bg-primary-green hover:bg-primary-green-dark text-white font-semibold px-6 py-3 rounded-lg transition-colors">
                         View All Products
                     </a>
                 </div>
@@ -240,7 +233,7 @@ function formatPrice($price, $originalPrice = null) {
                                 
                                 <!-- Quick View Overlay -->
                                 <div class="absolute inset-0 bg-primary-green/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                    <a href="../product/<?php echo htmlspecialchars($product['slug']); ?>.php"
+                                    <a href="/product/<?php echo htmlspecialchars($product['slug']); ?>.php"
                                         class="bg-white text-primary-green font-semibold px-6 py-2 rounded-lg hover:bg-gray-100 transition-colors">
                                         Quick View
                                     </a>

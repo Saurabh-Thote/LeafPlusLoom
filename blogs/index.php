@@ -11,7 +11,7 @@
     <meta property="og:title" content="Blog - Leaf+ Loom | Sustainable Living & Eco Tips">
     <meta property="og:description" content="Expert tips and insights on sustainable living, eco-friendly products, and green lifestyle choices">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://leafplusloom.com/blogs/all-blogs.html">
+    <meta property="og:url" content="https://leafplusloom.infinityfreeapp.com/blogs/index.php">
     
     <title>Blog - Leaf+ Loom | Sustainable Living & Eco Tips</title>
     
@@ -55,7 +55,7 @@
         }
     </style>
     
-    <link rel="canonical" href="https://leafplusloom.com/blogs/all-blogs.html">
+    <link rel="canonical" href="https://leafplusloom.infinityfreeapp.com/blogs/index.php">
     
     <!-- Blog Schema Markup -->
     <script type="application/ld+json">
@@ -64,13 +64,13 @@
       "@type": "Blog",
       "name": "Leaf+ Loom Blog",
       "description": "Sustainable living tips and eco-friendly product guides",
-      "url": "https://leafplusloom.com/blogs/all-blogs.html",
+      "url": "https://leafplusloom.infinityfreeapp.com/blogs/index.php",
       "publisher": {
         "@type": "Organization",
         "name": "Leaf+ Loom",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://leafplusloom.com/images/logo.png"
+          "url": "https://leafplusloom.infinityfreeapp.com/images/logo.png"
         }
       }
     }
@@ -78,50 +78,8 @@
 </head>
 <body class="font-[system-ui] text-gray-800 overflow-x-hidden">
     
-    <!-- Header -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <!-- Logo -->
-                <div class="flex items-center gap-2">
-                    <a href="../index.html" class="flex items-center gap-2">
-                        <img src="/images/leaf+loom logo 1.png" alt="Leaf+ Loom Logo" class="h-14">
-                    </a>
-                </div>
-                
-                <!-- Desktop Navigation -->
-                <ul class="hidden lg:flex gap-8 items-center">
-                    <li><a href="../index.html" class="nav-link font-medium hover:text-primary-green transition-colors">Home</a></li>
-                    <li><a href="../about.html" class="nav-link font-medium hover:text-primary-green transition-colors">About</a></li>
-                    <li><a href="../services.html" class="nav-link font-medium hover:text-primary-green transition-colors">Services</a></li>
-                    <li><a href="../products.html" class="nav-link font-medium hover:text-primary-green transition-colors">Products</a></li>
-                    <li><a href="all-blogs.html" class="nav-link active font-medium hover:text-primary-green transition-colors">Blog</a></li>
-                    <li><a href="../contact.html" class="nav-link font-medium hover:text-primary-green transition-colors">Contact</a></li>
-                </ul>
-                
-                <!-- Cart & Mobile Menu -->
-                <div class="flex items-center gap-4">
-                    <button onclick="openCart()" class="relative bg-gray-100 hover:bg-gray-200 p-2 rounded-lg transition-colors">
-                        <span class="text-xl">🛒</span>
-                        <span id="cart-count" class="absolute -top-1 -right-1 bg-primary-green text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">0</span>
-                    </button>
-                    <button onclick="toggleMenu()" class="lg:hidden text-2xl text-primary-green">☰</button>
-                </div>
-            </div>
-            
-            <!-- Mobile Navigation -->
-            <div id="mobileMenu" class="hidden lg:hidden mt-4 pb-4">
-                <ul class="flex flex-col gap-3">
-                    <li><a href="../index.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Home</a></li>
-                    <li><a href="../about.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">About</a></li>
-                    <li><a href="../services.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Services</a></li>
-                    <li><a href="../products.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Products</a></li>
-                    <li><a href="all-blogs.html" class="block py-2 font-medium text-primary-green border-l-4 border-primary-green pl-4">Blog</a></li>
-                    <li><a href="../contact.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Contact</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+    <!-- Include Header -->
+    <?php include '../includes/header.php'; ?>
 
     <!-- Page Header -->
     <section class="bg-gradient-to-br from-primary-green to-secondary-green text-white py-16 md:py-20 text-center">
@@ -149,7 +107,7 @@
         <div class="container mx-auto px-6">
             <article class="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white rounded-xl overflow-hidden shadow-lg" itemscope itemtype="https://schema.org/BlogPosting">
                 <div class="relative h-64 lg:h-auto">
-                    <img src="/images/zero-waste-3.avif" alt="Zero Waste Living Guide" itemprop="image" class="w-full h-full object-cover">
+                    <img src="../images/zero-waste-living-guide.jpg" alt="Zero Waste Living Guide" itemprop="image" class="w-full h-full object-cover">
                     <span class="absolute top-4 left-4 bg-primary-green text-white text-sm font-semibold px-4 py-2 rounded">Featured</span>
                 </div>
                 <div class="p-6 lg:p-8 flex flex-col justify-center">
@@ -160,7 +118,7 @@
                     </div>
                     <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4" itemprop="headline">10 Simple Steps to Start Your Zero Waste Journey</h2>
                     <p class="text-gray-600 mb-6 leading-relaxed" itemprop="description">Transitioning to a zero-waste lifestyle doesn't have to be overwhelming. Discover practical steps you can take today to reduce your environmental footprint and embrace sustainable living. From kitchen swaps to bathroom essentials, learn how small changes create lasting impact.</p>
-                    <a href="/blogs/blog-zero-waste-journey.html" class="inline-block bg-primary-green hover:bg-primary-green-dark text-white font-semibold px-6 py-3 rounded-lg transition-colors w-max" itemprop="url">Read More</a>
+                    <a href="blog-zero-waste-journey.php" class="inline-block bg-primary-green hover:bg-primary-green-dark text-white font-semibold px-6 py-3 rounded-lg transition-colors w-max" itemprop="url">Read More</a>
                 </div>
             </article>
         </div>
@@ -174,7 +132,7 @@
                 <!-- Blog Post 1 -->
                 <article class="blog-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-category="product-care" itemscope itemtype="https://schema.org/BlogPosting">
                     <div class="h-56 overflow-hidden">
-                        <img src="/images/benefits of bamboo products.jpg" alt="Benefits of Bamboo Products" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                        <img src="../images/benefits of bamboo products.jpg" alt="Benefits of Bamboo Products" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="p-6">
                         <div class="flex gap-3 mb-3 text-sm">
@@ -182,7 +140,7 @@
                             <time class="text-gray-600" itemprop="datePublished" datetime="2025-11-28">Nov 28, 2025</time>
                         </div>
                         <h3 class="text-xl font-semibold mb-3" itemprop="headline">
-                            <a href="/blogs/blog-bamboo-benefits.html" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
+                            <a href="blog-bamboo-benefits.php" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
                                 Why Bamboo is the Future of Sustainable Products
                             </a>
                         </h3>
@@ -194,7 +152,7 @@
                 <!-- Blog Post 2 -->
                 <article class="blog-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-category="tips" itemscope itemtype="https://schema.org/BlogPosting">
                     <div class="h-56 overflow-hidden">
-                        <img src="/images/caring for wooden brushes.jpg" alt="Caring for Wooden Brushes" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                        <img src="../images/caring for wooden brushes.jpg" alt="Caring for Wooden Brushes" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="p-6">
                         <div class="flex gap-3 mb-3 text-sm">
@@ -202,19 +160,19 @@
                             <time class="text-gray-600" itemprop="datePublished" datetime="2025-11-25">Nov 25, 2025</time>
                         </div>
                         <h3 class="text-xl font-semibold mb-3" itemprop="headline">
-                            <a href="/blogs/blog-wooden-brush-care.html" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
+                            <a href="blog-wooden-brush-care.php" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
                                 How to Care for Your Wooden Brush: A Complete Guide
                             </a>
                         </h3>
                         <p class="text-gray-600 mb-4 leading-relaxed" itemprop="description">Proper care can extend the life of your wooden brush for years. Here's everything you need to know about maintenance and cleaning.</p>
-                        <a href="/blogs/blog-wooden-brush-care.html" class="text-primary-green font-semibold hover:underline">Read More →</a>
+                        <a href="blog-wooden-brush-care.php" class="text-primary-green font-semibold hover:underline">Read More →</a>
                     </div>
                 </article>
 
                 <!-- Blog Post 3 -->
                 <article class="blog-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-category="lifestyle" itemscope itemtype="https://schema.org/BlogPosting">
                     <div class="h-56 overflow-hidden">
-                        <img src="/images/Plastic free alternative.jpg" alt="Plastic Free Alternatives" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                        <img src="../images/Plastic free alternative.jpg" alt="Plastic Free Alternatives" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="p-6">
                         <div class="flex gap-3 mb-3 text-sm">
@@ -222,19 +180,19 @@
                             <time class="text-gray-600" itemprop="datePublished" datetime="2025-11-20">Nov 20, 2025</time>
                         </div>
                         <h3 class="text-xl font-semibold mb-3" itemprop="headline">
-                            <a href="/blogs/blog-plastic-free-swaps.html" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
+                            <a href="blog-plastic-free-swaps.php" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
                                 15 Easy Plastic-Free Swaps for Your Daily Routine
                             </a>
                         </h3>
                         <p class="text-gray-600 mb-4 leading-relaxed" itemprop="description">Simple switches that make a big difference. Transform your daily routine with these eco-friendly alternatives to common plastic items.</p>
-                        <a href="blog-post.html?id=plastic-alternatives" class="text-primary-green font-semibold hover:underline">Read More →</a>
+                        <a href="blog-plastic-free-swaps.php" class="text-primary-green font-semibold hover:underline">Read More →</a>
                     </div>
                 </article>
 
                 <!-- Blog Post 4 -->
                 <article class="blog-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-category="lifestyle" itemscope itemtype="https://schema.org/BlogPosting">
                     <div class="h-56 overflow-hidden">
-                        <img src="/images/eco-friendly-gifts-1.webp" alt="Sustainable Gift Ideas" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                        <img src="../images/eco-friendly-gifts-1.webp" alt="Sustainable Gift Ideas" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="p-6">
                         <div class="flex gap-3 mb-3 text-sm">
@@ -242,19 +200,19 @@
                             <time class="text-gray-600" itemprop="datePublished" datetime="2025-11-15">Nov 15, 2025</time>
                         </div>
                         <h3 class="text-xl font-semibold mb-3" itemprop="headline">
-                            <a href="blog-post.html?id=sustainable-gifting" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
+                            <a href="blog-eco-friendly-gifting.php" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
                                 Eco-Friendly Gift Ideas That Show You Care
                             </a>
                         </h3>
                         <p class="text-gray-600 mb-4 leading-relaxed" itemprop="description">Give thoughtful, sustainable gifts that your loved ones will cherish while helping the planet. Perfect for all occasions.</p>
-                        <a href="/blogs/blog-eco-friendly-kitchen.html" class="text-primary-green font-semibold hover:underline">Read More →</a>
+                        <a href="blog-eco-friendly-gifting.php" class="text-primary-green font-semibold hover:underline">Read More →</a>
                     </div>
                 </article>
 
                 <!-- Blog Post 5 -->
                 <article class="blog-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-category="sustainability" itemscope itemtype="https://schema.org/BlogPosting">
                     <div class="h-56 overflow-hidden">
-                        <img src="/images/wood-vs-plastic.webp" alt="Wood vs Plastic Comparison" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                        <img src="../images/wood-vs-plastic.webp" alt="Wood vs Plastic Comparison" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="p-6">
                         <div class="flex gap-3 mb-3 text-sm">
@@ -262,19 +220,19 @@
                             <time class="text-gray-600" itemprop="datePublished" datetime="2025-11-10">Nov 10, 2025</time>
                         </div>
                         <h3 class="text-xl font-semibold mb-3" itemprop="headline">
-                            <a href="blog-post.html?id=wood-vs-plastic" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
+                            <a href="blog-wood-vs-plastic.php" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
                                 Wooden vs Plastic Products: The Environmental Impact
                             </a>
                         </h3>
                         <p class="text-gray-600 mb-4 leading-relaxed" itemprop="description">A deep dive into why wooden products are better for the environment than plastic alternatives, backed by research and data.</p>
-                        <a href="blog-post.html?id=wood-vs-plastic" class="text-primary-green font-semibold hover:underline">Read More →</a>
+                        <a href="blog-wood-vs-plastic.php" class="text-primary-green font-semibold hover:underline">Read More →</a>
                     </div>
                 </article>
 
                 <!-- Blog Post 6 -->
                 <article class="blog-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-category="tips" itemscope itemtype="https://schema.org/BlogPosting">
                     <div class="h-56 overflow-hidden">
-                        <img src="/images/eco-friendly-kitchen-tips-1.jpg" alt="Eco-Friendly Kitchen Tips" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                        <img src="../images/eco-friendly-kitchen-tips-1.jpg" alt="Eco-Friendly Kitchen Tips" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="p-6">
                         <div class="flex gap-3 mb-3 text-sm">
@@ -287,14 +245,14 @@
                             </a>
                         </h3>
                         <p class="text-gray-600 mb-4 leading-relaxed" itemprop="description">Transform your kitchen into a sustainable space with these must-have wooden and bamboo tools that replace plastic items.</p>
-                        <a href="blog-post.html?id=eco-kitchen" class="text-primary-green font-semibold hover:underline">Read More →</a>
+                        <a href="blog-eco-friendly-kitchen.php" class="text-primary-green font-semibold hover:underline">Read More →</a>
                     </div>
                 </article>
 
                 <!-- Blog Post 7 -->
                 <article class="blog-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-category="sustainability" itemscope itemtype="https://schema.org/BlogPosting">
                     <div class="h-56 overflow-hidden">
-                        <img src="/images/composting at home guide.jpg" alt="Composting at Home Guide" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                        <img src="../images/composting at home guide.jpg" alt="Composting at Home Guide" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="p-6">
                         <div class="flex gap-3 mb-3 text-sm">

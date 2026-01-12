@@ -48,7 +48,7 @@
         }
     </style>
     
-    <link rel="canonical" href="https://leafplusloom.com/services.html">
+    <link rel="canonical" href="https://leafplusloom.infinityfreeapp.com/services.php">
 </head>
 <body class="font-[system-ui] text-gray-800 overflow-x-hidden">
     
@@ -91,7 +91,7 @@
                             <span>Prototype development</span>
                         </li>
                     </ul>
-                    <a href="contact.html" class="inline-block bg-transparent border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white font-semibold px-6 py-2 rounded-lg transition-all">Get Started</a>
+                    <a href="/contact.php" class="inline-block bg-transparent border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white font-semibold px-6 py-2 rounded-lg transition-all">Get Started</a>
                 </article>
 
                 <!-- Service Card 2 -->
@@ -117,7 +117,7 @@
                             <span>Timely delivery guaranteed</span>
                         </li>
                     </ul>
-                    <a href="contact.html" class="inline-block bg-transparent border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white font-semibold px-6 py-2 rounded-lg transition-all">Request Quote</a>
+                    <a href="/contact.php" class="inline-block bg-transparent border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white font-semibold px-6 py-2 rounded-lg transition-all">Request Quote</a>
                 </article>
 
                 <!-- Service Card 3 -->
@@ -143,7 +143,7 @@
                             <span>Dedicated account manager</span>
                         </li>
                     </ul>
-                    <a href="contact.html" class="inline-block bg-transparent border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white font-semibold px-6 py-2 rounded-lg transition-all">Inquire Now</a>
+                    <a href="/contact.php" class="inline-block bg-transparent border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white font-semibold px-6 py-2 rounded-lg transition-all">Inquire Now</a>
                 </article>
 
                 <!-- Service Card 4 -->
@@ -169,7 +169,7 @@
                             <span>Compostable options</span>
                         </li>
                     </ul>
-                    <a href="contact.html" class="inline-block bg-transparent border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white font-semibold px-6 py-2 rounded-lg transition-all">Learn More</a>
+                    <a href="/contact.php" class="inline-block bg-transparent border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white font-semibold px-6 py-2 rounded-lg transition-all">Learn More</a>
                 </article>
 
                 <!-- Service Card 5 -->
@@ -195,7 +195,7 @@
                             <span>Regular inventory updates</span>
                         </li>
                     </ul>
-                    <a href="contact.html" class="inline-block bg-transparent border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white font-semibold px-6 py-2 rounded-lg transition-all">Partner With Us</a>
+                    <a href="/contact.php" class="inline-block bg-transparent border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white font-semibold px-6 py-2 rounded-lg transition-all">Partner With Us</a>
                 </article>
 
                 <!-- Service Card 6 -->
@@ -221,7 +221,7 @@
                             <span>Product replacement</span>
                         </li>
                     </ul>
-                    <a href="contact.html" class="inline-block bg-transparent border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white font-semibold px-6 py-2 rounded-lg transition-all">Get Support</a>
+                    <a href="/contact.php" class="inline-block bg-transparent border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white font-semibold px-6 py-2 rounded-lg transition-all">Get Support</a>
                 </article>
 
             </div>
@@ -273,7 +273,7 @@
         <div class="container mx-auto px-6">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Get Started?</h2>
             <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Contact us today to discuss your project or place a custom order</p>
-            <a href="contact.html" class="inline-block bg-white text-primary-green font-semibold px-8 py-3 rounded-lg shadow-lg hover:bg-gray-100 hover:-translate-y-1 hover:shadow-xl transition-all">Contact Us Now</a>
+            <a href="/contact.php" class="inline-block bg-white text-primary-green font-semibold px-8 py-3 rounded-lg shadow-lg hover:bg-gray-100 hover:-translate-y-1 hover:shadow-xl transition-all">Contact Us Now</a>
         </div>
     </section>
 

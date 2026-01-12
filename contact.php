@@ -134,7 +134,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     </style>
     
-    <link rel="canonical" href="https://leafplusloom.com/contact.php">
+    <link rel="canonical" href="https://leafplusloom.infinityfreeapp.com/contact.php">
 </head>
 <body class="font-[system-ui] text-gray-800 overflow-x-hidden">
     
@@ -198,9 +198,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <div>
                                 <h3 class="text-lg font-semibold mb-3">Follow Us</h3>
                                 <div class="flex flex-col gap-2">
-                                    <a href="#" aria-label="Facebook" class="text-primary-green hover:text-primary-green-dark font-medium transition-colors">Facebook</a>
-                                    <a href="#" aria-label="Instagram" class="text-primary-green hover:text-primary-green-dark font-medium transition-colors">Instagram</a>
-                                    <a href="#" aria-label="Twitter" class="text-primary-green hover:text-primary-green-dark font-medium transition-colors">Twitter</a>
+                                    <a href="https://facebook.com/leafplusloom" "target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="text-primary-green hover:text-primary-green-dark font-medium transition-colors">Facebook</a>
+                                    <a href="https://instagram.com/leafplusloom" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-primary-green hover:text-primary-green-dark font-medium transition-colors">Instagram</a>
+                                    <a href="https://twitter.com/leafplusloom" target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="text-primary-green hover:text-primary-green-dark font-medium transition-colors">Twitter</a>
                                 </div>
                             </div>
                         </div>
@@ -228,7 +228,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                     <?php endif; ?>
                     
-                    <form method="POST" action="contact.php" class="space-y-5">
+                    <form method="POST" action="/contact.php" class="space-y-5">
                         
                         <!-- Full Name -->
                         <div>
@@ -309,7 +309,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="flex items-start gap-3">
                             <input type="checkbox" required id="agree" class="mt-1 w-4 h-4 text-primary-green border-gray-300 rounded focus:ring-primary-green">
                             <label for="agree" class="text-sm text-gray-700">
-                                I agree to the <a href="#" class="text-primary-green hover:underline">Privacy Policy</a> and <a href="#" class="text-primary-green hover:underline">Terms of Service</a>
+                                I agree to the <a href="/privacy-policy.php" class="text-primary-green hover:underline">Privacy Policy</a> and <a href="/terms-of-service.php" class="text-primary-green hover:underline">Terms of Service</a>
                             </label>
                         </div>
 

@@ -5,10 +5,10 @@
  */
 
 // Database Configuration
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_NAME', 'leafplusloom');
+define('DB_HOST', 'sql100.infinityfree.com');
+define('DB_USER', 'if0_40842705');
+define('DB_PASS', 'DarkCamper369');
+define('DB_NAME', 'if0_40842705_leafplusloom');
 
 // Create Database Connection (PDO)
 try {
