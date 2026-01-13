@@ -240,7 +240,7 @@
                             <time class="text-gray-600" itemprop="datePublished" datetime="2025-11-05">Nov 5, 2025</time>
                         </div>
                         <h3 class="text-xl font-semibold mb-3" itemprop="headline">
-                            <a href="blog-post.html?id=eco-kitchen" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
+                            <a href="blog-eco-friendly-kitchen.php" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
                                 Creating an Eco-Friendly Kitchen: Essential Tools
                             </a>
                         </h3>
@@ -252,7 +252,7 @@
                 <!-- Blog Post 7 -->
                 <article class="blog-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-category="sustainability" itemscope itemtype="https://schema.org/BlogPosting">
                     <div class="h-56 overflow-hidden">
-                        <img src="../images/composting at home guide.jpg" alt="Composting at Home Guide" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                        <img src="../images/composting-at-home-guide.jpg" alt="Composting at Home Guide" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="p-6">
                         <div class="flex gap-3 mb-3 text-sm">
@@ -272,7 +272,7 @@
                 <!-- Blog Post 8 -->
                 <article class="blog-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-category="product-care" itemscope itemtype="https://schema.org/BlogPosting">
                     <div class="h-56 overflow-hidden">
-                        <img src="/images/bamboo product maintenance.jpg" alt="Bamboo Product Maintenance" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                        <img src="../images/bamboo-product-maintenance.jpg" alt="Bamboo Product Maintenance" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="p-6">
                         <div class="flex gap-3 mb-3 text-sm">
@@ -280,19 +280,19 @@
                             <time class="text-gray-600" itemprop="datePublished" datetime="2025-10-25">Oct 25, 2025</time>
                         </div>
                         <h3 class="text-xl font-semibold mb-3" itemprop="headline">
-                            <a href="blog-post.html?id=bamboo-maintenance" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
+                            <a href="blog-maintaining-bamboo-products.php" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
                                 5 Essential Tips for Maintaining Bamboo Products
                             </a>
                         </h3>
                         <p class="text-gray-600 mb-4 leading-relaxed" itemprop="description">Keep your bamboo items looking new and lasting longer with these simple maintenance tips from our experts.</p>
-                        <a href="blog-post.html?id=bamboo-maintenance" class="text-primary-green font-semibold hover:underline">Read More →</a>
+                        <a href="blog-maintaining-bamboo-products.php" class="text-primary-green font-semibold hover:underline">Read More →</a>
                     </div>
                 </article>
 
                 <!-- Blog Post 9 -->
                 <article class="blog-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-category="lifestyle" itemscope itemtype="https://schema.org/BlogPosting">
                     <div class="h-56 overflow-hidden">
-                        <img src="/images/Minimalist lifestyle guide.jpg" alt="Minimalist Lifestyle Guide" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                        <img src="../images/Minimalist-lifestyle-guide.jpg" alt="Minimalist Lifestyle Guide" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="p-6">
                         <div class="flex gap-3 mb-3 text-sm">
@@ -300,12 +300,12 @@
                             <time class="text-gray-600" itemprop="datePublished" datetime="2025-10-20">Oct 20, 2025</time>
                         </div>
                         <h3 class="text-xl font-semibold mb-3" itemprop="headline">
-                            <a href="blog-post.html?id=minimalist-living" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
+                            <a href="blog-minimalist-lifestyle-guide.php" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
                                 Embracing Minimalism: Less Stuff, More Life
                             </a>
                         </h3>
                         <p class="text-gray-600 mb-4 leading-relaxed" itemprop="description">Discover how minimalist living can reduce stress, save money, and help the environment. Start your decluttering journey today.</p>
-                        <a href="blog-post.html?id=minimalist-living" class="text-primary-green font-semibold hover:underline">Read More →</a>
+                        <a href="blog-minimalist-lifestyle-guide.php" class="text-primary-green font-semibold hover:underline">Read More →</a>
                     </div>
                 </article>
 
@@ -339,7 +339,7 @@
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
                 <div>
-                    <img src="/images/leaf+loom logo 2.jpg" alt="Leaf+ Loom Logo" class="h-14">
+                    <img src="../images/logo.jpg" alt="Leaf+ Loom Logo" class="h-14">
                     <p class="text-gray-400">Crafting sustainable wooden and bamboo products for a greener tomorrow.</p>
                 </div>
                 <div>
