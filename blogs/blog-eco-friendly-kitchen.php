@@ -11,8 +11,8 @@
     <meta property="og:title" content="Creating an Eco-Friendly Kitchen: Essential Tools for Sustainable Living | Leaf+ Loom">
     <meta property="og:description" content="Learn how to create an eco-friendly kitchen with essential sustainable tools. Reduce waste, switch to natural alternatives, and build a cleaner zero waste kitchen.">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://leafplusloom.com/blogs/eco-friendly-kitchen-tools">
-    <meta property="og:image" content="https://leafplusloom.com/images/blog/eco-kitchen-hero.jpg">
+    <meta property="og:url" content="https://leafplusloom.infinityfreeapp.com/blogs/eco-friendly-kitchen-tools.php">
+    <meta property="og:image" content="https://leafplusloom.infinityfreeapp.com/images/blog/eco-kitchen-hero.jpg">
     <meta property="article:published_time" content="2025-11-15T10:00:00+05:30">
     <meta property="article:author" content="Leaf+ Loom Team">
     
@@ -58,7 +58,7 @@
         }
     </style>
     
-    <link rel="canonical" href="https://leafplusloom.com/blogs/eco-friendly-kitchen-tools">
+    <link rel="canonical" href="https://leafplusloom.infinityfreeapp.com/blogs/eco-friendly-kitchen-tools.php">
     
     <!-- Article Schema Markup -->
     <script type="application/ld+json">
@@ -67,7 +67,7 @@
       "@type": "BlogPosting",
       "headline": "Creating an Eco-Friendly Kitchen: Essential Tools for Sustainable Living",
       "description": "Learn how to create an eco-friendly kitchen with essential sustainable tools. Reduce waste, switch to natural alternatives, and build a cleaner zero waste kitchen.",
-      "image": "https://leafplusloom.com/images/blog/eco-kitchen-hero.jpg",
+      "image": "https://leafplusloom.infinityfreeapp.com/images/blog/eco-kitchen-hero.jpg",
       "datePublished": "2025-11-15T10:00:00+05:30",
       "dateModified": "2025-12-20T10:00:00+05:30",
       "author": {
@@ -79,12 +79,12 @@
         "name": "Leaf+ Loom",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://leafplusloom.com/images/logo.png"
+          "url": "https://leafplusloom.infinityfreeappcom/images/logo.png"
         }
       },
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://leafplusloom.com/blogs/eco-friendly-kitchen-tools"
+        "@id": "https://leafplusloom.infinityfreeapp.com/blogs/eco-friendly-kitchen-tools.php"
       },
       "keywords": ["eco-friendly kitchen", "sustainable kitchen tools", "zero waste kitchen", "eco-friendly cooking", "plastic-free kitchen"]
     }
@@ -147,18 +147,18 @@
         <nav class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
                 <div class="flex items-center gap-2">
-                    <a href="../index.html" class="flex items-center gap-2">
-                        <img src="/images/leaf+loom logo 1.png" alt="Leaf+ Loom Logo" class="h-14">
+                    <a href="../index.php" class="flex items-center gap-2">
+                        <img src="/images/leafplusloom-logo.png" alt="Leaf+ Loom Logo" class="h-14">
                     </a>
                 </div>
                 
                 <ul class="hidden lg:flex gap-8 items-center">
-                    <li><a href="../index.html" class="nav-link font-medium hover:text-primary-green transition-colors">Home</a></li>
-                    <li><a href="../about.html" class="nav-link font-medium hover:text-primary-green transition-colors">About</a></li>
-                    <li><a href="../services.html" class="nav-link font-medium hover:text-primary-green transition-colors">Services</a></li>
-                    <li><a href="../products.html" class="nav-link font-medium hover:text-primary-green transition-colors">Products</a></li>
-                    <li><a href="all-blogs.html" class="nav-link active font-medium hover:text-primary-green transition-colors">Blog</a></li>
-                    <li><a href="../contact.html" class="nav-link font-medium hover:text-primary-green transition-colors">Contact</a></li>
+                    <li><a href="../index.php" class="nav-link font-medium hover:text-primary-green transition-colors">Home</a></li>
+                    <li><a href="../about.php" class="nav-link font-medium hover:text-primary-green transition-colors">About</a></li>
+                    <li><a href="../services.php" class="nav-link font-medium hover:text-primary-green transition-colors">Services</a></li>
+                    <li><a href="../products.php" class="nav-link font-medium hover:text-primary-green transition-colors">Products</a></li>
+                    <li><a href="index.php" class="nav-link active font-medium hover:text-primary-green transition-colors">Blog</a></li>
+                    <li><a href="../contact.php" class="nav-link font-medium hover:text-primary-green transition-colors">Contact</a></li>
                 </ul>
                 
                 <div class="flex items-center gap-4">
@@ -172,12 +172,12 @@
             
             <div id="mobileMenu" class="hidden lg:hidden mt-4 pb-4">
                 <ul class="flex flex-col gap-3">
-                    <li><a href="../index.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Home</a></li>
-                    <li><a href="../about.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">About</a></li>
-                    <li><a href="../services.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Services</a></li>
-                    <li><a href="../products.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Products</a></li>
-                    <li><a href="all-blogs.html" class="block py-2 font-medium text-primary-green border-l-4 border-primary-green pl-4">Blog</a></li>
-                    <li><a href="../contact.html" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Contact</a></li>
+                    <li><a href="../index.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Home</a></li>
+                    <li><a href="../about.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">About</a></li>
+                    <li><a href="../services.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Services</a></li>
+                    <li><a href="../products.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Products</a></li>
+                    <li><a href="index.php" class="block py-2 font-medium text-primary-green border-l-4 border-primary-green pl-4">Blog</a></li>
+                    <li><a href="../contact.php" class="block py-2 font-medium hover:text-primary-green hover:border-l-4 hover:border-primary-green pl-4 transition-all">Contact</a></li>
                 </ul>
             </div>
         </nav>
@@ -206,9 +206,9 @@
     <nav class="bg-gray-50 py-4">
         <div class="container mx-auto px-6">
             <ol class="flex items-center gap-2 text-sm text-gray-600">
-                <li><a href="../index.html" class="hover:text-primary-green">Home</a></li>
+                <li><a href="../index.php" class="hover:text-primary-green">Home</a></li>
                 <span>›</span>
-                <li><a href="all-blogs.html" class="hover:text-primary-green">Blog</a></li>
+                <li><a href="index.php" class="hover:text-primary-green">Blog</a></li>
                 <span>›</span>
                 <li class="text-gray-800 font-medium">Eco-Friendly Kitchen</li>
             </ol>
@@ -287,7 +287,7 @@
                     </div>
 
                     <figure class="mb-8 rounded-xl overflow-hidden shadow-lg">
-                        <img src="/images/Eco-friendly-kitchen-setup.jpg" alt="eco-friendly kitchen setup with bamboo cutting boards wooden utensils and glass storage containers for sustainable cooking" class="w-full h-auto">
+                        <img src="../images/Eco-friendly-kitchen-setup.jpg" alt="eco-friendly kitchen setup with bamboo cutting boards wooden utensils and glass storage containers for sustainable cooking" class="w-full h-auto">
                     </figure>
                 </section>
 
@@ -339,7 +339,7 @@
                     </p>
 
                     <figure class="mb-8 rounded-xl overflow-hidden shadow-lg">
-                        <img src="/images/sustainable-kitchen-tools.jpg" alt="sustainable kitchen tools collection featuring bamboo utensils stainless steel containers and eco-friendly cooking accessories" class="w-full h-auto">
+                        <img src="../images/sustainable-kitchen-tools.jpg" alt="sustainable kitchen tools collection featuring bamboo utensils stainless steel containers and eco-friendly cooking accessories" class="w-full h-auto">
                     </figure>
                 </section>
 
@@ -392,7 +392,7 @@
                     </div>
 
                     <figure class="mb-8 rounded-xl overflow-hidden shadow-lg">
-                        <img src="/images/bamboo-kitchen-tools.jpg" alt="bamboo kitchen tools display with cutting board wooden spoons and natural dish brushes for plastic-free kitchen setup" class="w-full h-auto">
+                        <img src="..images/bamboo-kitchen-tools.jpg" alt="bamboo kitchen tools display with cutting board wooden spoons and natural dish brushes for plastic-free kitchen setup" class="w-full h-auto">
                     </figure>
                 </section>
 
@@ -445,7 +445,7 @@
                     </p>
 
                     <figure class="mb-8 rounded-xl overflow-hidden shadow-lg">
-                        <img src="/images/plastic-free-kitchen-storage.jpg" alt="plastic-free kitchen storage solutions with glass jars stainless steel containers and reusable bamboo accessories" class="w-full h-auto">
+                        <img src="../images/plastic-free-kitchen-storage.jpg" alt="plastic-free kitchen storage solutions with glass jars stainless steel containers and reusable bamboo accessories" class="w-full h-auto">
                     </figure>
                 </section>
 
@@ -502,7 +502,7 @@
                     </p>
 
                     <figure class="mb-8 rounded-xl overflow-hidden shadow-lg">
-                        <img src="/images/zero-waste-kitchen-setup.jpg" alt="zero waste kitchen setup with reusable containers beeswax wraps cloth bags and compost bin for sustainable living" class="w-full h-auto">
+                        <img src="../images/zero-waste-kitchen-setup.jpg" alt="zero waste kitchen setup with reusable containers beeswax wraps cloth bags and compost bin for sustainable living" class="w-full h-auto">
                     </figure>
                 </section>
 
@@ -547,7 +547,7 @@
                     </div>
 
                     <figure class="mb-8 rounded-xl overflow-hidden shadow-lg">
-                        <img src="/images/eco-friendly-cooking-habits.png" alt="eco-friendly cooking habits with stainless steel cookware bamboo utensils and fresh organic ingredients for sustainable meals" class="w-full h-auto">
+                        <img src="../images/eco-friendly-cooking-habits.png" alt="eco-friendly cooking habits with stainless steel cookware bamboo utensils and fresh organic ingredients for sustainable meals" class="w-full h-auto">
                     </figure>
                 </section>
 
@@ -606,14 +606,14 @@
                                 <img src="../images/blog/bamboo-products-thumb.jpg" alt="Bamboo Sustainable Products" class="w-full md:w-32 h-32 object-cover rounded-lg">
                                 <div>
                                     <h3 class="text-lg font-bold text-gray-900 mb-1">Why Bamboo Sustainable Products Are the Future of Eco-Friendly Living</h3>
-                                    <a href="blog-bamboo-sustainable.html" class="text-wood-brown font-semibold hover:underline text-sm">Read More →</a>
+                                    <a href="blog-bamboo-sustainable.php" class="text-wood-brown font-semibold hover:underline text-sm">Read More →</a>
                                 </div>
                             </div>
                             <div class="flex flex-col md:flex-row gap-4 items-center">
                                 <img src="../images/blog/wooden-brush-thumb.jpg" alt="Wooden Brush Care" class="w-full md:w-32 h-32 object-cover rounded-lg">
                                 <div>
                                     <h3 class="text-lg font-bold text-gray-900 mb-1">Wooden Brush Care – How to Clean and Maintain Your Wooden Brush Naturally</h3>
-                                    <a href="blog-wooden-brush-care.html" class="text-wood-brown font-semibold hover:underline text-sm">Read More →</a>
+                                    <a href="blog-wooden-brush-care.php" class="text-wood-brown font-semibold hover:underline text-sm">Read More →</a>
                                 </div>
                             </div>
                         </div>
@@ -630,16 +630,16 @@
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
                 <div>
-                    <img src="/images/leaf+loom logo 2.jpg" alt="Leaf+ Loom Logo" class="h-14">
+                    <img src="../images/logo.jpg" alt="Leaf+ Loom Logo" class="h-14">
                     <p class="text-gray-400">Crafting sustainable wooden and bamboo products for a greener tomorrow.</p>
                 </div>
                 <div>
                     <h4 class="text-secondary-green font-semibold mb-4 text-lg">Quick Links</h4>
                     <ul class="space-y-2">
-                        <li><a href="../about.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="../products.html" class="text-gray-400 hover:text-white transition-colors">Products</a></li>
-                        <li><a href="all-blogs.html" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
-                        <li><a href="../contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="../about.php" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="../products.php" class="text-gray-400 hover:text-white transition-colors">Products</a></li>
+                        <li><a href="index.php" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="../contact.php" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
                     </ul>
                 </div>
                 <div>

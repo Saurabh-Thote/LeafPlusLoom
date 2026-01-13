@@ -52,7 +52,7 @@
         }
     </style>
 
-    <link rel="canonical" href="https://leafplusloom.infinityfreeapp.com/blogs/maintaining-bamboo-products">
+    <link rel="canonical" href="https://leafplusloom.infinityfreeapp.com/blogs/maintaining-bamboo-products.php">
 
     <!-- Article Schema Markup -->
     <script type="application/ld+json">
@@ -146,8 +146,8 @@
         <nav class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
                 <div class="flex items-center gap-2">
-                    <a href="../index.html" class="flex items-center gap-2">
-                        <img src="../images/leaf+loom logo 1.png" alt="Leaf+ Loom Logo" class="h-14">
+                    <a href="../index.php" class="flex items-center gap-2">
+                        <img src="../images/leafplusloom-logo.png" alt="Leaf+ Loom Logo" class="h-14">
                     </a>
                 </div>
 
@@ -615,7 +615,7 @@
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
                 <div>
-                    <img src="../images/leaf+loom logo 2.jpg" alt="Leaf+ Loom Logo" class="h-14">
+                    <img src="../images/logo.jpg" alt="Leaf+ Loom Logo" class="h-14">
                     <p class="text-gray-400">Crafting sustainable wooden and bamboo products for a greener tomorrow.</p>
                 </div>
                 <div>
