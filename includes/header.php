@@ -116,7 +116,7 @@ $active_page = getCurrentPage();
                 <a href="<?php echo $base_url; ?>index.php"
                     class="flex items-center gap-2 hover:opacity-80 transition-opacity" title="Go to Home">
                     <img src="<?php echo getImagePath('logo.png'); ?>" alt="Leaf+Loom Logo" class="h-14"
-                        onerror="this.src='<?php echo $base_url; ?>images/leaf+loom-logo.jpg'">
+                        onerror="this.src='<?php echo $base_url; ?>images/leafplusloom-logo.jpg'">
                 </a>
             </div>
 
