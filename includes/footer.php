@@ -18,17 +18,17 @@
                 <div>
                     <h4 class="text-secondary-green font-semibold mb-4 text-lg">Customer Service</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Shipping Policy</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Return Policy</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms & Conditions</a></li>
+                        <li><a href="shipping-policy.php" class="text-gray-400 hover:text-white transition-colors">Shipping Policy</a></li>
+                        <li><a href="return-policy.php" class="text-gray-400 hover:text-white transition-colors">Return Policy</a></li>
+                        <li><a href="privacy-policy.php" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="terms-conditions.php" class="text-gray-400 hover:text-white transition-colors">Terms & Conditions</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-secondary-green font-semibold mb-4 text-lg">Connect With Us</h4>
                     <div class="flex gap-4 text-2xl">
                         <a href="#" aria-label="Facebook" class="hover:text-secondary-green transition-colors">📘</a>
-                        <a href="#" aria-label="Instagram" class="hover:text-secondary-green transition-colors">📷</a>
+                        <a href="https://www.instagram.com/leafpluslooms/" aria-label="Instagram" class="hover:text-secondary-green transition-colors">📷</a>
                         <a href="#" aria-label="LinkedIn" class="hover:text-secondary-green transition-colors">💼</a>
                     </div>
                 </div>
