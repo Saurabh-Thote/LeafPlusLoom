@@ -187,7 +187,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
         <!-- Demo Credentials (Remove in production!) -->
         <div class="mt-6 bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-center">
             <p class="text-xs text-yellow-800 font-semibold mb-2">📌 Demo Credentials:</p>
-            <p class="text-xs text-yellow-700">Username: <code class="bg-yellow-100 px-2 py-1 rounded">saurabhtthote369</code></p>
+            <p class="text-xs text-yellow-700">Username: <code class="bg-yellow-100 px-2 py-1 rounded">saurabhthote369</code></p>
             <p class="text-xs text-yellow-700">Password: <code class="bg-yellow-100 px-2 py-1 rounded">Saur@bh_thote963</code></p>
         </div>
         

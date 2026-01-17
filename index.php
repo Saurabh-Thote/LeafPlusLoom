@@ -11,7 +11,7 @@
     <meta property="og:title" content="Leaf+ Loom - Eco-Friendly Wooden & Bamboo Products">
     <meta property="og:description" content="Premium handcrafted wooden and bamboo products for sustainable living">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://leafplusloom.infinityfreeapp.com">
+    <meta property="og:url" content="https://leafplusloom.infinityfreeapp.com.index.php">
     
     <title>Leaf+ Loom - Premium Wooden & Bamboo Products | Sustainable Living</title>
     
@@ -77,7 +77,7 @@
         }
     </style>
     
-    <link rel="canonical" href="https://leafplusloom.infinityfreeapp.com">
+    <link rel="canonical" href="https://leafplusloom.infinityfreeapp.com.index.php">
 </head>
 <body class="font-[system-ui] text-gray-800 overflow-x-hidden">
     
@@ -94,7 +94,7 @@
             <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Discover premium handcrafted wooden and bamboo products for an eco-friendly lifestyle</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="products/" class="inline-block bg-primary-green hover:bg-primary-green-dark text-white font-semibold px-7 py-3 rounded-lg shadow-lg hover:-translate-y-1 hover:shadow-xl transition-all">Shop Now</a>
-                <a href="about.php" class="inline-block bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary-green font-semibold px-7 py-3 rounded-lg transition-all">Learn More</a>
+                <a href="/about.php" class="inline-block bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary-green font-semibold px-7 py-3 rounded-lg transition-all">Learn More</a>
             </div>
         </div>
     </section>
@@ -111,7 +111,7 @@
                 <!-- Product Card 1 -->
                 <article class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
                     <div class="relative h-72 bg-gray-100 overflow-hidden">
-                        <img src="images/products/round-brush.jpg" alt="Round Handle Wooden Brush" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <img src="images/products/round-handle-wooden-brush.jpg" alt="Round Handle Wooden Brush" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                         <span class="absolute top-4 right-4 bg-primary-green text-white text-xs font-semibold px-3 py-1 rounded">New</span>
                     </div>
                     <div class="p-6">
@@ -127,7 +127,7 @@
                 <!-- Product Card 2 -->
                 <article class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
                     <div class="relative h-72 bg-gray-100 overflow-hidden">
-                        <img src="images/products/kids-brush.jpg" alt="Kids Wooden Brush" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <img src="images/products/kid-toothbrush.webp" alt="Kids Wooden Brush" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                         <span class="absolute top-4 right-4 bg-primary-green text-white text-xs font-semibold px-3 py-1 rounded">Popular</span>
                     </div>
                     <div class="p-6">
@@ -143,7 +143,7 @@
                 <!-- Product Card 3 -->
                 <article class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
                     <div class="relative h-72 bg-gray-100 overflow-hidden">
-                        <img src="images/products/premium-comb.jpg" alt="Premium Wooden Comb" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <img src="images/products/premium-wooden-comb.png" alt="Premium Wooden Comb" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="p-6">
                         <h3 class="text-lg font-semibold mb-2">Premium Comb</h3>

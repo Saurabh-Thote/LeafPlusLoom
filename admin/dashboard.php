@@ -101,7 +101,7 @@ if (isset($_GET['logout'])) {
                         <p class="text-xs text-gray-500"><?php echo htmlspecialchars($admin_email); ?></p>
                     </div>
                     <div class="flex items-center gap-2">
-                        <a href="../index.html" target="_blank" class="bg-gray-100 hover:bg-gray-200 text-gray-700 p-2 rounded-lg transition-colors" title="View Website">
+                        <a href="../index.php" target="_blank" class="bg-gray-100 hover:bg-gray-200 text-gray-700 p-2 rounded-lg transition-colors" title="View Website">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                             </svg>
