@@ -134,8 +134,7 @@ if ($product['original_price'] && $product['original_price'] > $product['price']
                     <div class="aspect-square bg-gray-100 rounded-lg overflow-hidden mb-4">
                         <img src="<?php echo htmlspecialchars($product['main_image']); ?>" 
                              alt="<?php echo htmlspecialchars($product['title']); ?>"
-                             class="w-full h-full object-cover"
-                             onerror="this.src='../images/placeholder.jpg'">
+                             class="w-full h-full object-cover">
                     </div>
                     
                     <!-- Gallery Images -->

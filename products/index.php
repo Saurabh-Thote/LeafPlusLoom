@@ -211,7 +211,6 @@ function formatPrice($price, $originalPrice = null) {
                                      alt="<?php echo htmlspecialchars($product['title']); ?>"
                                      itemprop="image"
                                      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                     onerror="this.src='../images/placeholder.jpg'">
                                 
                                 <!-- Badges -->
                                 <?php if ($product['is_new_arrival']): ?>

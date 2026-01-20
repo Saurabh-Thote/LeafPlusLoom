@@ -1,3 +1,81 @@
+<?php
+// Include database config
+require_once '../config.php';
+
+// Pagination settings
+$blogs_per_page = 9;
+$current_page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+$offset = ($current_page - 1) * $blogs_per_page;
+
+// Category filter
+$category_filter = isset($_GET['category']) ? $_GET['category'] : 'all';
+
+// Prepare SQL based on category
+try {
+    if ($category_filter === 'all') {
+        // Get total count
+        $count_sql = "SELECT COUNT(*) as total FROM blogs WHERE status = 'published'";
+        $count_stmt = $conn->query($count_sql);
+        $total_blogs = $count_stmt->fetch()['total'];
+        
+        // Get blogs with pagination - FIXED with underscore columns
+        $sql = "SELECT * FROM blogs WHERE status = 'published' ORDER BY published_at DESC LIMIT :limit OFFSET :offset";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':limit', $blogs_per_page, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+    } else {
+        // Get total count for category
+        $count_sql = "SELECT COUNT(*) as total FROM blogs WHERE status = 'published' AND category = :category";
+        $count_stmt = $conn->prepare($count_sql);
+        $count_stmt->bindValue(':category', $category_filter, PDO::PARAM_STR);
+        $count_stmt->execute();
+        $total_blogs = $count_stmt->fetch()['total'];
+        
+        // Get blogs by category with pagination - FIXED with underscore columns
+        $sql = "SELECT * FROM blogs WHERE status = 'published' AND category = :category ORDER BY published_at DESC LIMIT :limit OFFSET :offset";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':category', $category_filter, PDO::PARAM_STR);
+        $stmt->bindValue(':limit', $blogs_per_page, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+    }
+    
+    $stmt->execute();
+    $blogs = $stmt->fetchAll();
+    
+    // Calculate total pages
+    $total_pages = ceil($total_blogs / $blogs_per_page);
+    
+    // Get featured blog - FIXED with underscore columns
+    $featured_sql = "SELECT * FROM blogs WHERE status = 'published' AND is_featured = 1 ORDER BY published_at DESC LIMIT 1";
+    $featured_stmt = $conn->query($featured_sql);
+    $featured_blog = $featured_stmt->fetch();
+    
+    // If no featured blog, get most recent
+    if (!$featured_blog) {
+        $featured_sql = "SELECT * FROM blogs WHERE status = 'published' ORDER BY published_at DESC LIMIT 1";
+        $featured_stmt = $conn->query($featured_sql);
+        $featured_blog = $featured_stmt->fetch();
+    }
+    
+} catch(PDOException $e) {
+    die("Error: " . $e->getMessage());
+}
+
+// Helper function to format date
+function formatDate($date) {
+    if (!$date) return 'Not published';
+    return date('M d, Y', strtotime($date));
+}
+
+// Helper function to create excerpt
+function createExcerpt($text, $length = 150) {
+    $text = strip_tags($text);
+    if (strlen($text) > $length) {
+        return substr($text, 0, $length) . '...';
+    }
+    return $text;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +89,7 @@
     <meta property="og:title" content="Blog - Leaf+ Loom | Sustainable Living & Eco Tips">
     <meta property="og:description" content="Expert tips and insights on sustainable living, eco-friendly products, and green lifestyle choices">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://leafplusloom.infinityfreeapp.com/blogs/index.php">
+    <meta property="og:url" content="http://localhost/LeafplusLoom/blogs/index.php">
     
     <title>Blog - Leaf+ Loom | Sustainable Living & Eco Tips</title>
     
@@ -53,9 +131,23 @@
         .nav-link.active::after {
             width: 100%;
         }
+        
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
     </style>
     
-    <link rel="canonical" href="https://leafplusloom.infinityfreeapp.com/blogs/index.php">
+    <link rel="canonical" href="http://localhost/LeafplusLoom/blogs/index.php">
     
     <!-- Blog Schema Markup -->
     <script type="application/ld+json">
@@ -64,13 +156,13 @@
       "@type": "Blog",
       "name": "Leaf+ Loom Blog",
       "description": "Sustainable living tips and eco-friendly product guides",
-      "url": "https://leafplusloom.infinityfreeapp.com/blogs/index.php",
+      "url": "http://localhost/LeafplusLoom/blogs/index.php",
       "publisher": {
         "@type": "Organization",
         "name": "Leaf+ Loom",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://leafplusloom.infinityfreeapp.com/images/logo.png"
+          "url": "http://localhost/LeafplusLoom/images/logo.png"
         }
       }
     }
@@ -86,6 +178,7 @@
         <div class="container mx-auto px-6">
             <h1 class="text-3xl md:text-5xl font-bold mb-4">Our Blog</h1>
             <p class="text-lg md:text-xl">Insights on sustainable living and eco-friendly lifestyle</p>
+            <p class="text-sm mt-2 opacity-90">Total Articles: <?php echo $total_blogs; ?></p>
         </div>
     </section>
 
@@ -93,232 +186,228 @@
     <section class="bg-gray-100 py-4">
         <div class="container mx-auto px-6">
             <div class="flex flex-wrap gap-3 justify-center">
-                <button class="filter-tab px-5 py-2 rounded-lg bg-primary-green text-white font-medium transition-all" onclick="filterBlog('all')">All Posts</button>
-                <button class="filter-tab px-5 py-2 rounded-lg bg-white hover:bg-primary-green hover:text-white font-medium transition-all" onclick="filterBlog('sustainability')">Sustainability</button>
-                <button class="filter-tab px-5 py-2 rounded-lg bg-white hover:bg-primary-green hover:text-white font-medium transition-all" onclick="filterBlog('tips')">Eco Tips</button>
-                <button class="filter-tab px-5 py-2 rounded-lg bg-white hover:bg-primary-green hover:text-white font-medium transition-all" onclick="filterBlog('product-care')">Product Care</button>
-                <button class="filter-tab px-5 py-2 rounded-lg bg-white hover:bg-primary-green hover:text-white font-medium transition-all" onclick="filterBlog('lifestyle')">Lifestyle</button>
+                <a href="?category=all" class="filter-tab px-5 py-2 rounded-lg <?php echo $category_filter === 'all' ? 'bg-primary-green text-white' : 'bg-white hover:bg-primary-green hover:text-white'; ?> font-medium transition-all">
+                    All Posts
+                </a>
+                <a href="?category=Sustainability" class="filter-tab px-5 py-2 rounded-lg <?php echo $category_filter === 'Sustainability' ? 'bg-primary-green text-white' : 'bg-white hover:bg-primary-green hover:text-white'; ?> font-medium transition-all">
+                    Sustainability
+                </a>
+                <a href="?category=Hair Care" class="filter-tab px-5 py-2 rounded-lg <?php echo $category_filter === 'Hair Care' ? 'bg-primary-green text-white' : 'bg-white hover:bg-primary-green hover:text-white'; ?> font-medium transition-all">
+                    Hair Care
+                </a>
+                <a href="?category=Lifestyle" class="filter-tab px-5 py-2 rounded-lg <?php echo $category_filter === 'Lifestyle' ? 'bg-primary-green text-white' : 'bg-white hover:bg-primary-green hover:text-white'; ?> font-medium transition-all">
+                    Lifestyle
+                </a>
+                <a href="?category=Product Care" class="filter-tab px-5 py-2 rounded-lg <?php echo $category_filter === 'Product Care' ? 'bg-primary-green text-white' : 'bg-white hover:bg-primary-green hover:text-white'; ?> font-medium transition-all">
+                    Product Care
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Featured Post -->
+    <?php if ($featured_blog): ?>
     <section class="py-12 md:py-16">
         <div class="container mx-auto px-6">
             <article class="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white rounded-xl overflow-hidden shadow-lg" itemscope itemtype="https://schema.org/BlogPosting">
                 <div class="relative h-64 lg:h-auto">
-                    <img src="../images/zero-waste-living-guide.jpg" alt="Zero Waste Living Guide" itemprop="image" class="w-full h-full object-cover">
+                    <img src="../<?php echo htmlspecialchars($featured_blog['featured_image']); ?>" 
+                         alt="<?php echo htmlspecialchars($featured_blog['title']); ?>" 
+                         itemprop="image" 
+                         class="w-full h-full object-cover"
+                         onerror="this.src='../images/blog/default-blog.jpg'">
                     <span class="absolute top-4 left-4 bg-primary-green text-white text-sm font-semibold px-4 py-2 rounded">Featured</span>
                 </div>
                 <div class="p-6 lg:p-8 flex flex-col justify-center">
                     <div class="flex flex-wrap gap-3 mb-4 text-sm">
-                        <span class="bg-bamboo-beige px-3 py-1 rounded font-semibold">Sustainability</span>
-                        <time class="text-gray-600" itemprop="datePublished" datetime="2025-12-01">December 1, 2025</time>
-                        <span class="text-gray-600">8 min read</span>
+                        <span class="bg-bamboo-beige px-3 py-1 rounded font-semibold"><?php echo htmlspecialchars($featured_blog['category']); ?></span>
+                        <time class="text-gray-600" itemprop="datePublished" datetime="<?php echo $featured_blog['published_at']; ?>">
+                            <?php echo formatDate($featured_blog['published_at']); ?>
+                        </time>
+                        <span class="text-gray-600">⏱ <?php echo $featured_blog['reading_time']; ?> min read</span>
+                        <span class="text-gray-600">👁 <?php echo number_format($featured_blog['views_count']); ?> views</span>
                     </div>
-                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4" itemprop="headline">10 Simple Steps to Start Your Zero Waste Journey</h2>
-                    <p class="text-gray-600 mb-6 leading-relaxed" itemprop="description">Transitioning to a zero-waste lifestyle doesn't have to be overwhelming. Discover practical steps you can take today to reduce your environmental footprint and embrace sustainable living. From kitchen swaps to bathroom essentials, learn how small changes create lasting impact.</p>
-                    <a href="blog-zero-waste-journey.php" class="inline-block bg-primary-green hover:bg-primary-green-dark text-white font-semibold px-6 py-3 rounded-lg transition-colors w-max" itemprop="url">Read More</a>
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4" itemprop="headline">
+                        <?php echo htmlspecialchars($featured_blog['title']); ?>
+                    </h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed" itemprop="description">
+                        <?php echo htmlspecialchars($featured_blog['excerpt']); ?>
+                    </p>
+                    <div class="flex items-center gap-3 mb-6">
+                        <?php if ($featured_blog['author_image']): ?>
+                        <img src="../<?php echo htmlspecialchars($featured_blog['author_image']); ?>" 
+                             alt="<?php echo htmlspecialchars($featured_blog['author_name']); ?>" 
+                             class="w-10 h-10 rounded-full object-cover"
+                             onerror="this.src='../images/author/default-author.jpg'">
+                        <?php else: ?>
+                        <div class="w-10 h-10 rounded-full bg-primary-green text-white flex items-center justify-center font-bold">
+                            <?php echo strtoupper(substr($featured_blog['author_name'], 0, 1)); ?>
+                        </div>
+                        <?php endif; ?>
+                        <span class="text-sm text-gray-700">By <strong><?php echo htmlspecialchars($featured_blog['author_name']); ?></strong></span>
+                    </div>
+                    <a href="blog-post.php?slug=<?php echo urlencode($featured_blog['slug']); ?>" 
+                       class="inline-block bg-primary-green hover:bg-primary-green-dark text-white font-semibold px-6 py-3 rounded-lg transition-colors w-max" 
+                       itemprop="url">Read Full Article →</a>
                 </div>
             </article>
         </div>
     </section>
+    <?php endif; ?>
 
     <!-- Blog Grid -->
     <section class="py-16 md:py-20 bg-gray-50">
         <div class="container mx-auto px-6">
+            <?php if (count($blogs) > 0): ?>
             <div id="blogGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <!-- Blog Post 1 -->
-                <article class="blog-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-category="product-care" itemscope itemtype="https://schema.org/BlogPosting">
+                <?php foreach ($blogs as $blog): ?>
+                <!-- Blog Post Card -->
+                <article class="blog-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" itemscope itemtype="https://schema.org/BlogPosting">
                     <div class="h-56 overflow-hidden">
-                        <img src="../images/benefits of bamboo products.jpg" alt="Benefits of Bamboo Products" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                        <a href="blog-post.php?slug=<?php echo urlencode($blog['slug']); ?>">
+                            <img src="../<?php echo htmlspecialchars($blog['featured_image']); ?>" 
+                                 alt="<?php echo htmlspecialchars($blog['title']); ?>" 
+                                 itemprop="image" 
+                                 class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                                 onerror="this.src='../images/blog/default-blog.jpg'">
+                        </a>
                     </div>
                     <div class="p-6">
-                        <div class="flex gap-3 mb-3 text-sm">
-                            <span class="bg-bamboo-beige px-3 py-1 rounded font-semibold">Product Care</span>
-                            <time class="text-gray-600" itemprop="datePublished" datetime="2025-11-28">Nov 28, 2025</time>
+                        <div class="flex gap-3 mb-3 text-sm flex-wrap">
+                            <span class="bg-bamboo-beige px-3 py-1 rounded font-semibold"><?php echo htmlspecialchars($blog['category']); ?></span>
+                            <time class="text-gray-600" itemprop="datePublished" datetime="<?php echo $blog['published_at']; ?>">
+                                <?php echo formatDate($blog['published_at']); ?>
+                            </time>
                         </div>
-                        <h3 class="text-xl font-semibold mb-3" itemprop="headline">
-                            <a href="blog-bamboo-benefits.php" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
-                                Why Bamboo is the Future of Sustainable Products
+                        <h3 class="text-xl font-semibold mb-3 line-clamp-2" itemprop="headline">
+                            <a href="blog-post.php?slug=<?php echo urlencode($blog['slug']); ?>" 
+                               class="text-gray-800 hover:text-primary-green transition-colors" 
+                               itemprop="url">
+                                <?php echo htmlspecialchars($blog['title']); ?>
                             </a>
                         </h3>
-                        <p class="text-gray-600 mb-4 leading-relaxed" itemprop="description">Learn about the amazing properties of bamboo and why it's becoming the material of choice for eco-conscious consumers worldwide.</p>
-                        <a href="blog-post.html?id=bamboo-benefits" class="text-primary-green font-semibold hover:underline">Read More →</a>
-                    </div>
-                </article>
-
-                <!-- Blog Post 2 -->
-                <article class="blog-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-category="tips" itemscope itemtype="https://schema.org/BlogPosting">
-                    <div class="h-56 overflow-hidden">
-                        <img src="../images/caring for wooden brushes.jpg" alt="Caring for Wooden Brushes" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex gap-3 mb-3 text-sm">
-                            <span class="bg-bamboo-beige px-3 py-1 rounded font-semibold">Tips</span>
-                            <time class="text-gray-600" itemprop="datePublished" datetime="2025-11-25">Nov 25, 2025</time>
+                        <p class="text-gray-600 mb-4 leading-relaxed line-clamp-3" itemprop="description">
+                            <?php echo createExcerpt($blog['excerpt'], 120); ?>
+                        </p>
+                        <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+                            <span>⏱ <?php echo $blog['reading_time']; ?> min read</span>
+                            <span>👁 <?php echo number_format($blog['views_count']); ?></span>
                         </div>
-                        <h3 class="text-xl font-semibold mb-3" itemprop="headline">
-                            <a href="blog-wooden-brush-care.php" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
-                                How to Care for Your Wooden Brush: A Complete Guide
-                            </a>
-                        </h3>
-                        <p class="text-gray-600 mb-4 leading-relaxed" itemprop="description">Proper care can extend the life of your wooden brush for years. Here's everything you need to know about maintenance and cleaning.</p>
-                        <a href="blog-wooden-brush-care.php" class="text-primary-green font-semibold hover:underline">Read More →</a>
-                    </div>
-                </article>
-
-                <!-- Blog Post 3 -->
-                <article class="blog-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-category="lifestyle" itemscope itemtype="https://schema.org/BlogPosting">
-                    <div class="h-56 overflow-hidden">
-                        <img src="../images/Plastic free alternative.jpg" alt="Plastic Free Alternatives" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex gap-3 mb-3 text-sm">
-                            <span class="bg-bamboo-beige px-3 py-1 rounded font-semibold">Lifestyle</span>
-                            <time class="text-gray-600" itemprop="datePublished" datetime="2025-11-20">Nov 20, 2025</time>
+                        <div class="flex items-center gap-3 mb-4 pb-4 border-b">
+                            <?php if ($blog['author_image']): ?>
+                            <img src="../<?php echo htmlspecialchars($blog['author_image']); ?>" 
+                                 alt="<?php echo htmlspecialchars($blog['author_name']); ?>" 
+                                 class="w-8 h-8 rounded-full object-cover"
+                                 onerror="this.src='../images/author/default-author.jpg'">
+                            <?php else: ?>
+                            <div class="w-8 h-8 rounded-full bg-primary-green text-white flex items-center justify-center text-xs font-bold">
+                                <?php echo strtoupper(substr($blog['author_name'], 0, 1)); ?>
+                            </div>
+                            <?php endif; ?>
+                            <span class="text-sm text-gray-600"><?php echo htmlspecialchars($blog['author_name']); ?></span>
                         </div>
-                        <h3 class="text-xl font-semibold mb-3" itemprop="headline">
-                            <a href="blog-plastic-free-swaps.php" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
-                                15 Easy Plastic-Free Swaps for Your Daily Routine
-                            </a>
-                        </h3>
-                        <p class="text-gray-600 mb-4 leading-relaxed" itemprop="description">Simple switches that make a big difference. Transform your daily routine with these eco-friendly alternatives to common plastic items.</p>
-                        <a href="blog-plastic-free-swaps.php" class="text-primary-green font-semibold hover:underline">Read More →</a>
+                        <a href="blog-post.php?slug=<?php echo urlencode($blog['slug']); ?>" 
+                           class="text-primary-green font-semibold hover:underline inline-flex items-center gap-1">
+                            Read More 
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </a>
                     </div>
                 </article>
-
-                <!-- Blog Post 4 -->
-                <article class="blog-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-category="lifestyle" itemscope itemtype="https://schema.org/BlogPosting">
-                    <div class="h-56 overflow-hidden">
-                        <img src="../images/eco-friendly-gifts-1.webp" alt="Sustainable Gift Ideas" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex gap-3 mb-3 text-sm">
-                            <span class="bg-bamboo-beige px-3 py-1 rounded font-semibold">Lifestyle</span>
-                            <time class="text-gray-600" itemprop="datePublished" datetime="2025-11-15">Nov 15, 2025</time>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-3" itemprop="headline">
-                            <a href="blog-eco-friendly-gifting.php" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
-                                Eco-Friendly Gift Ideas That Show You Care
-                            </a>
-                        </h3>
-                        <p class="text-gray-600 mb-4 leading-relaxed" itemprop="description">Give thoughtful, sustainable gifts that your loved ones will cherish while helping the planet. Perfect for all occasions.</p>
-                        <a href="blog-eco-friendly-gifting.php" class="text-primary-green font-semibold hover:underline">Read More →</a>
-                    </div>
-                </article>
-
-                <!-- Blog Post 5 -->
-                <article class="blog-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-category="sustainability" itemscope itemtype="https://schema.org/BlogPosting">
-                    <div class="h-56 overflow-hidden">
-                        <img src="../images/wood-vs-plastic.webp" alt="Wood vs Plastic Comparison" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex gap-3 mb-3 text-sm">
-                            <span class="bg-bamboo-beige px-3 py-1 rounded font-semibold">Sustainability</span>
-                            <time class="text-gray-600" itemprop="datePublished" datetime="2025-11-10">Nov 10, 2025</time>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-3" itemprop="headline">
-                            <a href="blog-wood-vs-plastic.php" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
-                                Wooden vs Plastic Products: The Environmental Impact
-                            </a>
-                        </h3>
-                        <p class="text-gray-600 mb-4 leading-relaxed" itemprop="description">A deep dive into why wooden products are better for the environment than plastic alternatives, backed by research and data.</p>
-                        <a href="blog-wood-vs-plastic.php" class="text-primary-green font-semibold hover:underline">Read More →</a>
-                    </div>
-                </article>
-
-                <!-- Blog Post 6 -->
-                <article class="blog-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-category="tips" itemscope itemtype="https://schema.org/BlogPosting">
-                    <div class="h-56 overflow-hidden">
-                        <img src="../images/eco-friendly-kitchen-tips-1.jpg" alt="Eco-Friendly Kitchen Tips" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex gap-3 mb-3 text-sm">
-                            <span class="bg-bamboo-beige px-3 py-1 rounded font-semibold">Tips</span>
-                            <time class="text-gray-600" itemprop="datePublished" datetime="2025-11-05">Nov 5, 2025</time>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-3" itemprop="headline">
-                            <a href="blog-eco-friendly-kitchen.php" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
-                                Creating an Eco-Friendly Kitchen: Essential Tools
-                            </a>
-                        </h3>
-                        <p class="text-gray-600 mb-4 leading-relaxed" itemprop="description">Transform your kitchen into a sustainable space with these must-have wooden and bamboo tools that replace plastic items.</p>
-                        <a href="blog-eco-friendly-kitchen.php" class="text-primary-green font-semibold hover:underline">Read More →</a>
-                    </div>
-                </article>
-
-                <!-- Blog Post 7 -->
-                <article class="blog-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-category="sustainability" itemscope itemtype="https://schema.org/BlogPosting">
-                    <div class="h-56 overflow-hidden">
-                        <img src="../images/composting-at-home-guide.jpg" alt="Composting at Home Guide" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex gap-3 mb-3 text-sm">
-                            <span class="bg-bamboo-beige px-3 py-1 rounded font-semibold">Sustainability</span>
-                            <time class="text-gray-600" itemprop="datePublished" datetime="2025-10-30">Oct 30, 2025</time>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-3" itemprop="headline">
-                            <a href="blog-post.html?id=composting-guide" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
-                                Beginner's Guide to Composting at Home
-                            </a>
-                        </h3>
-                        <p class="text-gray-600 mb-4 leading-relaxed" itemprop="description">Learn how to start composting at home with this simple step-by-step guide. Reduce waste and create nutrient-rich soil for your garden.</p>
-                        <a href="blog-post.html?id=composting-guide" class="text-primary-green font-semibold hover:underline">Read More →</a>
-                    </div>
-                </article>
-
-                <!-- Blog Post 8 -->
-                <article class="blog-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-category="product-care" itemscope itemtype="https://schema.org/BlogPosting">
-                    <div class="h-56 overflow-hidden">
-                        <img src="../images/bamboo-product-maintenance.jpg" alt="Bamboo Product Maintenance" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex gap-3 mb-3 text-sm">
-                            <span class="bg-bamboo-beige px-3 py-1 rounded font-semibold">Product Care</span>
-                            <time class="text-gray-600" itemprop="datePublished" datetime="2025-10-25">Oct 25, 2025</time>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-3" itemprop="headline">
-                            <a href="blog-maintaining-bamboo-products.php" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
-                                5 Essential Tips for Maintaining Bamboo Products
-                            </a>
-                        </h3>
-                        <p class="text-gray-600 mb-4 leading-relaxed" itemprop="description">Keep your bamboo items looking new and lasting longer with these simple maintenance tips from our experts.</p>
-                        <a href="blog-maintaining-bamboo-products.php" class="text-primary-green font-semibold hover:underline">Read More →</a>
-                    </div>
-                </article>
-
-                <!-- Blog Post 9 -->
-                <article class="blog-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-category="lifestyle" itemscope itemtype="https://schema.org/BlogPosting">
-                    <div class="h-56 overflow-hidden">
-                        <img src="../images/Minimalist-lifestyle-guide.jpg" alt="Minimalist Lifestyle Guide" itemprop="image" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex gap-3 mb-3 text-sm">
-                            <span class="bg-bamboo-beige px-3 py-1 rounded font-semibold">Lifestyle</span>
-                            <time class="text-gray-600" itemprop="datePublished" datetime="2025-10-20">Oct 20, 2025</time>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-3" itemprop="headline">
-                            <a href="blog-minimalist-lifestyle-guide.php" class="text-gray-800 hover:text-primary-green transition-colors" itemprop="url">
-                                Embracing Minimalism: Less Stuff, More Life
-                            </a>
-                        </h3>
-                        <p class="text-gray-600 mb-4 leading-relaxed" itemprop="description">Discover how minimalist living can reduce stress, save money, and help the environment. Start your decluttering journey today.</p>
-                        <a href="blog-minimalist-lifestyle-guide.php" class="text-primary-green font-semibold hover:underline">Read More →</a>
-                    </div>
-                </article>
+                <?php endforeach; ?>
 
             </div>
 
             <!-- Pagination -->
+            <?php if ($total_pages > 1): ?>
             <nav class="flex justify-center gap-2 mt-12" aria-label="Blog pagination">
-                <button class="px-4 py-2 border border-gray-300 rounded-lg bg-white hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" onclick="goToPage(1)" disabled>← Previous</button>
-                <button class="px-4 py-2 border border-primary-green bg-primary-green text-white rounded-lg" onclick="goToPage(1)">1</button>
-                <button class="px-4 py-2 border border-gray-300 rounded-lg bg-white hover:bg-primary-green hover:text-white transition-colors" onclick="goToPage(2)">2</button>
-                <button class="px-4 py-2 border border-gray-300 rounded-lg bg-white hover:bg-primary-green hover:text-white transition-colors" onclick="goToPage(3)">3</button>
-                <button class="px-4 py-2 border border-gray-300 rounded-lg bg-white hover:bg-gray-100 transition-colors" onclick="goToPage(2)">Next →</button>
+                <!-- Previous Button -->
+                <?php if ($current_page > 1): ?>
+                <a href="?page=<?php echo $current_page - 1; ?>&category=<?php echo urlencode($category_filter); ?>" 
+                   class="px-4 py-2 border border-gray-300 rounded-lg bg-white hover:bg-gray-100 transition-colors">
+                    ← Previous
+                </a>
+                <?php else: ?>
+                <button class="px-4 py-2 border border-gray-300 rounded-lg bg-white opacity-50 cursor-not-allowed" disabled>
+                    ← Previous
+                </button>
+                <?php endif; ?>
+
+                <!-- Page Numbers -->
+                <?php 
+                $start_page = max(1, $current_page - 2);
+                $end_page = min($total_pages, $current_page + 2);
+                
+                // Show first page if not in range
+                if ($start_page > 1): ?>
+                    <a href="?page=1&category=<?php echo urlencode($category_filter); ?>" 
+                       class="px-4 py-2 border border-gray-300 rounded-lg bg-white hover:bg-primary-green hover:text-white transition-colors">
+                        1
+                    </a>
+                    <?php if ($start_page > 2): ?>
+                        <span class="px-2 py-2">...</span>
+                    <?php endif; ?>
+                <?php endif; ?>
+                
+                <?php for ($i = $start_page; $i <= $end_page; $i++): ?>
+                    <?php if ($i == $current_page): ?>
+                    <button class="px-4 py-2 border border-primary-green bg-primary-green text-white rounded-lg font-semibold">
+                        <?php echo $i; ?>
+                    </button>
+                    <?php else: ?>
+                    <a href="?page=<?php echo $i; ?>&category=<?php echo urlencode($category_filter); ?>" 
+                       class="px-4 py-2 border border-gray-300 rounded-lg bg-white hover:bg-primary-green hover:text-white transition-colors">
+                        <?php echo $i; ?>
+                    </a>
+                    <?php endif; ?>
+                <?php endfor; ?>
+                
+                <!-- Show last page if not in range -->
+                <?php if ($end_page < $total_pages): ?>
+                    <?php if ($end_page < $total_pages - 1): ?>
+                        <span class="px-2 py-2">...</span>
+                    <?php endif; ?>
+                    <a href="?page=<?php echo $total_pages; ?>&category=<?php echo urlencode($category_filter); ?>" 
+                       class="px-4 py-2 border border-gray-300 rounded-lg bg-white hover:bg-primary-green hover:text-white transition-colors">
+                        <?php echo $total_pages; ?>
+                    </a>
+                <?php endif; ?>
+
+                <!-- Next Button -->
+                <?php if ($current_page < $total_pages): ?>
+                <a href="?page=<?php echo $current_page + 1; ?>&category=<?php echo urlencode($category_filter); ?>" 
+                   class="px-4 py-2 border border-gray-300 rounded-lg bg-white hover:bg-gray-100 transition-colors">
+                    Next →
+                </a>
+                <?php else: ?>
+                <button class="px-4 py-2 border border-gray-300 rounded-lg bg-white opacity-50 cursor-not-allowed" disabled>
+                    Next →
+                </button>
+                <?php endif; ?>
             </nav>
+            
+            <!-- Pagination Info -->
+            <div class="text-center mt-4 text-sm text-gray-600">
+                Showing <?php echo (($current_page - 1) * $blogs_per_page) + 1; ?> 
+                to <?php echo min($current_page * $blogs_per_page, $total_blogs); ?> 
+                of <?php echo $total_blogs; ?> articles
+            </div>
+            <?php endif; ?>
+
+            <?php else: ?>
+            <!-- No posts found -->
+            <div class="text-center py-16">
+                <div class="text-6xl mb-4">📝</div>
+                <p class="text-2xl text-gray-600 mb-4">No blog posts found<?php echo $category_filter !== 'all' ? ' in this category' : ''; ?>.</p>
+                <?php if ($category_filter !== 'all'): ?>
+                <a href="?category=all" class="inline-block bg-primary-green text-white font-semibold px-6 py-3 rounded-lg hover:bg-primary-green-dark transition-colors">
+                    View All Posts
+                </a>
+                <?php endif; ?>
+            </div>
+            <?php endif; ?>
         </div>
     </section>
 
@@ -327,54 +416,23 @@
         <div class="container mx-auto px-6">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">Never Miss a Post</h2>
             <p class="text-lg mb-8 max-w-2xl mx-auto">Subscribe to our newsletter for the latest eco-friendly tips and product updates</p>
-            <form class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" onsubmit="subscribeNewsletter(event)">
-                <input type="email" placeholder="Enter your email" required aria-label="Email address" class="flex-1 px-6 py-3 rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-white text-gray-800">
-                <button type="submit" class="bg-white text-primary-green font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors">Subscribe</button>
+            <form id="newsletterForm" class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
+                <input type="email" 
+                       id="newsletter_email" 
+                       placeholder="Enter your email" 
+                       required 
+                       aria-label="Email address" 
+                       class="flex-1 px-6 py-3 rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-white text-gray-800">
+                <button type="submit" class="bg-white text-primary-green font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors">
+                    Subscribe
+                </button>
             </form>
+            <div id="newsletterMessage" class="mt-4"></div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12 md:py-16">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-                <div>
-                    <img src="../images/logo.jpg" alt="Leaf+ Loom Logo" class="h-14">
-                    <p class="text-gray-400">Crafting sustainable wooden and bamboo products for a greener tomorrow.</p>
-                </div>
-                <div>
-                    <h4 class="text-secondary-green font-semibold mb-4 text-lg">Quick Links</h4>
-                    <ul class="space-y-2">
-                        <li><a href="../about.php" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="../products/" class="text-gray-400 hover:text-white transition-colors">Products</a></li>
-                        <li><a href="index.php" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
-                        <li><a href="../contact.php" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-secondary-green font-semibold mb-4 text-lg">Customer Service</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Shipping Policy</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Return Policy</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms & Conditions</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-secondary-green font-semibold mb-4 text-lg">Connect With Us</h4>
-                    <div class="flex gap-4 text-2xl">
-                        <a href="#" aria-label="Facebook" class="hover:text-secondary-green transition-colors">📘</a>
-                        <a href="#" aria-label="Instagram" class="hover:text-secondary-green transition-colors">📷</a>
-                        <a href="#" aria-label="Twitter" class="hover:text-secondary-green transition-colors">🐦</a>
-                        <a href="#" aria-label="Pinterest" class="hover:text-secondary-green transition-colors">📌</a>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t border-gray-700 pt-6 text-center text-gray-400">
-                <p>&copy; 2025 Leaf+ Loom. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Include Footer -->
+    <?php include '../includes/footer.php'; ?>
 
     <!-- JavaScript -->
     <script src="../js/cart.js"></script>
@@ -382,7 +440,7 @@
         // Mobile menu toggle
         function toggleMenu() {
             const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
+            if (menu) menu.classList.toggle('hidden');
         }
         
         // Cart functionality
@@ -390,43 +448,20 @@
             alert('Cart functionality - integrate with your cart.js');
         }
         
-        // Filter blog posts
-        function filterBlog(category) {
-            const cards = document.querySelectorAll('.blog-card');
-            const tabs = document.querySelectorAll('.filter-tab');
-            
-            // Update active tab styling
-            tabs.forEach(tab => {
-                tab.classList.remove('bg-primary-green', 'text-white');
-                tab.classList.add('bg-white');
-            });
-            event.target.classList.add('bg-primary-green', 'text-white');
-            event.target.classList.remove('bg-white');
-            
-            // Filter cards
-            cards.forEach(card => {
-                if (category === 'all' || card.dataset.category === category) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-        
-        // Pagination
-        function goToPage(page) {
-            console.log('Going to page:', page);
-            // Add your pagination logic here
-        }
-        
         // Newsletter subscription
-        function subscribeNewsletter(event) {
-            event.preventDefault();
-            const email = event.target.querySelector('input[type="email"]').value;
-            console.log('Subscribed:', email);
-            alert('Thank you for subscribing!');
-            event.target.reset();
-        }
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('newsletter_email').value;
+            const messageDiv = document.getElementById('newsletterMessage');
+            
+            messageDiv.innerHTML = '<p class="text-white bg-green-600 px-4 py-2 rounded-lg inline-block">✓ Thank you for subscribing!</p>';
+            this.reset();
+            
+            setTimeout(() => {
+                messageDiv.innerHTML = '';
+            }, 5000);
+        });
     </script>
 </body>
 </html>
