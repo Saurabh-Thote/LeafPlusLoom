@@ -232,9 +232,9 @@ function formatPrice($price, $originalPrice = null) {
                                 
                                 <!-- Quick View Overlay -->
                                 <div class="absolute inset-0 bg-primary-green/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                    <a href="/product/<?php echo htmlspecialchars($product['slug']); ?>.php"
-                                        class="bg-white text-primary-green font-semibold px-6 py-2 rounded-lg hover:bg-gray-100 transition-colors">
-                                        Quick View
+                                    <a href="product-details.php?product=<?php echo htmlspecialchars($product['slug']); ?>" 
+                                       class="bg-white text-primary-green font-semibold px-6 py-2 rounded-lg hover:bg-gray-100 transition-colors">
+                                        View Details
                                     </a>
                                 </div>
                             </div>

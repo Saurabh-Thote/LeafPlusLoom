@@ -199,7 +199,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <h3 class="text-lg font-semibold mb-3">Follow Us</h3>
                                 <div class="flex flex-col gap-2">
                                     <a href="https://facebook.com/leafplusloom" "target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="text-primary-green hover:text-primary-green-dark font-medium transition-colors">Facebook</a>
-                                    <a href="https://instagram.com/leafplusloom" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-primary-green hover:text-primary-green-dark font-medium transition-colors">Instagram</a>
+                                    <a href="https://www.instagram.com/leafpluslooms/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-primary-green hover:text-primary-green-dark font-medium transition-colors">Instagram</a>
                                     <a href="https://twitter.com/leafplusloom" target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="text-primary-green hover:text-primary-green-dark font-medium transition-colors">Twitter</a>
                                 </div>
                             </div>
